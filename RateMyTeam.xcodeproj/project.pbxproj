@@ -3,14 +3,17 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1BE4A0C365A7F7B48D081B66 /* SharedContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652687C0143EDA923386C303 /* SharedContract.swift */; };
 		21B9F021D8313F4B9F79B350 /* RateContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8B7B87AD38F3FBC3D1074 /* RateContract.swift */; };
 		4ABC765DA1DAC1E4CFD27951 /* SharedContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652687C0143EDA923386C303 /* SharedContract.swift */; };
 		5198881003B827D2FAF051A6 /* SharedContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652687C0143EDA923386C303 /* SharedContract.swift */; };
+		9AE195E94384C3EE046C5C57 /* RateContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8B7B87AD38F3FBC3D1074 /* RateContract.swift */; };
 		A9A097D54BD23C30BD760AAA /* RateContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8B7B87AD38F3FBC3D1074 /* RateContract.swift */; };
+		C8AAB5DB60D420204701E774 /* Pods_RateMyTeam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C61F7F9602D196B19901E7A1 /* Pods_RateMyTeam.framework */; };
 		F88C675D238ED1F300912435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C675C238ED1F300912435 /* AppDelegate.swift */; };
 		F88C675F238ED1F300912435 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C675E238ED1F300912435 /* SceneDelegate.swift */; };
 		F88C6761238ED1F300912435 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C6760238ED1F300912435 /* ContentView.swift */; };
@@ -19,6 +22,7 @@
 		F88C6769238ED1F700912435 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F88C6767238ED1F700912435 /* LaunchScreen.storyboard */; };
 		F88C6774238ED1F800912435 /* RateMyTeamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C6773238ED1F800912435 /* RateMyTeamTests.swift */; };
 		F88C677F238ED1F800912435 /* RateMyTeamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C677E238ED1F800912435 /* RateMyTeamUITests.swift */; };
+		F88C678E238EDC0900912435 /* RateContractDesired.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C678D238EDC0900912435 /* RateContractDesired.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +43,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		652687C0143EDA923386C303 /* SharedContract.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = SharedContract.swift; path = SharedContract.swift; sourceTree = "<group>"; };
-		67F8B7B87AD38F3FBC3D1074 /* RateContract.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; lastKnownFileType = sourcecode.swift; name = RateContract.swift; path = RateContract.swift; sourceTree = "<group>"; };
+		3C0A1D9DF5CA9FA0431C9558 /* Pods-RateMyTeam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateMyTeam.release.xcconfig"; path = "Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam.release.xcconfig"; sourceTree = "<group>"; };
+		652687C0143EDA923386C303 /* SharedContract.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = SharedContract.swift; sourceTree = "<group>"; };
+		67F8B7B87AD38F3FBC3D1074 /* RateContract.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = RateContract.swift; sourceTree = "<group>"; };
+		C61F7F9602D196B19901E7A1 /* Pods_RateMyTeam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RateMyTeam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEA6C4618C36B625480E3416 /* Pods-RateMyTeam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateMyTeam.debug.xcconfig"; path = "Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam.debug.xcconfig"; sourceTree = "<group>"; };
 		F88C6759238ED1F300912435 /* RateMyTeam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateMyTeam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88C675C238ED1F300912435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F88C675E238ED1F300912435 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -55,6 +62,7 @@
 		F88C677A238ED1F800912435 /* RateMyTeamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RateMyTeamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88C677E238ED1F800912435 /* RateMyTeamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateMyTeamUITests.swift; sourceTree = "<group>"; };
 		F88C6780238ED1F800912435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F88C678D238EDC0900912435 /* RateContractDesired.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateContractDesired.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8AAB5DB60D420204701E774 /* Pods_RateMyTeam.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +91,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4798EECD04F1AEB246F7257F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DEA6C4618C36B625480E3416 /* Pods-RateMyTeam.debug.xcconfig */,
+				3C0A1D9DF5CA9FA0431C9558 /* Pods-RateMyTeam.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		B96184D3EA60ED4C7CF64332 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C61F7F9602D196B19901E7A1 /* Pods_RateMyTeam.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F88C6750238ED1F200912435 = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +115,8 @@
 				F88C6772238ED1F800912435 /* RateMyTeamTests */,
 				F88C677D238ED1F800912435 /* RateMyTeamUITests */,
 				F88C675A238ED1F300912435 /* Products */,
+				4798EECD04F1AEB246F7257F /* Pods */,
+				B96184D3EA60ED4C7CF64332 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -147,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				67F8B7B87AD38F3FBC3D1074 /* RateContract.swift */,
+				F88C678D238EDC0900912435 /* RateContractDesired.swift */,
 				652687C0143EDA923386C303 /* SharedContract.swift */,
 			);
 			path = Generated;
@@ -159,9 +188,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F88C6783238ED1F800912435 /* Build configuration list for PBXNativeTarget "RateMyTeam" */;
 			buildPhases = (
+				D4622A26FF057F35D1B148AD /* [CP] Check Pods Manifest.lock */,
 				F88C6755238ED1F300912435 /* Sources */,
 				F88C6756238ED1F300912435 /* Frameworks */,
 				F88C6757238ED1F300912435 /* Resources */,
+				599EA930D8A1864E04664518 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -278,11 +309,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		599EA930D8A1864E04664518 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4622A26FF057F35D1B148AD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RateMyTeam-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F88C6755238ED1F300912435 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F88C678E238EDC0900912435 /* RateContractDesired.swift in Sources */,
 				F88C675D238ED1F300912435 /* AppDelegate.swift in Sources */,
 				F88C675F238ED1F300912435 /* SceneDelegate.swift in Sources */,
 				F88C6761238ED1F300912435 /* ContentView.swift in Sources */,
@@ -296,6 +370,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F88C6774238ED1F800912435 /* RateMyTeamTests.swift in Sources */,
+				9AE195E94384C3EE046C5C57 /* RateContract.swift in Sources */,
+				1BE4A0C365A7F7B48D081B66 /* SharedContract.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,6 +528,7 @@
 		};
 		F88C6784238ED1F800912435 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEA6C4618C36B625480E3416 /* Pods-RateMyTeam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -471,6 +548,7 @@
 		};
 		F88C6785238ED1F800912435 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C0A1D9DF5CA9FA0431C9558 /* Pods-RateMyTeam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

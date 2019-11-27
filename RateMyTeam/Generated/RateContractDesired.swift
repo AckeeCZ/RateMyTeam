@@ -5,7 +5,7 @@ import Foundation
 import TezosSwift
 
 /// Struct for function currying
-struct RateContractBox {
+struct RateContractBox1 {
     fileprivate let tezosClient: TezosClient
     fileprivate let at: String
 
@@ -19,16 +19,16 @@ struct RateContractBox {
      **Important:**
      Params are in the order of how they are specified in the Tezos structure tree
     */
-    func call(end: Never?, vote: String?) -> ContractMethodInvocation {
-        let send: (_ from: Wallet, _ amount: TezToken, _ operationFees: OperationFees?, _ completion: @escaping RPCCompletion<String>) -> Cancelable?    
+    func call(end: Void?, vote: String?) -> ContractMethodInvocation {
+        let send: (_ from: Wallet, _ amount: TezToken, _ operationFees: OperationFees?, _ completion: @escaping RPCCompletion<String>) -> Cancelable?
         guard let tezosOr1 = TezosOr(left: end, right: vote) else {
-            send = { from, amount, operationFees, completion in
-                completion(.failure(.parameterError(reason: .orError)))
-                return AnyCancelable { }
-            }
-            return ContractMethodInvocation(send: send)
+        send = { from, amount, operationFees, completion in
+            completion(.failure(.parameterError(reason: .orError)))
+            return AnyCancelable { }
         }
-        let input: TezosOr<Never, String> = tezosOr1
+        return ContractMethodInvocation(send: send)
+    }
+        let input: TezosOr<Void, String> = tezosOr1
         send = { from, amount, operationFees, completion in
             self.tezosClient.send(amount: amount, to: self.at, from: from, input: input, operationFees: operationFees, completion: completion)
         }
@@ -37,15 +37,14 @@ struct RateContractBox {
     }
 
     /// Call this method to obtain contract status data
-    @discardableResult
-    func status(completion: @escaping RPCCompletion<RateContractStatus>) -> Cancelable? {
+    func status(completion: @escaping RPCCompletion<RateContractStatus1>) -> Cancelable? {
         let endpoint = "/chains/main/blocks/head/context/contracts/" + at
         return tezosClient.sendRPC(endpoint: endpoint, method: .get, completion: completion)
     }
 }
 
 /// Status data of RateContract
-struct RateContractStatus: Decodable {
+struct RateContractStatus1: Decodable {
     /// Balance of RateContract in Tezos
     let balance: Tez
     /// Is contract spendable
@@ -57,7 +56,7 @@ struct RateContractStatus: Decodable {
     /// RateContract's current operation counter
     let counter: Int
     /// RateContract's storage
-    let storage:RateContractStatusStorage
+    let storage:RateContractStatus1Storage
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: ContractStatusKeys.self)
@@ -68,7 +67,7 @@ struct RateContractStatus: Decodable {
         self.counter = try container.decodeRPC(Int.self, forKey: .counter)
 
         let scriptContainer = try container.nestedContainer(keyedBy: ContractStatusKeys.self, forKey: .script)
-        self.storage = try scriptContainer.decode(RateContractStatusStorage.self, forKey: .storage)
+        self.storage = try scriptContainer.decode(RateContractStatus1Storage.self, forKey: .storage)
     }
 }
 /**
@@ -76,21 +75,21 @@ struct RateContractStatus: Decodable {
  **Important:**
  Args are in the order of how they are specified in the Tezos structure tree
 */
-struct RateContractStatusStorage: Decodable {
+struct RateContractStatus1Storage: Decodable {
     let ballot: [(String, UInt)]
-	let hasEnded: Bool
-	let master: String
-	let totalNumberOfVotes: UInt
-	let voters: [(String, Int)]
+    let hasEnded: Bool
+    let master: String
+    let totalNumberOfVotes: UInt
+    let voters: [(String, Int)]
 
     public init(from decoder: Decoder) throws {
         let tezosElement = try decoder.singleValueContainer().decode(TezosPair<TezosPair<TezosPair<TezosPair<TezosMap<String, UInt>, Bool>, String>, UInt>, TezosMap<String, Int>>.self)
 
-        self.ballot = tezosElement.first.first.first.first.first
-		self.hasEnded = tezosElement.first.first.first.second
-		self.master = tezosElement.first.first.second
-		self.totalNumberOfVotes = tezosElement.first.second
-		self.voters = tezosElement.second
+        self.ballot = tezosElement.first.first.first.first
+        self.hasEnded = tezosElement.first.first.first.second
+        self.master = tezosElement.first.first.second
+        self.totalNumberOfVotes = tezosElement.first.second
+        self.voters = tezosElement.second
     }
 }
 
@@ -102,7 +101,7 @@ extension TezosClient {
 
      - Returns: Callable type to send Tezos with.
     */
-    func rateContract(at: String) -> RateContractBox {
-        return RateContractBox(tezosClient: self, at: at)
+    func rateContract(at: String) -> RateContractBox1 {
+        return RateContractBox1(tezosClient: self, at: at)
     }
 }

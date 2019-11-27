@@ -1,0 +1,46 @@
+PODS:
+  - BigInt (5.0.0)
+  - CryptoSwift (0.14.0)
+  - MnemonicKit (1.3.9):
+    - CryptoSwift (~> 0.14.0)
+  - Sodium (0.8.0)
+  - TezosSwift/Combine (1.1):
+    - BigInt (~> 5.0.0)
+    - MnemonicKit
+    - Sodium (~> 0.8.0)
+    - TezosSwift/Core
+  - TezosSwift/Core (1.1):
+    - BigInt (~> 5.0.0)
+    - MnemonicKit
+    - Sodium (~> 0.8.0)
+
+DEPENDENCIES:
+  - TezosSwift/Combine (from `https://github.com/AckeeCZ/TezosSwift.git`, branch `fixes`)
+
+SPEC REPOS:
+  https://cdn.cocoapods.org/:
+    - BigInt
+    - CryptoSwift
+    - MnemonicKit
+    - Sodium
+
+EXTERNAL SOURCES:
+  TezosSwift:
+    :branch: fixes
+    :git: https://github.com/AckeeCZ/TezosSwift.git
+
+CHECKOUT OPTIONS:
+  TezosSwift:
+    :commit: 3e1bd034723d510886e3ab43907b652c3398832e
+    :git: https://github.com/AckeeCZ/TezosSwift.git
+
+SPEC CHECKSUMS:
+  BigInt: 74b4d88367b0e819d9f77393549226d36faeb0d8
+  CryptoSwift: 35a10419f4dbf0619c13f8c1c180037e115323fa
+  MnemonicKit: 5189df03e224eb6c9b63bc3c6b0623fb1134c62d
+  Sodium: 63c0ca312a932e6da481689537d4b35568841bdc
+  TezosSwift: 655b224f2e0ffbb9b7c4a5deea9ed9169ee07637
+
+PODFILE CHECKSUM: 893efca52838bfa21cac58f37d78a7b490bf3101
+
+COCOAPODS: 1.8.4
