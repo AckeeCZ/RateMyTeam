@@ -1,0 +1,17 @@
+{"parameter": {"prim":"or","args":[
+    {"prim":"unit","annots":["%end"]},{"prim":"address","annots":["%vote"]}]
+   }, "storage": {"prim":"pair","args":[
+    {"prim":"pair","args":[
+     {"prim":"pair","args":[
+      {"prim":"pair","args":[
+       {"prim":"map","args":[
+        {"prim":"address"},{"prim":"nat"}]
+       ,"annots":["%ballot"]},{"prim":"bool","annots":["%hasEnded"]}]
+      },{"prim":"address","annots":["%master"]}]
+     },{"prim":"nat","annots":["%totalNumberOfVotes"]}]
+    },
+    {"prim":"map","args":[
+     {"prim":"address"},{"prim":"int"}]
+    ,"annots":["%voters"]}]
+   }
+}
