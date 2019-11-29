@@ -13,22 +13,28 @@ struct RateContractBox {
        self.tezosClient = tezosClient
        self.at = at
     }
-    
     /**
      Call RateContract with specified params.
      **Important:**
      Params are in the order of how they are specified in the Tezos structure tree
     */
-    func call(end: Never?, vote: String?) -> ContractMethodInvocation {
-        let send: (_ from: Wallet, _ amount: TezToken, _ operationFees: OperationFees?, _ completion: @escaping RPCCompletion<String>) -> Cancelable?    
-        guard let tezosOr1 = TezosOr(left: end, right: vote) else {
-            send = { from, amount, operationFees, completion in
-                completion(.failure(.parameterError(reason: .orError)))
-                return AnyCancelable { }
-            }
-            return ContractMethodInvocation(send: send)
+    func end() -> ContractMethodInvocation {
+        let send: (_ from: Wallet, _ amount: TezToken, _ operationFees: OperationFees?, _ completion: @escaping RPCCompletion<String>) -> Cancelable?
+        send = { from, amount, operationFees, completion in
+            self.tezosClient.send(amount: amount, to: self.at, from: from, operationFees: operationFees, completion: completion)
         }
-        let input: TezosOr<Never, String> = tezosOr1
+
+        return ContractMethodInvocation(send: send)
+    }
+
+    /**
+     Call RateContract with specified params.
+     **Important:**
+     Params are in the order of how they are specified in the Tezos structure tree
+    */
+    func vote(_ param1: String) -> ContractMethodInvocation {
+        let send: (_ from: Wallet, _ amount: TezToken, _ operationFees: OperationFees?, _ completion: @escaping RPCCompletion<String>) -> Cancelable?
+        let input: String = param1
         send = { from, amount, operationFees, completion in
             self.tezosClient.send(amount: amount, to: self.at, from: from, input: input, operationFees: operationFees, completion: completion)
         }
@@ -86,11 +92,11 @@ struct RateContractStatusStorage: Decodable {
     public init(from decoder: Decoder) throws {
         let tezosElement = try decoder.singleValueContainer().decode(TezosPair<TezosPair<TezosPair<TezosPair<TezosMap<String, UInt>, Bool>, String>, UInt>, TezosMap<String, Int>>.self)
 
-        self.ballot = tezosElement.first.first.first.first.first
+        self.ballot = tezosElement.first.first.first.first.pairs.map { ($0.first, $0.second) }
 		self.hasEnded = tezosElement.first.first.first.second
 		self.master = tezosElement.first.first.second
 		self.totalNumberOfVotes = tezosElement.first.second
-		self.voters = tezosElement.second
+		self.voters = tezosElement.second.pairs.map { ($0.first, $0.second) }
     }
 }
 

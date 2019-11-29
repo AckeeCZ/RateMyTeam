@@ -22,7 +22,6 @@
 		F88C6769238ED1F700912435 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F88C6767238ED1F700912435 /* LaunchScreen.storyboard */; };
 		F88C6774238ED1F800912435 /* RateMyTeamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C6773238ED1F800912435 /* RateMyTeamTests.swift */; };
 		F88C677F238ED1F800912435 /* RateMyTeamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C677E238ED1F800912435 /* RateMyTeamUITests.swift */; };
-		F88C678E238EDC0900912435 /* RateContractDesired.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C678D238EDC0900912435 /* RateContractDesired.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +61,6 @@
 		F88C677A238ED1F800912435 /* RateMyTeamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RateMyTeamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88C677E238ED1F800912435 /* RateMyTeamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateMyTeamUITests.swift; sourceTree = "<group>"; };
 		F88C6780238ED1F800912435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		F88C678D238EDC0900912435 /* RateContractDesired.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateContractDesired.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +173,6 @@
 			isa = PBXGroup;
 			children = (
 				67F8B7B87AD38F3FBC3D1074 /* RateContract.swift */,
-				F88C678D238EDC0900912435 /* RateContractDesired.swift */,
 				652687C0143EDA923386C303 /* SharedContract.swift */,
 			);
 			path = Generated;
@@ -318,9 +315,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -356,7 +357,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F88C678E238EDC0900912435 /* RateContractDesired.swift in Sources */,
 				F88C675D238ED1F300912435 /* AppDelegate.swift in Sources */,
 				F88C675F238ED1F300912435 /* SceneDelegate.swift in Sources */,
 				F88C6761238ED1F300912435 /* ContentView.swift in Sources */,

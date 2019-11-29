@@ -12,9 +12,9 @@ struct ContractMethodInvocation {
 
     func send(from: Wallet, amount: TezToken, operationFees: OperationFees? = nil, completion: @escaping RPCCompletion<String>) -> Cancelable? {
         self.send(from, amount, operationFees, completion)
-    }    
+    }
     
-    func sendPublisher(from: Wallet, amount: TezToken, operationFees: OperationFees? = nil) -> ContractPublisher {
+    func sendPublisher(from: Wallet, amount: TezToken, operationFees: OperationFees? = nil) -> ContractPublisher<String> {
         ContractPublisher(send: { self.send(from, amount, operationFees, $0) })
     }
 }
