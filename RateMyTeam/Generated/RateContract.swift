@@ -48,6 +48,11 @@ struct RateContractBox {
         let endpoint = "/chains/main/blocks/head/context/contracts/" + at
         return tezosClient.sendRPC(endpoint: endpoint, method: .get, completion: completion)
     }
+
+    /// Call this method to obtain contract status data
+    func statusPublisher() -> ContractPublisher<RateContractStatus> {
+        ContractPublisher(send: { self.status(completion: $0) })
+    }
 }
 
 /// Status data of RateContract
@@ -63,7 +68,7 @@ struct RateContractStatus: Decodable {
     /// RateContract's current operation counter
     let counter: Int
     /// RateContract's storage
-    let storage:RateContractStatusStorage
+    let storage: RateContractStatusStorage
 
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: ContractStatusKeys.self)
@@ -83,20 +88,19 @@ struct RateContractStatus: Decodable {
  Args are in the order of how they are specified in the Tezos structure tree
 */
 struct RateContractStatusStorage: Decodable {
-    let ballot: [(String, UInt)]
+    let ballot: [String: UInt]
 	let hasEnded: Bool
 	let master: String
 	let totalNumberOfVotes: UInt
-	let voters: [(String, Int)]
+	let voters: [String: Int]
 
     public init(from decoder: Decoder) throws {
         let tezosElement = try decoder.singleValueContainer().decode(TezosPair<TezosPair<TezosPair<TezosPair<TezosMap<String, UInt>, Bool>, String>, UInt>, TezosMap<String, Int>>.self)
-
-        self.ballot = tezosElement.first.first.first.first.pairs.map { ($0.first, $0.second) }
+        self.ballot = tezosElement.first.first.first.first.pairs.reduce([:], { var mutable = $0; mutable[$1.first] = $1.second; return mutable })
 		self.hasEnded = tezosElement.first.first.first.second
 		self.master = tezosElement.first.first.second
 		self.totalNumberOfVotes = tezosElement.first.second
-		self.voters = tezosElement.second.pairs.map { ($0.first, $0.second) }
+		self.voters = tezosElement.second.pairs.reduce([:], { var mutable = $0; mutable[$1.first] = $1.second; return mutable })
     }
 }
 
