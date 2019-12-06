@@ -11,15 +11,19 @@ import SwiftUI
 import TezosSwift
 import Combine
 
-struct RateView: View {
-    @ObservedObject private var viewModel: RateViewModel
+enum RateInput {
     
-    init(viewModel: RateViewModel) {
-        self.viewModel = viewModel
-    }
+}
+
+struct RateState {
+    var candidates: [Candidate]
+}
+
+struct RateView: View {
+    @ObservedObject var viewModel: AnyViewModel<RateState, RateInput>
     
     var body: some View {
-        List(viewModel.candidates) {
+        List(viewModel.state.candidates) {
             Text($0.id)
         }
     }
@@ -52,9 +56,8 @@ final class RateRepository: RateRepositoringActions, ObservableObject {
     typealias Dependencies = HasTezosClient
     
     @Published var rateContract: RateContract? = nil
-//    var rateContractPublished: Published<RateContract?> { _rateContract }
-//    var rateContractPublisher: Published<RateContract?>.Publisher { $rateContract }
     
+    private var cancellables: [AnyCancellable] = []
     private let tezosClient: TezosClient
     
     init(dependencies: Dependencies) {
@@ -95,29 +98,32 @@ extension RateViewModeling where Self: RateViewModelingActions {
     var actions: RateViewModelingActions { self }
 }
 
-final class RateViewModel: RateViewModelingActions, ObservableObject {
+final class RateViewModel: ViewModel {
     typealias Dependencies = HasRateRepository
     
-    private var cancellables: [AnyCancellable] = []
-    
-    @Published private(set) var candidates: [Candidate]
-    
-    private var updateStoreCancellable: AnyCancellable?
-    private var ola: AnyCancellable?
-    
+    @Published private(set) var state: RateState = RateState(candidates: [])
     @ObservedObject private var rateRepository: RateRepository
+    
+    private var cancellables: [AnyCancellable] = []
     
     init(dependencies: Dependencies) {
         rateRepository = dependencies.rateRepository
         
-        candidates = dependencies.rateRepository.rateContract?.candidates ?? []
         dependencies.rateRepository.$rateContract
             .compactMap { $0?.candidates }
             .receive(on: RunLoop.main)
-            .assign(to: \.candidates, on: self)
+            .assign(to: \.state.candidates, on: self)
             .store(in: &cancellables)
         
+        objectWillChange.sink(receiveValue: {
+            
+        }).store(in: &cancellables)
+        
         updateStore()
+    }
+    
+    func trigger(_ input: RateInput) {
+        
     }
     
     func updateStore() {
