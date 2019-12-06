@@ -12,9 +12,9 @@ import TezosSwift
 import Combine
 
 struct RateView: View {
-    private let viewModel: RateViewModeling
+    @ObservedObject private var viewModel: RateViewModel
     
-    init(viewModel: RateViewModeling) {
+    init(viewModel: RateViewModel) {
         self.viewModel = viewModel
     }
     
@@ -30,26 +30,30 @@ struct RateContract {
 }
 
 protocol HasRateRepository {
-    var rateRepository: RateRepositoring { get }
+    var rateRepository: RateRepository { get }
 }
 
-protocol RateRepositoring {
-    var actions: RateRepositoringActions { get }
-    var rateContract: RateContract? { get }
-}
+//protocol RateRepositoring {
+//    var actions: RateRepositoringActions { get }
+//    var rateContract: RateContract? { get }
+//    var rateContractPublished: Published<RateContract?> { get }
+//    var rateContractPublisher: Published<RateContract?>.Publisher { get }
+//}
 
-extension RateRepositoring where Self: RateRepositoringActions {
-    var actions: RateRepositoringActions { self }
-}
+//extension RateRepositoring where Self: RateRepositoringActions {
+//    var actions: RateRepositoringActions { self }
+//}
 
 protocol RateRepositoringActions {
     func updateStore(of contract: String) -> AnyPublisher<RateContract, TezosError>
 }
 
-final class RateRepository: RateRepositoring, RateRepositoringActions, ObservableObject {
+final class RateRepository: RateRepositoringActions, ObservableObject {
     typealias Dependencies = HasTezosClient
     
-    @Published var rateContract: RateContract?
+    @Published var rateContract: RateContract? = nil
+//    var rateContractPublished: Published<RateContract?> { _rateContract }
+//    var rateContractPublisher: Published<RateContract?>.Publisher { $rateContract }
     
     private let tezosClient: TezosClient
     
@@ -73,6 +77,8 @@ final class RateRepository: RateRepositoring, RateRepositoringActions, Observabl
 protocol RateViewModeling {
     var actions: RateViewModelingActions { get }
     var candidates: [Candidate] { get }
+    var candidatesPublished: Published<[Candidate]> { get }
+    var candidatesPublisher: Published<[Candidate]>.Publisher { get }
 }
 
 struct Candidate: Identifiable {
@@ -89,33 +95,34 @@ extension RateViewModeling where Self: RateViewModelingActions {
     var actions: RateViewModelingActions { self }
 }
 
-final class RateViewModel: RateViewModeling, RateViewModelingActions, ObservableObject {
+final class RateViewModel: RateViewModelingActions, ObservableObject {
     typealias Dependencies = HasRateRepository
     
-    @Published var candidates: [Candidate]
+    private var cancellables: [AnyCancellable] = []
+    
+    @Published private(set) var candidates: [Candidate]
     
     private var updateStoreCancellable: AnyCancellable?
+    private var ola: AnyCancellable?
     
-    private let rateRepository: RateRepositoring
+    @ObservedObject private var rateRepository: RateRepository
     
     init(dependencies: Dependencies) {
         rateRepository = dependencies.rateRepository
         
-        candidates = rateRepository.rateContract?.candidates ?? []
+        candidates = dependencies.rateRepository.rateContract?.candidates ?? []
+        dependencies.rateRepository.$rateContract
+            .compactMap { $0?.candidates }
+            .receive(on: RunLoop.main)
+            .assign(to: \.candidates, on: self)
+            .store(in: &cancellables)
         
         updateStore()
     }
     
     func updateStore() {
-        updateStoreCancellable = rateRepository.actions.updateStore(of: "KT1EDS35c3a7unangqgnijm1oSZduuWpRqHP").sink(receiveCompletion: { completion in
-            switch completion {
-            case .finished:
-                break
-            case let .failure(error):
-                print(error)
-            }
-        }, receiveValue: { value in
-            
-        })
+        rateRepository.updateStore(of: "KT1EDS35c3a7unangqgnijm1oSZduuWpRqHP")
+            .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+            .store(in: &cancellables)
     }
 }
