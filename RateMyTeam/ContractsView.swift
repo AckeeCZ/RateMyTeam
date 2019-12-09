@@ -23,7 +23,7 @@ struct ContractsView: View {
     var body: some View {
         NavigationView {
             List(viewModel.state.contracts) { contract in
-                NavigationLink(destination: RateView(viewModel: RateViewModel(dependencies: dependencies).eraseToAnyViewModel())) {
+                NavigationLink(destination: RateView(viewModel: RateViewModel(rateContract: contract, dependencies: dependencies).eraseToAnyViewModel())) {
                     ContractRow(contract: contract)
                 }
             }

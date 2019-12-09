@@ -9,22 +9,36 @@
 import Foundation
 import Combine
 
+enum RateInput {
+    
+}
+
+struct RateState {
+    var candidates: [Candidate]
+    let title: String
+}
+
 final class RateViewModel: ViewModel {
     typealias Dependencies = HasRateRepository
     
-    @Published private(set) var state: RateState = RateState(candidates: [])
+    @Published private(set) var state: RateState
     private let rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput>
     
     private var cancellables: [AnyCancellable] = []
     
-    init(dependencies: Dependencies) {
+    init(rateContract: RateContract, dependencies: Dependencies) {
         rateRepository = dependencies.rateRepository
         
-//        dependencies.rateRepository.$rateContract
-//            .compactMap { $0?.candidates }
-//            .receive(on: RunLoop.main)
-//            .assign(to: \.state.candidates, on: self)
-//            .store(in: &cancellables)
+        state = RateState(candidates: rateContract.candidates, title: rateContract.id)
+        
+        let contractPublisher = dependencies.rateRepository.state
+            .compactMap { $0.contracts.first(where: { $0.id == rateContract.id }) }
+            .receive(on: RunLoop.main)
+        
+        contractPublisher
+            .map(\.candidates)
+            .assign(to: \.state.candidates, on: self)
+            .store(in: &cancellables)
     
         updateStore()
     }

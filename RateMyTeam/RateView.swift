@@ -11,14 +11,6 @@ import SwiftUI
 import TezosSwift
 import Combine
 
-enum RateInput {
-    
-}
-
-struct RateState {
-    var candidates: [Candidate]
-}
-
 struct RateView: View {
     @ObservedObject var viewModel: AnyViewModel<RateState, RateInput>
     
@@ -26,7 +18,7 @@ struct RateView: View {
         List(viewModel.state.candidates) {
             Text($0.id)
         }
-        .navigationBarTitle(Text(verbatim: "Olla"), displayMode: .inline)
+        .navigationBarTitle(Text(verbatim: viewModel.state.title), displayMode: .inline)
     }
 }
 
