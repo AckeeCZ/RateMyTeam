@@ -29,106 +29,80 @@ struct RateView: View {
     }
 }
 
-struct RateContract {
+struct RateContract: Identifiable {
+    let id: String
     let candidates: [Candidate]
 }
 
 protocol HasRateRepository {
-    var rateRepository: RateRepository { get }
+    var rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput> { get }
 }
 
-//protocol RateRepositoring {
-//    var actions: RateRepositoringActions { get }
-//    var rateContract: RateContract? { get }
-//    var rateContractPublished: Published<RateContract?> { get }
-//    var rateContractPublisher: Published<RateContract?>.Publisher { get }
-//}
-
-//extension RateRepositoring where Self: RateRepositoringActions {
-//    var actions: RateRepositoringActions { self }
-//}
-
-protocol RateRepositoringActions {
-    func updateStore(of contract: String) -> AnyPublisher<RateContract, TezosError>
+enum RateRepositoryInput {
+    case updateStore(String)
 }
 
-final class RateRepository: RateRepositoringActions, ObservableObject {
+struct RateRepositoryState {
+    var contracts: [RateContract]
+}
+
+final class RateRepository: Repository {
     typealias Dependencies = HasTezosClient
-    
-    @Published var rateContract: RateContract? = nil
-    
-    private var cancellables: [AnyCancellable] = []
+        
+    @Published var state: RateRepositoryState = RateRepositoryState(contracts: [])
+    private var cancellables: Set<AnyCancellable> = []
     private let tezosClient: TezosClient
     
     init(dependencies: Dependencies) {
         tezosClient = dependencies.tezosClient
+        
+        // TODO: Should be saved in UserDefaults
+        let initialAddresses: [String] = ["KT1EDS35c3a7unangqgnijm1oSZduuWpRqHP"]
+        initialAddresses.forEach {
+            updateStore(of: $0)
+        }
     }
     
-    func updateStore(of contract: String) -> AnyPublisher<RateContract, TezosError> {
+    private func updateStore(of contract: String) {
         tezosClient.rateContract(at: contract)
             .statusPublisher()
             .map(\.storage)
-            .map { $0.voters.map(Candidate.init) }
+            .map { (contract, $0.voters.map(Candidate.init)) }
             .map(RateContract.init)
-            .handleEvents(receiveOutput: { [weak self] contract in
-                self?.rateContract = contract
-            })
-            .eraseToAnyPublisher()
+            .map { contract -> RateContract? in return contract }
+            .replaceError(with: nil)
+            .compactMap { $0 }
+            .map { [weak self] in
+                self?.updateStore(with: $0)
+            }
+            .startAndStore(in: &cancellables)
+    }
+    
+    private func updateStore(with contract: RateContract) {
+        if let index = state.contracts.firstIndex(where: { $0.id == contract.id }) {
+            state.contracts[index] = contract
+        } else {
+            state.contracts.append(contract)
+        }
+    }
+    
+    func trigger(_ input: RateRepositoryInput) {
+        switch input {
+        case let .updateStore(address):
+            updateStore(of: address)
+        }
     }
 }
 
-protocol RateViewModeling {
-    var actions: RateViewModelingActions { get }
-    var candidates: [Candidate] { get }
-    var candidatesPublished: Published<[Candidate]> { get }
-    var candidatesPublisher: Published<[Candidate]>.Publisher { get }
+extension Publisher {
+    func startAndStore(in set: inout Set<AnyCancellable>) {
+        sink(receiveCompletion: { _ in }, receiveValue: { _ in })
+        .store(in: &set)
+    }
 }
 
 struct Candidate: Identifiable {
     /// Address
     let id: String
     let numberOfVotes: Int
-}
-
-protocol RateViewModelingActions {
-    func updateStore()
-}
-
-extension RateViewModeling where Self: RateViewModelingActions {
-    var actions: RateViewModelingActions { self }
-}
-
-final class RateViewModel: ViewModel {
-    typealias Dependencies = HasRateRepository
-    
-    @Published private(set) var state: RateState = RateState(candidates: [])
-    @ObservedObject private var rateRepository: RateRepository
-    
-    private var cancellables: [AnyCancellable] = []
-    
-    init(dependencies: Dependencies) {
-        rateRepository = dependencies.rateRepository
-        
-        dependencies.rateRepository.$rateContract
-            .compactMap { $0?.candidates }
-            .receive(on: RunLoop.main)
-            .assign(to: \.state.candidates, on: self)
-            .store(in: &cancellables)
-        
-        objectWillChange.sink(receiveValue: {
-            
-        }).store(in: &cancellables)
-        
-        updateStore()
-    }
-    
-    func trigger(_ input: RateInput) {
-        
-    }
-    
-    func updateStore() {
-        rateRepository.updateStore(of: "KT1EDS35c3a7unangqgnijm1oSZduuWpRqHP")
-            .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
-            .store(in: &cancellables)
-    }
 }

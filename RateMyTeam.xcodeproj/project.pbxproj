@@ -20,6 +20,8 @@
 		F822CF66239501FE0059AF55 /* RateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F822CF65239501FE0059AF55 /* RateView.swift */; };
 		F822CF68239507480059AF55 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F822CF67239507470059AF55 /* AppDependency.swift */; };
 		F8426550239AAC710034BAC2 /* AnyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F842654F239AAC710034BAC2 /* AnyRepository.swift */; };
+		F8426552239AAF880034BAC2 /* RateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8426551239AAF880034BAC2 /* RateViewModel.swift */; };
+		F88C2D02239ABB81001AB6E5 /* ContractsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C2D01239ABB81001AB6E5 /* ContractsViewModel.swift */; };
 		F88C675D238ED1F300912435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C675C238ED1F300912435 /* AppDelegate.swift */; };
 		F88C675F238ED1F300912435 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C675E238ED1F300912435 /* SceneDelegate.swift */; };
 		F88C6763238ED1F700912435 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88C6762238ED1F700912435 /* Assets.xcassets */; };
@@ -58,6 +60,8 @@
 		F822CF65239501FE0059AF55 /* RateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateView.swift; sourceTree = "<group>"; };
 		F822CF67239507470059AF55 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		F842654F239AAC710034BAC2 /* AnyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyRepository.swift; sourceTree = "<group>"; };
+		F8426551239AAF880034BAC2 /* RateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateViewModel.swift; sourceTree = "<group>"; };
+		F88C2D01239ABB81001AB6E5 /* ContractsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractsViewModel.swift; sourceTree = "<group>"; };
 		F88C6759238ED1F300912435 /* RateMyTeam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateMyTeam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88C675C238ED1F300912435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F88C675E238ED1F300912435 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,7 +150,9 @@
 				F822CF67239507470059AF55 /* AppDependency.swift */,
 				F88C675E238ED1F300912435 /* SceneDelegate.swift */,
 				F819B5AA239A8BA4009CC6F9 /* ContractsView.swift */,
+				F88C2D01239ABB81001AB6E5 /* ContractsViewModel.swift */,
 				F822CF65239501FE0059AF55 /* RateView.swift */,
+				F8426551239AAF880034BAC2 /* RateViewModel.swift */,
 				F819B5AC239A93CD009CC6F9 /* AnyViewModel.swift */,
 				F842654F239AAC710034BAC2 /* AnyRepository.swift */,
 				F822CF632394FF450059AF55 /* Store.swift */,
@@ -376,8 +382,10 @@
 				F822CF66239501FE0059AF55 /* RateView.swift in Sources */,
 				F8426550239AAC710034BAC2 /* AnyRepository.swift in Sources */,
 				F819B5AD239A93CD009CC6F9 /* AnyViewModel.swift in Sources */,
+				F88C2D02239ABB81001AB6E5 /* ContractsViewModel.swift in Sources */,
 				F819B5AB239A8BA4009CC6F9 /* ContractsView.swift in Sources */,
 				F88C675F238ED1F300912435 /* SceneDelegate.swift in Sources */,
+				F8426552239AAF880034BAC2 /* RateViewModel.swift in Sources */,
 				F822CF642394FF450059AF55 /* Store.swift in Sources */,
 				21B9F021D8313F4B9F79B350 /* RateContract.swift in Sources */,
 				F822CF68239507480059AF55 /* AppDependency.swift in Sources */,

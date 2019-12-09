@@ -24,9 +24,17 @@ extension ViewModel {
     }
 }
 
+final class Seg<State>: ObservableObject {
+    @Published var mo: State?
+}
+
+//final class Segg<T>: ObservableObject {
+//    @Published var mo: T?
+//}
+
 final class AnyViewModel<State, Input>: ObservableObject {
+    // Workaround, bug in Combine
     let objectWillChange = ObservableObjectPublisher()
-//    private let wrappedObjectWillChange: () -> AnyPublisher<Void, Never>
     private var cancellables: [AnyCancellable] = []
     private let wrappedState: () -> State
     private let wrappedTrigger: (Input) -> Void

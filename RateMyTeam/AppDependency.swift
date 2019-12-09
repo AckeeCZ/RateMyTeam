@@ -14,7 +14,7 @@ let dependencies = AppDependency()
 /// Container for all app dependencies
 final class AppDependency {
     lazy var tezosClient: TezosClient = TezosClient(remoteNodeURL: URL(string: "https://rpcalpha.tzbeta.net/")!)
-    lazy var rateRepository: RateRepository = RateRepository(dependencies: self)
+    lazy var rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput> = RateRepository(dependencies: self).eraseToAnyRepository()
 }
 
 extension AppDependency: HasTezosClient { }

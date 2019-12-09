@@ -9,14 +9,20 @@
 import Foundation
 import SwiftUI
 
-//struct ContractsView: View {
-//@ObservedObject private var viewModel: RateViewModel
-//
-//    init(viewModel: ContractsViewModel) {
-//        self.viewModel = viewModel
-//    }
-//}
-//
-//class ContractsViewModel: ObservableObject {
-//    @Published var 
-//}
+enum ContractsInput {
+    
+}
+
+struct ContractsState {
+    var contracts: [RateContract]
+}
+
+struct ContractsView: View {
+    @ObservedObject private var viewModel: ContractsViewModel
+    
+    var body: some View {
+        List(viewModel.state.contracts) {
+            Text($0.id)
+        }
+    }
+}
