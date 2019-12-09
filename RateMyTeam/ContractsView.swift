@@ -14,12 +14,21 @@ struct ContractsView: View {
     
     var body: some View {
         NavigationView {
-            
-            List(viewModel.state.contracts) { contract in
-                NavigationLink(destination: RateView(viewModel: contract.viewModel)) {
-                    ContractRow(contract: contract.contract)
+            List {
+                Section(header: Text("CURRENT")) {
+                    ForEach(viewModel.state.contracts) { contract in
+                        HStack {
+                            ContractRow(contract: contract.contract).scaledToFill()
+                            NavigationLink(destination: RateView(viewModel: contract.viewModel)) {
+                                EmptyView()
+                            }
+                            Image(Asset.arrowRight.name)
+                        }
+                    }.listRowBackground(Color(Color.theme.background.color))
                 }
             }
+            .background(Color(Color.theme.background.color))
+            .listStyle(GroupedListStyle())
             .navigationBarTitle("Contracts")
         }
     }
@@ -29,7 +38,8 @@ struct ContractRow: View {
     let contract: RateContract
     
     var body: some View {
-        Text(contract.id).theme.font(.bodyLarge)
+        HStack {
+            Text(contract.id).theme.font(.bodyLarge)
+        }
     }
 }
-

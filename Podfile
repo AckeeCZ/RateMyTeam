@@ -5,4 +5,5 @@ use_frameworks!
 
 target 'RateMyTeam' do
     pod 'TezosSwift/Combine', :path => '/Users/marekfort/Development/ackee/TezosSwift'
+    pod 'SwiftGen', '~> 6.0'
 end

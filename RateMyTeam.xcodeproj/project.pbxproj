@@ -24,13 +24,15 @@
 		F88C2D02239ABB81001AB6E5 /* ContractsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C2D01239ABB81001AB6E5 /* ContractsViewModel.swift */; };
 		F88C675D238ED1F300912435 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C675C238ED1F300912435 /* AppDelegate.swift */; };
 		F88C675F238ED1F300912435 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C675E238ED1F300912435 /* SceneDelegate.swift */; };
-		F88C6763238ED1F700912435 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88C6762238ED1F700912435 /* Assets.xcassets */; };
+		F88C6763238ED1F700912435 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88C6762238ED1F700912435 /* Images.xcassets */; };
 		F88C6766238ED1F700912435 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88C6765238ED1F700912435 /* Preview Assets.xcassets */; };
 		F88C6769238ED1F700912435 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F88C6767238ED1F700912435 /* LaunchScreen.storyboard */; };
 		F88C6774238ED1F800912435 /* RateMyTeamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C6773238ED1F800912435 /* RateMyTeamTests.swift */; };
 		F88C677F238ED1F800912435 /* RateMyTeamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C677E238ED1F800912435 /* RateMyTeamUITests.swift */; };
 		F8FBD2AF239E4E65004C6ED9 /* RateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2AE239E4E65004C6ED9 /* RateRepository.swift */; };
 		F8FBD2B5239E8325004C6ED9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2B4239E8325004C6ED9 /* Theme.swift */; };
+		F8FBD2BD239E942B004C6ED9 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2BC239E942B004C6ED9 /* Assets.swift */; };
+		F8FBD2BF239E9D38004C6ED9 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2BE239E9D38004C6ED9 /* Color+Theme.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,7 +69,7 @@
 		F88C6759238ED1F300912435 /* RateMyTeam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RateMyTeam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88C675C238ED1F300912435 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F88C675E238ED1F300912435 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F88C6762238ED1F700912435 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F88C6762238ED1F700912435 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		F88C6765238ED1F700912435 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F88C6768238ED1F700912435 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F88C676A238ED1F700912435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,6 +84,8 @@
 		F8FBD2B8239E83D5004C6ED9 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
 		F8FBD2B9239E83D5004C6ED9 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		F8FBD2BA239E83D5004C6ED9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
+		F8FBD2BC239E942B004C6ED9 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
+		F8FBD2BE239E9D38004C6ED9 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +162,7 @@
 				F88C675E238ED1F300912435 /* SceneDelegate.swift */,
 				F819B5AA239A8BA4009CC6F9 /* ContractsView.swift */,
 				F8FBD2B4239E8325004C6ED9 /* Theme.swift */,
+				F8FBD2BE239E9D38004C6ED9 /* Color+Theme.swift */,
 				F88C2D01239ABB81001AB6E5 /* ContractsViewModel.swift */,
 				F822CF65239501FE0059AF55 /* RateView.swift */,
 				F8FBD2AE239E4E65004C6ED9 /* RateRepository.swift */,
@@ -165,7 +170,6 @@
 				F819B5AC239A93CD009CC6F9 /* AnyViewModel.swift */,
 				F842654F239AAC710034BAC2 /* AnyRepository.swift */,
 				F822CF632394FF450059AF55 /* Store.swift */,
-				F88C6762238ED1F700912435 /* Assets.xcassets */,
 				F88C6767238ED1F700912435 /* LaunchScreen.storyboard */,
 				F88C676A238ED1F700912435 /* Info.plist */,
 				F8FBD2B6239E83BC004C6ED9 /* Resources */,
@@ -203,6 +207,7 @@
 		F88C678C238ED25C00912435 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
+				F8FBD2BC239E942B004C6ED9 /* Assets.swift */,
 				67F8B7B87AD38F3FBC3D1074 /* RateContract.swift */,
 				652687C0143EDA923386C303 /* SharedContract.swift */,
 			);
@@ -212,6 +217,7 @@
 		F8FBD2B6239E83BC004C6ED9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				F88C6762238ED1F700912435 /* Images.xcassets */,
 				F8FBD2B7239E83C7004C6ED9 /* Fonts */,
 			);
 			path = Resources;
@@ -235,6 +241,7 @@
 			buildConfigurationList = F88C6783238ED1F800912435 /* Build configuration list for PBXNativeTarget "RateMyTeam" */;
 			buildPhases = (
 				D4622A26FF057F35D1B148AD /* [CP] Check Pods Manifest.lock */,
+				F8FBD2BB239E8ADE004C6ED9 /* Swiftgen */,
 				F88C6755238ED1F300912435 /* Sources */,
 				F88C6756238ED1F300912435 /* Frameworks */,
 				F88C6757238ED1F300912435 /* Resources */,
@@ -335,7 +342,7 @@
 			files = (
 				F88C6769238ED1F700912435 /* LaunchScreen.storyboard in Resources */,
 				F88C6766238ED1F700912435 /* Preview Assets.xcassets in Resources */,
-				F88C6763238ED1F700912435 /* Assets.xcassets in Resources */,
+				F88C6763238ED1F700912435 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -364,13 +371,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -399,6 +402,26 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		F8FBD2BB239E8ADE004C6ED9 /* Swiftgen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PROJECT_DIR}/${TARGET_NAME}/Resources/Images.xcassets",
+			);
+			name = Swiftgen;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${PROJECT_DIR}/${TARGET_NAME}/Generated/Assets.swift",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"${PODS_ROOT}/SwiftGen/bin:$PATH\"\n\nIMG_SRC_FILE=\"${SCRIPT_INPUT_FILE_0}\"\n\ntouch \"$IMG_SRC_FILE\"\n\nswiftgen xcassets -t swift4 \"$IMG_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_0}\"\necho $?\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -414,6 +437,8 @@
 				F88C2D02239ABB81001AB6E5 /* ContractsViewModel.swift in Sources */,
 				F819B5AB239A8BA4009CC6F9 /* ContractsView.swift in Sources */,
 				F88C675F238ED1F300912435 /* SceneDelegate.swift in Sources */,
+				F8FBD2BD239E942B004C6ED9 /* Assets.swift in Sources */,
+				F8FBD2BF239E9D38004C6ED9 /* Color+Theme.swift in Sources */,
 				F8426552239AAF880034BAC2 /* RateViewModel.swift in Sources */,
 				F822CF642394FF450059AF55 /* Store.swift in Sources */,
 				21B9F021D8313F4B9F79B350 /* RateContract.swift in Sources */,

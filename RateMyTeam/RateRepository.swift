@@ -33,7 +33,7 @@ final class RateRepository: Repository {
         tezosClient = dependencies.tezosClient
         
         // TODO: Should be saved in UserDefaults
-        let initialAddresses: [String] = ["KT1G9m32rZzU4B9WM8kKoTTDy8LU7HXt2qeW"]
+        let initialAddresses: [String] = ["KT1G9m32rZzU4B9WM8kKoTTDy8LU7HXt2qeW", "KT1PzWM1NkejHMaPMrGFLM5BPTEtbCZegGp5"]
         initialAddresses.forEach {
             updateStore(of: $0)
         }
