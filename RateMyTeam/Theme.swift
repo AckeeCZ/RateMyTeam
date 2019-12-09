@@ -61,19 +61,30 @@ private let fonts: [URL] = {
 }()
 
 extension Theme {
-    typealias FontProperties = (name: String, size: CGFloat)
+    struct FontProperties {
+        let name: String
+        let size: CGFloat
+        let opacity: CGFloat
+    }
     
     enum Font {
-        case regular(CGFloat)
+        case regular(size: CGFloat, opacity: CGFloat)
+        case bold(size: CGFloat, opacity: CGFloat)
         case bodyLarge
+        case sectionTitle
     }
     
     fileprivate static func font(_ font: Font) -> FontProperties {
+        _ = fonts
         switch font {
-        case let .regular(size):
-            return (name: "Roboto-Regular", size: size)
+        case let .regular(size: size, opacity: opacity):
+            return FontProperties(name: "Roboto-Regular", size: size, opacity: opacity)
+        case let .bold(size: size, opacity: opacity):
+            return FontProperties(name: "Roboto-Bold", size: size, opacity: opacity)
         case .bodyLarge:
-            return Theme.font(.regular(16))
+            return Theme.font(.bold(size: 14, opacity: 1.0))
+        case .sectionTitle:
+            return Theme.font(.bold(size: 10, opacity: 0.4))
         }
     }
 }

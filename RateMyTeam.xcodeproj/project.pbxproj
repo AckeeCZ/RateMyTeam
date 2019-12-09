@@ -79,6 +79,9 @@
 		F88C6780238ED1F800912435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8FBD2AE239E4E65004C6ED9 /* RateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateRepository.swift; sourceTree = "<group>"; };
 		F8FBD2B4239E8325004C6ED9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		F8FBD2B8239E83D5004C6ED9 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
+		F8FBD2B9239E83D5004C6ED9 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
+		F8FBD2BA239E83D5004C6ED9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,6 +168,7 @@
 				F88C6762238ED1F700912435 /* Assets.xcassets */,
 				F88C6767238ED1F700912435 /* LaunchScreen.storyboard */,
 				F88C676A238ED1F700912435 /* Info.plist */,
+				F8FBD2B6239E83BC004C6ED9 /* Resources */,
 				F88C6764238ED1F700912435 /* Preview Content */,
 			);
 			path = RateMyTeam;
@@ -203,6 +207,24 @@
 				652687C0143EDA923386C303 /* SharedContract.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		F8FBD2B6239E83BC004C6ED9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F8FBD2B7239E83C7004C6ED9 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F8FBD2B7239E83C7004C6ED9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F8FBD2B8239E83D5004C6ED9 /* Roboto-Bold.ttf */,
+				F8FBD2B9239E83D5004C6ED9 /* Roboto-Medium.ttf */,
+				F8FBD2BA239E83D5004C6ED9 /* Roboto-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
