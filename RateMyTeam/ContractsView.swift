@@ -29,6 +29,7 @@ struct ContractRow: View {
     let contract: RateContract
     
     var body: some View {
-        Text(contract.id)
+        Text(contract.id).theme.font(.bodyLarge)
     }
 }
+
