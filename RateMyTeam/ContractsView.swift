@@ -18,7 +18,7 @@ struct ContractsState {
 }
 
 struct ContractsView: View {
-    @ObservedObject private var viewModel: ContractsViewModel
+    @ObservedObject var viewModel: AnyViewModel<ContractsState, ContractsInput>
     
     var body: some View {
         List(viewModel.state.contracts) {

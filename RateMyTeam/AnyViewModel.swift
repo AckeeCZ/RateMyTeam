@@ -24,14 +24,6 @@ extension ViewModel {
     }
 }
 
-final class Seg<State>: ObservableObject {
-    @Published var mo: State?
-}
-
-//final class Segg<T>: ObservableObject {
-//    @Published var mo: T?
-//}
-
 final class AnyViewModel<State, Input>: ObservableObject {
     // Workaround, bug in Combine
     let objectWillChange = ObservableObjectPublisher()
@@ -55,9 +47,5 @@ final class AnyViewModel<State, Input>: ObservableObject {
             .eraseToAnyPublisher()
             .sink(receiveValue: { [weak self] in self?.objectWillChange.send() })
             .store(in: &cancellables)
-    }
-    
-    deinit {
-        
     }
 }

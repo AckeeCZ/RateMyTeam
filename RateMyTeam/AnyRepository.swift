@@ -28,22 +28,22 @@ final class AnyRepository<State, Input>: ObservableObject {
     private var cancellables: [AnyCancellable] = []
     private let wrappedTrigger: (Input) -> Void
 
-    var state: State?
+    let state: CurrentValueSubject<State, Never>
 
     func trigger(_ input: Input) {
         wrappedTrigger(input)
     }
 
     init<R: Repository>(_ repository: R) where R.State == State, R.Input == Input {
-//        self.state = repository.state
+        self.state = CurrentValueSubject(repository.state)
         self.wrappedTrigger = repository.trigger
     
-//        repository.objectWillChange
-//            .eraseToAnyPublisher()
-//            .sink(receiveValue: { [weak self] in
-//                self?.objectWillChange.send()
-//                self?.state = repository.state
-//            })
-//            .store(in: &cancellables)
+        repository.objectWillChange
+            .eraseToAnyPublisher()
+            .sink(receiveValue: { [weak self] in
+                self?.objectWillChange.send()
+                self?.state.send(repository.state)
+            })
+            .store(in: &cancellables)
     }
 }

@@ -22,8 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
         // Create the SwiftUI view that provides the window contents.
-        let viewModel = RateViewModel(dependencies: dependencies)
-        let contentView = RateView(viewModel: viewModel.eraseToAnyViewModel())
+        let viewModel = ContractsViewModel(dependencies: dependencies)
+        let contentView = ContractsView(viewModel: viewModel.eraseToAnyViewModel())
 
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {

@@ -29,6 +29,7 @@
 		F88C6769238ED1F700912435 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F88C6767238ED1F700912435 /* LaunchScreen.storyboard */; };
 		F88C6774238ED1F800912435 /* RateMyTeamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C6773238ED1F800912435 /* RateMyTeamTests.swift */; };
 		F88C677F238ED1F800912435 /* RateMyTeamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C677E238ED1F800912435 /* RateMyTeamUITests.swift */; };
+		F8FBD2AF239E4E65004C6ED9 /* RateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2AE239E4E65004C6ED9 /* RateRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		F88C677A238ED1F800912435 /* RateMyTeamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RateMyTeamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88C677E238ED1F800912435 /* RateMyTeamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateMyTeamUITests.swift; sourceTree = "<group>"; };
 		F88C6780238ED1F800912435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8FBD2AE239E4E65004C6ED9 /* RateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 				F819B5AA239A8BA4009CC6F9 /* ContractsView.swift */,
 				F88C2D01239ABB81001AB6E5 /* ContractsViewModel.swift */,
 				F822CF65239501FE0059AF55 /* RateView.swift */,
+				F8FBD2AE239E4E65004C6ED9 /* RateRepository.swift */,
 				F8426551239AAF880034BAC2 /* RateViewModel.swift */,
 				F819B5AC239A93CD009CC6F9 /* AnyViewModel.swift */,
 				F842654F239AAC710034BAC2 /* AnyRepository.swift */,
@@ -379,6 +382,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F88C675D238ED1F300912435 /* AppDelegate.swift in Sources */,
+				F8FBD2AF239E4E65004C6ED9 /* RateRepository.swift in Sources */,
 				F822CF66239501FE0059AF55 /* RateView.swift in Sources */,
 				F8426550239AAC710034BAC2 /* AnyRepository.swift in Sources */,
 				F819B5AD239A93CD009CC6F9 /* AnyViewModel.swift in Sources */,

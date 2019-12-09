@@ -20,11 +20,11 @@ final class ContractsViewModel: ViewModel {
     init(dependencies: Dependencies) {
         rateRepository = dependencies.rateRepository
         
-//        dependencies.rateRepository.$state
-//            .map(\.contracts)
-//            .receive(on: RunLoop.main)
-//            .assign(to: \.state.contracts, on: self)
-//            .store(in: &cancellables)
+        dependencies.rateRepository.state
+            .map(\.contracts)
+            .receive(on: RunLoop.main)
+            .assign(to: \.state.contracts, on: self)
+            .store(in: &cancellables)
     }
     
     func trigger(_ input: ContractsInput) {
