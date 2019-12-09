@@ -34,9 +34,28 @@ struct ContractsView: View {
             }
             .background(Color(Color.theme.background.color))
             .listStyle(GroupedListStyle())
-            .navigationBarTitle("Contracts")
+            .navigationBarTitle("Try it!", displayMode: .inline)
+            .background(NavigationConfigurator { nc in
+                nc.navigationBar.barTintColor = .blue
+                nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]
+            })
+        }
+        .navigationViewStyle(StackNavigationViewStyle())
+    }
+}
+
+struct NavigationConfigurator: UIViewControllerRepresentable {
+    var configure: (UINavigationController) -> Void = { _ in }
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<NavigationConfigurator>) -> UIViewController {
+        UIViewController()
+    }
+    func updateUIViewController(_ uiViewController: UIViewController, context: UIViewControllerRepresentableContext<NavigationConfigurator>) {
+        if let nc = uiViewController.navigationController {
+            self.configure(nc)
         }
     }
+
 }
 
 struct ContractRow: View {
