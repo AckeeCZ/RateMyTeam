@@ -19,6 +19,11 @@ final class AppDependency {
 
 extension AppDependency: HasTezosClient { }
 extension AppDependency: HasRateRepository { }
+extension AppDependency: HasRateVMFactory {
+    var rateVMFactory: RateVMFactory {
+        { RateViewModel(rateContract: $0, dependencies: self).eraseToAnyViewModel() }
+    }
+}
 
 protocol HasTezosClient {
     var tezosClient: TezosClient { get }

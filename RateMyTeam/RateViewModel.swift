@@ -18,6 +18,12 @@ struct RateState {
     let title: String
 }
 
+typealias RateVMFactory = (RateContract) -> AnyViewModel<RateState, RateInput>
+
+protocol HasRateVMFactory {
+    var rateVMFactory: RateVMFactory { get }
+}
+
 final class RateViewModel: ViewModel {
     typealias Dependencies = HasRateRepository
     

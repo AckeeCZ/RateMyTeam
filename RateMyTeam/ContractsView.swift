@@ -9,14 +9,6 @@
 import Foundation
 import SwiftUI
 
-enum ContractsInput {
-    
-}
-
-struct ContractsState {
-    var contracts: [RateContract]
-}
-
 struct ContractsView: View {
     @ObservedObject var viewModel: AnyViewModel<ContractsState, ContractsInput>
     

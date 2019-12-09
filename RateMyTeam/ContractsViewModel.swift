@@ -9,8 +9,16 @@
 import Foundation
 import Combine
 
+enum ContractsInput {
+    case rateVM(contract: RateContract)
+}
+
+struct ContractsState {
+    var contracts: [RateContract]
+}
+
 final class ContractsViewModel: ViewModel {
-    typealias Dependencies = HasRateRepository
+    typealias Dependencies = HasRateRepository & HasRateVMFactory
     
     @Published private(set) var state: ContractsState = ContractsState(contracts: [])
     private let rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput>
@@ -28,6 +36,9 @@ final class ContractsViewModel: ViewModel {
     }
     
     func trigger(_ input: ContractsInput) {
-        
+        switch input {
+        case let .rateVM(contract):
+            
+        }
     }
 }
