@@ -10,11 +10,18 @@ import Foundation
 import Combine
 
 enum ContractsInput {
-    case rateVM(contract: RateContract)
+    
 }
 
 struct ContractsState {
-    var contracts: [RateContract]
+    struct ContractData: Identifiable {
+        var id: String {
+            contract.id
+        }
+        let contract: RateContract
+        let viewModel: AnyViewModel<RateState, RateInput>
+    }
+    var contracts: [ContractData]
 }
 
 final class ContractsViewModel: ViewModel {
@@ -29,16 +36,14 @@ final class ContractsViewModel: ViewModel {
         rateRepository = dependencies.rateRepository
         
         dependencies.rateRepository.state
-            .map(\.contracts)
+            .map { $0.contracts.map { ($0, dependencies.rateVMFactory($0)) } }
+            .map { $0.map(ContractsState.ContractData.init) }
             .receive(on: RunLoop.main)
             .assign(to: \.state.contracts, on: self)
             .store(in: &cancellables)
     }
     
     func trigger(_ input: ContractsInput) {
-        switch input {
-        case let .rateVM(contract):
-            
-        }
+        
     }
 }

@@ -14,9 +14,10 @@ struct ContractsView: View {
     
     var body: some View {
         NavigationView {
+            
             List(viewModel.state.contracts) { contract in
-                NavigationLink(destination: RateView(viewModel: RateViewModel(rateContract: contract, dependencies: dependencies).eraseToAnyViewModel())) {
-                    ContractRow(contract: contract)
+                NavigationLink(destination: RateView(viewModel: contract.viewModel)) {
+                    ContractRow(contract: contract.contract)
                 }
             }
             .navigationBarTitle("Contracts")
