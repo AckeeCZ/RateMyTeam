@@ -21,8 +21,21 @@ struct ContractsView: View {
     @ObservedObject var viewModel: AnyViewModel<ContractsState, ContractsInput>
     
     var body: some View {
-        List(viewModel.state.contracts) {
-            Text($0.id)
+        NavigationView {
+            List(viewModel.state.contracts) { contract in
+                NavigationLink(destination: RateView(viewModel: RateViewModel(dependencies: dependencies).eraseToAnyViewModel())) {
+                    ContractRow(contract: contract)
+                }
+            }
+            .navigationBarTitle("Contracts")
         }
+    }
+}
+
+struct ContractRow: View {
+    let contract: RateContract
+    
+    var body: some View {
+        Text(contract.id)
     }
 }

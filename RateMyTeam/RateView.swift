@@ -26,6 +26,7 @@ struct RateView: View {
         List(viewModel.state.candidates) {
             Text($0.id)
         }
+        .navigationBarTitle(Text(verbatim: "Olla"), displayMode: .inline)
     }
 }
 

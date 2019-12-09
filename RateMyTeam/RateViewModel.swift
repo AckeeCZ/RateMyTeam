@@ -25,11 +25,7 @@ final class RateViewModel: ViewModel {
 //            .receive(on: RunLoop.main)
 //            .assign(to: \.state.candidates, on: self)
 //            .store(in: &cancellables)
-        
-        objectWillChange.sink(receiveValue: {
-            
-        }).store(in: &cancellables)
-        
+    
         updateStore()
     }
     
