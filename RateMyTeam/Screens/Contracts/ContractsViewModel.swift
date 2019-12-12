@@ -18,7 +18,7 @@ struct ContractsState {
         var id: String {
             contract.id
         }
-        let contract: RateContract
+        let contract: RateContractStorage
         let viewModel: AnyViewModel<RateState, RateInput>
     }
     var contracts: [ContractData]

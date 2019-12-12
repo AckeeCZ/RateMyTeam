@@ -19,7 +19,7 @@ enum RateRepositoryInput {
 }
 
 struct RateRepositoryState {
-    var contracts: [RateContract]
+    var contracts: [RateContractStorage]
 }
 
 final class RateRepository: Repository {
@@ -44,8 +44,8 @@ final class RateRepository: Repository {
             .statusPublisher()
             .map(\.storage)
             .map { (contract, $0.voters.map(Candidate.init)) }
-            .map(RateContract.init)
-            .map { contract -> RateContract? in return contract }
+            .map(RateContractStorage.init)
+            .map { contract -> RateContractStorage? in return contract }
             .handleEvents(receiveCompletion: { completion in
                 switch completion {
                 case let .failure(error):
@@ -62,7 +62,7 @@ final class RateRepository: Repository {
             .startAndStore(in: &cancellables)
     }
     
-    private func updateStore(with contract: RateContract) {
+    private func updateStore(with contract: RateContractStorage) {
         if let index = state.contracts.firstIndex(where: { $0.id == contract.id }) {
             state.contracts[index] = contract
         } else {

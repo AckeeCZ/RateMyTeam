@@ -18,7 +18,7 @@ struct RateState {
     let title: String
 }
 
-typealias RateVMFactory = (RateContract) -> AnyViewModel<RateState, RateInput>
+typealias RateVMFactory = (RateContractStorage) -> AnyViewModel<RateState, RateInput>
 
 protocol HasRateVMFactory {
     var rateVMFactory: RateVMFactory { get }
@@ -32,7 +32,7 @@ final class RateViewModel: ViewModel {
     
     private var cancellables: [AnyCancellable] = []
     
-    init(rateContract: RateContract, dependencies: Dependencies) {
+    init(rateContract: RateContractStorage, dependencies: Dependencies) {
         rateRepository = dependencies.rateRepository
         
         state = RateState(candidates: rateContract.candidates, title: rateContract.id)

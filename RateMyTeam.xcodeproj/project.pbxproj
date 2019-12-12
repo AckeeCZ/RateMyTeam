@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1BE4A0C365A7F7B48D081B66 /* SharedContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652687C0143EDA923386C303 /* SharedContract.swift */; };
-		21B9F021D8313F4B9F79B350 /* RateContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8B7B87AD38F3FBC3D1074 /* RateContract.swift */; };
-		4ABC765DA1DAC1E4CFD27951 /* SharedContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652687C0143EDA923386C303 /* SharedContract.swift */; };
-		5198881003B827D2FAF051A6 /* SharedContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652687C0143EDA923386C303 /* SharedContract.swift */; };
-		9AE195E94384C3EE046C5C57 /* RateContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8B7B87AD38F3FBC3D1074 /* RateContract.swift */; };
-		A9A097D54BD23C30BD760AAA /* RateContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8B7B87AD38F3FBC3D1074 /* RateContract.swift */; };
+		88219AA2D2FD1B6197054344 /* Pods_RateMyTeam_RateMyTeamUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DF4A06F5A24B63B7E0096CE /* Pods_RateMyTeam_RateMyTeamUITests.framework */; };
 		C8AAB5DB60D420204701E774 /* Pods_RateMyTeam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C61F7F9602D196B19901E7A1 /* Pods_RateMyTeam.framework */; };
+		DD3B3DADBC5B897844793E90 /* Pods_RateMyTeam_RateMyTeamTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D67F6068DBF790B363377FAD /* Pods_RateMyTeam_RateMyTeamTests.framework */; };
 		F819B5AB239A8BA4009CC6F9 /* ContractsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F819B5AA239A8BA4009CC6F9 /* ContractsView.swift */; };
 		F819B5AD239A93CD009CC6F9 /* AnyViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F819B5AC239A93CD009CC6F9 /* AnyViewModel.swift */; };
-		F822CF642394FF450059AF55 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F822CF632394FF450059AF55 /* Store.swift */; };
 		F822CF66239501FE0059AF55 /* RateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F822CF65239501FE0059AF55 /* RateView.swift */; };
 		F822CF68239507480059AF55 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F822CF67239507470059AF55 /* AppDependency.swift */; };
+		F82EBEAA23A23475000636CA /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EBEA923A23475000636CA /* NavigationConfigurator.swift */; };
+		F82EBEAC23A2348E000636CA /* ContractsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EBEAB23A2348E000636CA /* ContractsRow.swift */; };
+		F82EBEB523A23C6C000636CA /* RateContractStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EBEB423A23C6C000636CA /* RateContractStorage.swift */; };
+		F82EBEB823A23C8A000636CA /* Publisher+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EBEB723A23C8A000636CA /* Publisher+Extra.swift */; };
+		F82EBEBA23A23CBC000636CA /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EBEB923A23CBC000636CA /* Candidate.swift */; };
+		F82EBEBC23A23D29000636CA /* RateContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67F8B7B87AD38F3FBC3D1074 /* RateContract.swift */; };
+		F82EBEBD23A23D29000636CA /* SharedContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652687C0143EDA923386C303 /* SharedContract.swift */; };
 		F8426550239AAC710034BAC2 /* AnyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F842654F239AAC710034BAC2 /* AnyRepository.swift */; };
 		F8426552239AAF880034BAC2 /* RateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8426551239AAF880034BAC2 /* RateViewModel.swift */; };
 		F88C2D02239ABB81001AB6E5 /* ContractsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C2D01239ABB81001AB6E5 /* ContractsViewModel.swift */; };
@@ -54,15 +56,25 @@
 
 /* Begin PBXFileReference section */
 		3C0A1D9DF5CA9FA0431C9558 /* Pods-RateMyTeam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateMyTeam.release.xcconfig"; path = "Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam.release.xcconfig"; sourceTree = "<group>"; };
+		49558A883518E976E44F6ED9 /* Pods-RateMyTeam-RateMyTeamUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateMyTeam-RateMyTeamUITests.debug.xcconfig"; path = "Target Support Files/Pods-RateMyTeam-RateMyTeamUITests/Pods-RateMyTeam-RateMyTeamUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		574419E5FC7C7EEDDF13720F /* Pods-RateMyTeam-RateMyTeamTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateMyTeam-RateMyTeamTests.debug.xcconfig"; path = "Target Support Files/Pods-RateMyTeam-RateMyTeamTests/Pods-RateMyTeam-RateMyTeamTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5DF4A06F5A24B63B7E0096CE /* Pods_RateMyTeam_RateMyTeamUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RateMyTeam_RateMyTeamUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		652687C0143EDA923386C303 /* SharedContract.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = SharedContract.swift; sourceTree = "<group>"; };
 		67F8B7B87AD38F3FBC3D1074 /* RateContract.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = RateContract.swift; sourceTree = "<group>"; };
+		7C4DC4969BABF6B33CE4DF9F /* Pods-RateMyTeam-RateMyTeamTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateMyTeam-RateMyTeamTests.release.xcconfig"; path = "Target Support Files/Pods-RateMyTeam-RateMyTeamTests/Pods-RateMyTeam-RateMyTeamTests.release.xcconfig"; sourceTree = "<group>"; };
 		C61F7F9602D196B19901E7A1 /* Pods_RateMyTeam.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RateMyTeam.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D67F6068DBF790B363377FAD /* Pods_RateMyTeam_RateMyTeamTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RateMyTeam_RateMyTeamTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEA6C4618C36B625480E3416 /* Pods-RateMyTeam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateMyTeam.debug.xcconfig"; path = "Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam.debug.xcconfig"; sourceTree = "<group>"; };
+		E6B1E83013593919E49F88D1 /* Pods-RateMyTeam-RateMyTeamUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RateMyTeam-RateMyTeamUITests.release.xcconfig"; path = "Target Support Files/Pods-RateMyTeam-RateMyTeamUITests/Pods-RateMyTeam-RateMyTeamUITests.release.xcconfig"; sourceTree = "<group>"; };
 		F819B5AA239A8BA4009CC6F9 /* ContractsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractsView.swift; sourceTree = "<group>"; };
 		F819B5AC239A93CD009CC6F9 /* AnyViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyViewModel.swift; sourceTree = "<group>"; };
-		F822CF632394FF450059AF55 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		F822CF65239501FE0059AF55 /* RateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateView.swift; sourceTree = "<group>"; };
 		F822CF67239507470059AF55 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
+		F82EBEA923A23475000636CA /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
+		F82EBEAB23A2348E000636CA /* ContractsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractsRow.swift; sourceTree = "<group>"; };
+		F82EBEB423A23C6C000636CA /* RateContractStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateContractStorage.swift; sourceTree = "<group>"; };
+		F82EBEB723A23C8A000636CA /* Publisher+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extra.swift"; sourceTree = "<group>"; };
+		F82EBEB923A23CBC000636CA /* Candidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
 		F842654F239AAC710034BAC2 /* AnyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyRepository.swift; sourceTree = "<group>"; };
 		F8426551239AAF880034BAC2 /* RateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateViewModel.swift; sourceTree = "<group>"; };
 		F88C2D01239ABB81001AB6E5 /* ContractsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractsViewModel.swift; sourceTree = "<group>"; };
@@ -101,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DD3B3DADBC5B897844793E90 /* Pods_RateMyTeam_RateMyTeamTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				88219AA2D2FD1B6197054344 /* Pods_RateMyTeam_RateMyTeamUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +133,10 @@
 			children = (
 				DEA6C4618C36B625480E3416 /* Pods-RateMyTeam.debug.xcconfig */,
 				3C0A1D9DF5CA9FA0431C9558 /* Pods-RateMyTeam.release.xcconfig */,
+				574419E5FC7C7EEDDF13720F /* Pods-RateMyTeam-RateMyTeamTests.debug.xcconfig */,
+				7C4DC4969BABF6B33CE4DF9F /* Pods-RateMyTeam-RateMyTeamTests.release.xcconfig */,
+				49558A883518E976E44F6ED9 /* Pods-RateMyTeam-RateMyTeamUITests.debug.xcconfig */,
+				E6B1E83013593919E49F88D1 /* Pods-RateMyTeam-RateMyTeamUITests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -127,8 +145,81 @@
 			isa = PBXGroup;
 			children = (
 				C61F7F9602D196B19901E7A1 /* Pods_RateMyTeam.framework */,
+				D67F6068DBF790B363377FAD /* Pods_RateMyTeam_RateMyTeamTests.framework */,
+				5DF4A06F5A24B63B7E0096CE /* Pods_RateMyTeam_RateMyTeamUITests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F82EBEAD23A23B55000636CA /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				F82EBEB123A23BD1000636CA /* Rate */,
+				F82EBEAE23A23B5D000636CA /* Contracts */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		F82EBEAE23A23B5D000636CA /* Contracts */ = {
+			isa = PBXGroup;
+			children = (
+				F819B5AA239A8BA4009CC6F9 /* ContractsView.swift */,
+				F88C2D01239ABB81001AB6E5 /* ContractsViewModel.swift */,
+				F82EBEAB23A2348E000636CA /* ContractsRow.swift */,
+			);
+			path = Contracts;
+			sourceTree = "<group>";
+		};
+		F82EBEAF23A23BBA000636CA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				F819B5AC239A93CD009CC6F9 /* AnyViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		F82EBEB023A23BC2000636CA /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				F8FBD2AE239E4E65004C6ED9 /* RateRepository.swift */,
+				F842654F239AAC710034BAC2 /* AnyRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		F82EBEB123A23BD1000636CA /* Rate */ = {
+			isa = PBXGroup;
+			children = (
+				F822CF65239501FE0059AF55 /* RateView.swift */,
+				F8426551239AAF880034BAC2 /* RateViewModel.swift */,
+			);
+			path = Rate;
+			sourceTree = "<group>";
+		};
+		F82EBEB223A23BED000636CA /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				F8FBD2B4239E8325004C6ED9 /* Theme.swift */,
+				F8FBD2BE239E9D38004C6ED9 /* Color+Theme.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		F82EBEB323A23C64000636CA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F82EBEB423A23C6C000636CA /* RateContractStorage.swift */,
+				F82EBEB923A23CBC000636CA /* Candidate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F82EBEB623A23C81000636CA /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F82EBEB723A23C8A000636CA /* Publisher+Extra.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		F88C6750238ED1F200912435 = {
@@ -160,16 +251,13 @@
 				F88C675C238ED1F300912435 /* AppDelegate.swift */,
 				F822CF67239507470059AF55 /* AppDependency.swift */,
 				F88C675E238ED1F300912435 /* SceneDelegate.swift */,
-				F819B5AA239A8BA4009CC6F9 /* ContractsView.swift */,
-				F8FBD2B4239E8325004C6ED9 /* Theme.swift */,
-				F8FBD2BE239E9D38004C6ED9 /* Color+Theme.swift */,
-				F88C2D01239ABB81001AB6E5 /* ContractsViewModel.swift */,
-				F822CF65239501FE0059AF55 /* RateView.swift */,
-				F8FBD2AE239E4E65004C6ED9 /* RateRepository.swift */,
-				F8426551239AAF880034BAC2 /* RateViewModel.swift */,
-				F819B5AC239A93CD009CC6F9 /* AnyViewModel.swift */,
-				F842654F239AAC710034BAC2 /* AnyRepository.swift */,
-				F822CF632394FF450059AF55 /* Store.swift */,
+				F82EBEA923A23475000636CA /* NavigationConfigurator.swift */,
+				F82EBEB623A23C81000636CA /* Extensions */,
+				F82EBEB323A23C64000636CA /* Model */,
+				F82EBEAD23A23B55000636CA /* Screens */,
+				F82EBEB223A23BED000636CA /* Theme */,
+				F82EBEB023A23BC2000636CA /* Repository */,
+				F82EBEAF23A23BBA000636CA /* ViewModel */,
 				F88C6767238ED1F700912435 /* LaunchScreen.storyboard */,
 				F88C676A238ED1F700912435 /* Info.plist */,
 				F8FBD2B6239E83BC004C6ED9 /* Resources */,
@@ -260,9 +348,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F88C6786238ED1F800912435 /* Build configuration list for PBXNativeTarget "RateMyTeamTests" */;
 			buildPhases = (
+				DA4F545555FD7E5336BF2C51 /* [CP] Check Pods Manifest.lock */,
 				F88C676B238ED1F800912435 /* Sources */,
 				F88C676C238ED1F800912435 /* Frameworks */,
 				F88C676D238ED1F800912435 /* Resources */,
+				A074EEB4D1107F70A4967F98 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -278,9 +368,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F88C6789238ED1F800912435 /* Build configuration list for PBXNativeTarget "RateMyTeamUITests" */;
 			buildPhases = (
+				8DDFCFBAF480539D6702F413 /* [CP] Check Pods Manifest.lock */,
 				F88C6776238ED1F800912435 /* Sources */,
 				F88C6777238ED1F800912435 /* Frameworks */,
 				F88C6778238ED1F800912435 /* Resources */,
+				FCBF0F6F574A8C8768AC2697 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -380,6 +472,45 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		8DDFCFBAF480539D6702F413 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RateMyTeam-RateMyTeamUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A074EEB4D1107F70A4967F98 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam-RateMyTeamTests/Pods-RateMyTeam-RateMyTeamTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam-RateMyTeamTests/Pods-RateMyTeam-RateMyTeamTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam-RateMyTeamTests/Pods-RateMyTeam-RateMyTeamTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		D4622A26FF057F35D1B148AD /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,9 +533,31 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F8FBD2BB239E8ADE004C6ED9 /* Swiftgen */ = {
+		DA4F545555FD7E5336BF2C51 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RateMyTeam-RateMyTeamTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F8FBD2BB239E8ADE004C6ED9 /* Swiftgen */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
 			files = (
 			);
 			inputFileListPaths = (
@@ -422,6 +575,23 @@
 			shellPath = /bin/sh;
 			shellScript = "export PATH=\"${PODS_ROOT}/SwiftGen/bin:$PATH\"\n\nIMG_SRC_FILE=\"${SCRIPT_INPUT_FILE_0}\"\n\ntouch \"$IMG_SRC_FILE\"\n\nswiftgen xcassets -t swift4 \"$IMG_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_0}\"\necho $?\n";
 		};
+		FCBF0F6F574A8C8768AC2697 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam-RateMyTeamUITests/Pods-RateMyTeam-RateMyTeamUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam-RateMyTeamUITests/Pods-RateMyTeam-RateMyTeamUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam-RateMyTeamUITests/Pods-RateMyTeam-RateMyTeamUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -429,8 +599,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F82EBEBD23A23D29000636CA /* SharedContract.swift in Sources */,
 				F88C675D238ED1F300912435 /* AppDelegate.swift in Sources */,
+				F82EBEB523A23C6C000636CA /* RateContractStorage.swift in Sources */,
 				F8FBD2AF239E4E65004C6ED9 /* RateRepository.swift in Sources */,
+				F82EBEBA23A23CBC000636CA /* Candidate.swift in Sources */,
 				F822CF66239501FE0059AF55 /* RateView.swift in Sources */,
 				F8426550239AAC710034BAC2 /* AnyRepository.swift in Sources */,
 				F819B5AD239A93CD009CC6F9 /* AnyViewModel.swift in Sources */,
@@ -439,12 +612,13 @@
 				F88C675F238ED1F300912435 /* SceneDelegate.swift in Sources */,
 				F8FBD2BD239E942B004C6ED9 /* Assets.swift in Sources */,
 				F8FBD2BF239E9D38004C6ED9 /* Color+Theme.swift in Sources */,
+				F82EBEAC23A2348E000636CA /* ContractsRow.swift in Sources */,
 				F8426552239AAF880034BAC2 /* RateViewModel.swift in Sources */,
-				F822CF642394FF450059AF55 /* Store.swift in Sources */,
-				21B9F021D8313F4B9F79B350 /* RateContract.swift in Sources */,
 				F822CF68239507480059AF55 /* AppDependency.swift in Sources */,
-				5198881003B827D2FAF051A6 /* SharedContract.swift in Sources */,
+				F82EBEAA23A23475000636CA /* NavigationConfigurator.swift in Sources */,
 				F8FBD2B5239E8325004C6ED9 /* Theme.swift in Sources */,
+				F82EBEBC23A23D29000636CA /* RateContract.swift in Sources */,
+				F82EBEB823A23C8A000636CA /* Publisher+Extra.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,8 +627,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F88C6774238ED1F800912435 /* RateMyTeamTests.swift in Sources */,
-				9AE195E94384C3EE046C5C57 /* RateContract.swift in Sources */,
-				1BE4A0C365A7F7B48D081B66 /* SharedContract.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,8 +635,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F88C677F238ED1F800912435 /* RateMyTeamUITests.swift in Sources */,
-				A9A097D54BD23C30BD760AAA /* RateContract.swift in Sources */,
-				4ABC765DA1DAC1E4CFD27951 /* SharedContract.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -618,6 +788,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"RateMyTeam/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = RateMyTeam/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -638,6 +809,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"RateMyTeam/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = RateMyTeam/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -651,6 +823,7 @@
 		};
 		F88C6787238ED1F800912435 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 574419E5FC7C7EEDDF13720F /* Pods-RateMyTeam-RateMyTeamTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -672,6 +845,7 @@
 		};
 		F88C6788238ED1F800912435 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C4DC4969BABF6B33CE4DF9F /* Pods-RateMyTeam-RateMyTeamTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -693,6 +867,7 @@
 		};
 		F88C678A238ED1F800912435 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49558A883518E976E44F6ED9 /* Pods-RateMyTeam-RateMyTeamUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -712,6 +887,7 @@
 		};
 		F88C678B238ED1F800912435 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6B1E83013593919E49F88D1 /* Pods-RateMyTeam-RateMyTeamUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

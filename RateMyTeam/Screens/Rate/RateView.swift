@@ -21,21 +21,3 @@ struct RateView: View {
         .navigationBarTitle(Text(verbatim: viewModel.state.title), displayMode: .inline)
     }
 }
-
-struct RateContract: Identifiable {
-    let id: String
-    let candidates: [Candidate]
-}
-
-extension Publisher {
-    func startAndStore(in set: inout Set<AnyCancellable>) {
-        sink(receiveCompletion: { _ in }, receiveValue: { _ in })
-        .store(in: &set)
-    }
-}
-
-struct Candidate: Identifiable {
-    /// Address
-    let id: String
-    let numberOfVotes: Int
-}
