@@ -7,13 +7,17 @@
 //
 
 import Foundation
+import TezosSwift
 
 #if DEBUG
 extension RateContractStorage {
     static func preview() -> RateContractStorage {
-        RateContractStorage(id: "KT098098dsf98908", candidates: [
-            Candidate(id: "KT9889899SSi", numberOfVotes: 2)
-        ])
+        RateContractStorage(address: "KT098098dsf98908", storage: RateContractStatusStorage(ballot: ["KT909090": Ballot(TezosPair<String, Int>(first: "Name", second: 2)!)],
+                                                                                            hasEnded: false,
+                                                                                            master: "",
+                                                                                            totalNumberOfVotes: 4,
+                                                                                            voters: ["tz098098098fsd999": 3],
+                                                                                            votesPerVoter: 10))
     }
 }
 #endif

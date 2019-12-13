@@ -20,15 +20,17 @@ struct RateView: View {
                 InfoView(info: [
                     InfoView.Info(title: "Open since", text: "21.9.2019"),
                     InfoView.Info(title: "Voted count", text: "10"),
-                    InfoView.Info(title: "Votes left", text: "162/180")
+                    InfoView.Info(title: "Votes left", text: String(viewModel.state.votesLeft) + "/" + String(viewModel.state.totalNumberOfVotes))
                 ])
+                .background(Color.clear)
                 .padding([.leading, .trailing], 15)
                 List(viewModel.state.candidates) {
                     Text($0.id)
                 }
-            }
+            }.padding(.top, 38)
             Spacer()
         }
+        .background(Color(Color.theme.background.color))
         .navigationBarTitle(Text(verbatim: viewModel.state.title), displayMode: .inline)
     }
 }

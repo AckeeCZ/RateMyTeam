@@ -23,6 +23,7 @@
 		F82EBEBD23A23D29000636CA /* SharedContract.swift in Sources */ = {isa = PBXBuildFile; fileRef = 652687C0143EDA923386C303 /* SharedContract.swift */; };
 		F82EBEC123A23E5C000636CA /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EBEC023A23E5C000636CA /* InfoView.swift */; };
 		F82EBEC523A2416B000636CA /* RateContract+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EBEC423A2416B000636CA /* RateContract+Preview.swift */; };
+		F8317DB123A25561000A9CFC /* RateContract+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8317DB023A25561000A9CFC /* RateContract+Extra.swift */; };
 		F8426550239AAC710034BAC2 /* AnyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F842654F239AAC710034BAC2 /* AnyRepository.swift */; };
 		F8426552239AAF880034BAC2 /* RateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8426551239AAF880034BAC2 /* RateViewModel.swift */; };
 		F88C2D02239ABB81001AB6E5 /* ContractsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C2D01239ABB81001AB6E5 /* ContractsViewModel.swift */; };
@@ -79,6 +80,7 @@
 		F82EBEB923A23CBC000636CA /* Candidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
 		F82EBEC023A23E5C000636CA /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		F82EBEC423A2416B000636CA /* RateContract+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RateContract+Preview.swift"; sourceTree = "<group>"; };
+		F8317DB023A25561000A9CFC /* RateContract+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RateContract+Extra.swift"; sourceTree = "<group>"; };
 		F842654F239AAC710034BAC2 /* AnyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyRepository.swift; sourceTree = "<group>"; };
 		F8426551239AAF880034BAC2 /* RateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateViewModel.swift; sourceTree = "<group>"; };
 		F88C2D01239ABB81001AB6E5 /* ContractsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractsViewModel.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				F82EBEB723A23C8A000636CA /* Publisher+Extra.swift */,
+				F8317DB023A25561000A9CFC /* RateContract+Extra.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -477,9 +480,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -516,9 +523,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam-RateMyTeamTests/Pods-RateMyTeam-RateMyTeamTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam-RateMyTeamTests/Pods-RateMyTeam-RateMyTeamTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -597,9 +608,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam-RateMyTeamUITests/Pods-RateMyTeam-RateMyTeamUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam-RateMyTeamUITests/Pods-RateMyTeam-RateMyTeamUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -623,6 +638,7 @@
 				F82EBEC523A2416B000636CA /* RateContract+Preview.swift in Sources */,
 				F819B5AD239A93CD009CC6F9 /* AnyViewModel.swift in Sources */,
 				F88C2D02239ABB81001AB6E5 /* ContractsViewModel.swift in Sources */,
+				F8317DB123A25561000A9CFC /* RateContract+Extra.swift in Sources */,
 				F819B5AB239A8BA4009CC6F9 /* ContractsView.swift in Sources */,
 				F88C675F238ED1F300912435 /* SceneDelegate.swift in Sources */,
 				F8FBD2BD239E942B004C6ED9 /* Assets.swift in Sources */,

@@ -72,19 +72,31 @@ struct RateContractStatus: Decodable {
  Args are in the order of how they are specified in the Tezos structure tree
 */
 struct RateContractStatusStorage: Decodable {
-    let ballot: [String: UInt]
+    let ballot: [String: Ballot]
 	let hasEnded: Bool
 	let master: String
-	let totalNumberOfVotes: UInt
+	let totalNumberOfVotes: Int
 	let voters: [String: Int]
+	let votesPerVoter: Int
 
     public init(from decoder: Decoder) throws {
-        let tezosElement = try decoder.singleValueContainer().decode(TezosPair<TezosPair<TezosPair<TezosPair<TezosMap<String, UInt>, Bool>, String>, UInt>, TezosMap<String, Int>>.self)
-        self.ballot = tezosElement.first.first.first.first.pairs.reduce([:], { var mutable = $0; mutable[$1.first] = $1.second; return mutable })
-		self.hasEnded = tezosElement.first.first.first.second
-		self.master = tezosElement.first.first.second
-		self.totalNumberOfVotes = tezosElement.first.second
-		self.voters = tezosElement.second.pairs.reduce([:], { var mutable = $0; mutable[$1.first] = $1.second; return mutable })
+        let tezosElement = try decoder.singleValueContainer().decode(TezosPair<TezosPair<TezosPair<TezosPair<TezosPair<TezosMap<String, TezosPair<String, Int>>, Bool>, String>, Int>, TezosMap<String, Int>>, Int>.self)
+        self.ballot = tezosElement.first.first.first.first.first.pairs.reduce([:], { var mutable = $0; mutable[$1.first] = Ballot($1.second); return mutable })
+		self.hasEnded = tezosElement.first.first.first.first.second
+		self.master = tezosElement.first.first.first.second
+		self.totalNumberOfVotes = tezosElement.first.first.second
+		self.voters = tezosElement.first.second.pairs.reduce([:], { var mutable = $0; mutable[$1.first] = $1.second; return mutable })
+		self.votesPerVoter = tezosElement.second
+    }
+}
+
+struct Ballot {
+    let candidateName: String
+	let numberOfVotes: Int
+    
+    init(_ tezosElement: TezosPair<String, Int>) {
+        self.candidateName = tezosElement.first
+		self.numberOfVotes = tezosElement.second
     }
 }
 

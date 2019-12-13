@@ -10,6 +10,10 @@ import Foundation
 
 struct Candidate: Identifiable {
     /// Address
-    let id: String
+    let address: String
+    var id: String {
+        address
+    }
     let numberOfVotes: Int
+    let name: String
 }

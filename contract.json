@@ -4,14 +4,19 @@
     {"prim":"pair","args":[
      {"prim":"pair","args":[
       {"prim":"pair","args":[
-       {"prim":"map","args":[
-        {"prim":"address"},{"prim":"nat"}]
-       ,"annots":["%ballot"]},{"prim":"bool","annots":["%hasEnded"]}]
-      },{"prim":"address","annots":["%master"]}]
-     },{"prim":"nat","annots":["%totalNumberOfVotes"]}]
-    },
-    {"prim":"map","args":[
-     {"prim":"address"},{"prim":"int"}]
-    ,"annots":["%voters"]}]
+       {"prim":"pair","args":[
+        {"prim":"map","args":[
+         {"prim":"address"},
+         {"prim":"pair","args":[
+          {"prim":"string","annots":["%candidateName"]},{"prim":"int","annots":["%numberOfVotes"]}]
+         }]
+        ,"annots":["%ballot"]},{"prim":"bool","annots":["%hasEnded"]}]
+       },{"prim":"address","annots":["%master"]}]
+      },{"prim":"int","annots":["%totalNumberOfVotes"]}]
+     },
+     {"prim":"map","args":[
+      {"prim":"address"},{"prim":"int"}]
+     ,"annots":["%voters"]}]
+    },{"prim":"int","annots":["%votesPerVoter"]}]
    }
 }

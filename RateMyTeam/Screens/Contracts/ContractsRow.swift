@@ -38,16 +38,9 @@ struct ContractRow: View {
 struct ContractRow_Previews: PreviewProvider {
     static var previews: some View {
         ContractRow(contract:
-            ContractsState.ContractData(contract: RateContractStorage(id: "KT098098dsf98908",
-                                                                      candidates: [
-                                                                        Candidate(id: "KT9889899SSi",
-                                                                                  numberOfVotes: 2)]),
-                                        viewModel: RateViewModel(rateContract:
-                                            RateContractStorage(id: "KT098098dsf98908",
-                                                                candidates: [
-                                                                Candidate(id: "KT9889899SSi",
-                                                                          numberOfVotes: 2)]),
-                                      dependencies: dependencies).eraseToAnyViewModel()))
+            ContractsState.ContractData(contract: RateContractStorage.preview(),
+                                        viewModel: RateViewModel(rateContract: RateContractStorage.preview(),
+                                                                 dependencies: dependencies).eraseToAnyViewModel()))
     }
 }
 

@@ -10,6 +10,9 @@ import Foundation
 import Combine
 import TezosSwift
 
+// TODO: Delete
+let myAddress: String = "tz1cJde3XLCTo6zqjjo2niKvaFzXo3HYTgAD"
+
 protocol HasRateRepository {
     var rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput> { get }
 }
@@ -33,7 +36,7 @@ final class RateRepository: Repository {
         tezosClient = dependencies.tezosClient
         
         // TODO: Should be saved in UserDefaults
-        let initialAddresses: [String] = ["KT1G9m32rZzU4B9WM8kKoTTDy8LU7HXt2qeW", "KT1PzWM1NkejHMaPMrGFLM5BPTEtbCZegGp5"]
+        let initialAddresses: [String] = ["KT1KAh6YHD1BKWj9wGimJfjybBr1HjF7mbDn", "KT1VSs3YtdcRMeDiiUptrybLMt1PFRXsjmoM"]
         initialAddresses.forEach {
             updateStore(of: $0)
         }
@@ -43,7 +46,7 @@ final class RateRepository: Repository {
         tezosClient.rateContract(at: contract)
             .statusPublisher()
             .map(\.storage)
-            .map { (contract, $0.voters.map(Candidate.init)) }
+            .map { (contract, $0) }
             .map(RateContractStorage.init)
             .map { contract -> RateContractStorage? in return contract }
             .handleEvents(receiveCompletion: { completion in
@@ -70,7 +73,6 @@ final class RateRepository: Repository {
             // Append alone does not trigger `objectWillChange`
             state.contracts = state.contracts
         }
-        
     }
     
     func trigger(_ input: RateRepositoryInput) {
