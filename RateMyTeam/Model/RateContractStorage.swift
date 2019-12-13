@@ -14,6 +14,7 @@ struct RateContractStorage: Identifiable {
         self.candidates = storage.ballot.map { Candidate(address: $0.key, numberOfVotes: $0.value.numberOfVotes, name: $0.value.candidateName) }
         self.voters = storage.voters.map(Voter.init)
         self.totalNumberOfVotes = Int(storage.totalNumberOfVotes)
+        self.votesPerVoter = storage.votesPerVoter
         
     }
     var id: String {
@@ -23,6 +24,7 @@ struct RateContractStorage: Identifiable {
     let candidates: [Candidate]
     let voters: [Voter]
     let totalNumberOfVotes: Int
+    let votesPerVoter: Int
 }
 
 struct Voter: Identifiable {

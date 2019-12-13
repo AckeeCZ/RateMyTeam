@@ -24,6 +24,8 @@
 		F82EBEC123A23E5C000636CA /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EBEC023A23E5C000636CA /* InfoView.swift */; };
 		F82EBEC523A2416B000636CA /* RateContract+Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EBEC423A2416B000636CA /* RateContract+Preview.swift */; };
 		F8317DB123A25561000A9CFC /* RateContract+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8317DB023A25561000A9CFC /* RateContract+Extra.swift */; };
+		F8317DB323A38B8C000A9CFC /* RateRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8317DB223A38B8C000A9CFC /* RateRow.swift */; };
+		F8317DB523A39147000A9CFC /* Font+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8317DB423A39147000A9CFC /* Font+Theme.swift */; };
 		F8426550239AAC710034BAC2 /* AnyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F842654F239AAC710034BAC2 /* AnyRepository.swift */; };
 		F8426552239AAF880034BAC2 /* RateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8426551239AAF880034BAC2 /* RateViewModel.swift */; };
 		F88C2D02239ABB81001AB6E5 /* ContractsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C2D01239ABB81001AB6E5 /* ContractsViewModel.swift */; };
@@ -81,6 +83,8 @@
 		F82EBEC023A23E5C000636CA /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		F82EBEC423A2416B000636CA /* RateContract+Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RateContract+Preview.swift"; sourceTree = "<group>"; };
 		F8317DB023A25561000A9CFC /* RateContract+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RateContract+Extra.swift"; sourceTree = "<group>"; };
+		F8317DB223A38B8C000A9CFC /* RateRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateRow.swift; sourceTree = "<group>"; };
+		F8317DB423A39147000A9CFC /* Font+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font+Theme.swift"; sourceTree = "<group>"; };
 		F842654F239AAC710034BAC2 /* AnyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyRepository.swift; sourceTree = "<group>"; };
 		F8426551239AAF880034BAC2 /* RateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateViewModel.swift; sourceTree = "<group>"; };
 		F88C2D01239ABB81001AB6E5 /* ContractsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractsViewModel.swift; sourceTree = "<group>"; };
@@ -197,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				F822CF65239501FE0059AF55 /* RateView.swift */,
+				F8317DB223A38B8C000A9CFC /* RateRow.swift */,
 				F82EBEC023A23E5C000636CA /* InfoView.swift */,
 				F8426551239AAF880034BAC2 /* RateViewModel.swift */,
 			);
@@ -207,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				F8FBD2B4239E8325004C6ED9 /* Theme.swift */,
+				F8317DB423A39147000A9CFC /* Font+Theme.swift */,
 				F8FBD2BE239E9D38004C6ED9 /* Color+Theme.swift */,
 			);
 			path = Theme;
@@ -582,7 +588,7 @@
 		};
 		F8FBD2BB239E8ADE004C6ED9 /* Swiftgen */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 12;
+			buildActionMask = 8;
 			files = (
 			);
 			inputFileListPaths = (
@@ -596,7 +602,7 @@
 			outputPaths = (
 				"${PROJECT_DIR}/${TARGET_NAME}/Generated/Assets.swift",
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "export PATH=\"${PODS_ROOT}/SwiftGen/bin:$PATH\"\n\nIMG_SRC_FILE=\"${SCRIPT_INPUT_FILE_0}\"\n\ntouch \"$IMG_SRC_FILE\"\n\nswiftgen xcassets -t swift4 \"$IMG_SRC_FILE\" -o \"${SCRIPT_OUTPUT_FILE_0}\"\necho $?\n";
 		};
@@ -632,7 +638,9 @@
 				F88C675D238ED1F300912435 /* AppDelegate.swift in Sources */,
 				F82EBEB523A23C6C000636CA /* RateContractStorage.swift in Sources */,
 				F8FBD2AF239E4E65004C6ED9 /* RateRepository.swift in Sources */,
+				F8317DB323A38B8C000A9CFC /* RateRow.swift in Sources */,
 				F82EBEBA23A23CBC000636CA /* Candidate.swift in Sources */,
+				F8317DB523A39147000A9CFC /* Font+Theme.swift in Sources */,
 				F822CF66239501FE0059AF55 /* RateView.swift in Sources */,
 				F8426550239AAC710034BAC2 /* AnyRepository.swift in Sources */,
 				F82EBEC523A2416B000636CA /* RateContract+Preview.swift in Sources */,

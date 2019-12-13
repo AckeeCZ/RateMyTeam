@@ -17,6 +17,8 @@ struct RateState {
     var candidates: [Candidate]
     var totalNumberOfVotes: Int
     var votesLeft: Int
+    var votesPerVoter: Int
+    var maximumNumberOfVotes: Int
     let title: String
 }
 
@@ -40,6 +42,8 @@ final class RateViewModel: ViewModel {
         state = RateState(candidates: rateContract.candidates,
                           totalNumberOfVotes: 0,
                           votesLeft: 0,
+                          votesPerVoter: 0,
+                          maximumNumberOfVotes: 0,
                           title: rateContract.id)
         
         let contractPublisher = dependencies.rateRepository.state
@@ -61,17 +65,19 @@ final class RateViewModel: ViewModel {
             .map { $0.first(where: { $0.address == myAddress })?.numberOfVotesLeft ?? 0 }
             .assign(to: \.state.votesLeft, on: self)
             .store(in: &cancellables)
-    
-        updateStore()
+        
+        contractPublisher
+            .map(\.votesPerVoter)
+            .assign(to: \.state.votesPerVoter, on: self)
+            .store(in: &cancellables)
+        
+        contractPublisher
+            .map { $0.voters.count * $0.votesPerVoter }
+            .assign(to: \.state.maximumNumberOfVotes, on: self)
+            .store(in: &cancellables)
     }
     
     func trigger(_ input: RateInput) {
         
-    }
-    
-    func updateStore() {
-//        rateRepository.updateStore(of: "KT1EDS35c3a7unangqgnijm1oSZduuWpRqHP")
-//            .sink(receiveCompletion: { _ in }, receiveValue: { _ in })
-//            .store(in: &cancellables)
     }
 }
