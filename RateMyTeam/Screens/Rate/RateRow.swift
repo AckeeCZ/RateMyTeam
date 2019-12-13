@@ -24,9 +24,10 @@ struct CandidateRow: View {
                 VStack(alignment: .leading, spacing: 6) {
                     Text(candidate.name)
                         .theme.font(.bodyLarge)
-                        .scaledToFill()
+                        .foregroundColor(Color(Color.theme.textBlack.color))
                     Text(candidate.address)
                         .theme.font(.bodySmall)
+                        .foregroundColor(Color(Color.theme.textBlack.color))
                 }
                 .padding(.trailing, 8)
                 Spacer()
