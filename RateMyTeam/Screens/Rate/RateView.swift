@@ -11,15 +11,10 @@ import SwiftUI
 import TezosSwift
 import Combine
 
-struct VoteView: View {
-    var body: some View {
-        Text("Voting").background(Color.white)
-    }
-}
-
 struct RateView: View {
     @ObservedObject var viewModel: AnyViewModel<RateState, RateInput>
     @State var showVoteView: Bool = false
+    @State var selectedCandidate: Candidate?
     
     var body: some View {
         ZStack {
@@ -33,13 +28,14 @@ struct RateView: View {
                     .background(Color.clear)
                     .padding([.leading, .trailing], 15)
                     List {
-                        Button(action: {
-                            withAnimation(.easeInOut) {
-                                self.showVoteView.toggle()
-                            }
-                        }) {
-                            ForEach(viewModel.state.candidates) {
-                                CandidateRow(candidate: $0)
+                        ForEach(viewModel.state.candidates) { candidate in
+                            Button(action: {
+                                withAnimation(.easeInOut) {
+                                    self.selectedCandidate = candidate
+                                    self.showVoteView.toggle()
+                                }
+                            }) {
+                                CandidateRow(candidate: candidate)
                             }
                         }
                         .listRowBackground(Color(Color.theme.background.color))
@@ -53,13 +49,16 @@ struct RateView: View {
                     .edgesIgnoringSafeArea([.top, .bottom])
             )
             
-            if showVoteView {
-                VoteView()
-                    .transition(.move(edge: .bottom))
-            }
+            voteView(for: selectedCandidate)
+                .transition(.move(edge: .bottom))
         }
         .background(Color(Color.theme.background.color))
         .navigationBarTitle(Text(verbatim: viewModel.state.title), displayMode: .inline)
+    }
+    
+    private func voteView(for candidate: Candidate?) -> AnyView {
+        guard let candidate = candidate else { return AnyView(EmptyView()) }
+        return AnyView(VoteView(candidate: candidate))
     }
 }
 

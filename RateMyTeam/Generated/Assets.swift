@@ -24,6 +24,7 @@ internal enum Asset {
     internal static let textBlack = ColorAsset(name: "Colors/textBlack")
   }
   internal static let arrowRight = ImageAsset(name: "arrow_right")
+  internal static let cancel = ImageAsset(name: "cancel")
   internal static let question = ImageAsset(name: "question")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
