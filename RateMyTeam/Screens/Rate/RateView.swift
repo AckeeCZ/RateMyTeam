@@ -60,7 +60,12 @@ struct RateView: View {
     
     private func voteView(for candidate: Candidate?) -> AnyView {
         guard let candidate = candidate else { return AnyView(EmptyView()) }
-        return AnyView(VoteView(candidate: candidate, isPresented: $showVoteView))
+        return AnyView(VoteView(candidate: candidate,
+                                viewModel: viewModel.state.voteViewModel,
+                                isPresented: $showVoteView,
+                                votesCountChanged: {
+                                    self.viewModel.trigger(.votesCountChanged(candidate: candidate, count: $0))
+                                }))
     }
 }
 

@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 enum RateInput {
-    
+    case votesCountChanged(candidate: Candidate, count: Int)
 }
 
 struct RateState {
@@ -20,6 +20,7 @@ struct RateState {
     var votesPerVoter: Int
     var maximumNumberOfVotes: Int
     let title: String
+    let voteViewModel: AnyViewModel<VoteState, VoteInput>
 }
 
 typealias RateVMFactory = (RateContractStorage) -> AnyViewModel<RateState, RateInput>
@@ -29,7 +30,7 @@ protocol HasRateVMFactory {
 }
 
 final class RateViewModel: ViewModel {
-    typealias Dependencies = HasRateRepository
+    typealias Dependencies = HasRateRepository & HasVoteVMFactory
     
     @Published private(set) var state: RateState
     private let rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput>
@@ -44,7 +45,8 @@ final class RateViewModel: ViewModel {
                           votesLeft: 0,
                           votesPerVoter: 0,
                           maximumNumberOfVotes: 0,
-                          title: rateContract.id)
+                          title: rateContract.id,
+                          voteViewModel: dependencies.voteVMFactory(rateContract))
         
         let contractPublisher = dependencies.rateRepository.state
             .compactMap { $0.contracts.first(where: { $0.id == rateContract.id }) }
@@ -78,6 +80,10 @@ final class RateViewModel: ViewModel {
     }
     
     func trigger(_ input: RateInput) {
-        
+        switch input {
+        case let .votesCountChanged(candidate: candidate, count: count):
+            guard let index = state.candidates.firstIndex(where: { $0.id == candidate.id }) else { return }
+            state.candidates[index].numberOfVotes = count
+        }
     }
 }

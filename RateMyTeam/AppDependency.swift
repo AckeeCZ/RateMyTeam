@@ -25,6 +25,12 @@ extension AppDependency: HasRateVMFactory {
     }
 }
 
+extension AppDependency: HasVoteVMFactory {
+    var voteVMFactory: VoteVMFactory {
+        { VoteViewModel(rateContract: $0, dependencies: self).eraseToAnyViewModel() }
+    }
+}
+
 protocol HasTezosClient {
     var tezosClient: TezosClient { get }
 }

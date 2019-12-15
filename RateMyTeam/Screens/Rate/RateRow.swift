@@ -15,12 +15,22 @@ struct CandidateRow: View {
     var body: some View {
         ZStack {
             HStack(spacing: 16) {
-                Image(Asset.question.name)
-                    .frame(width: 42, height: 42)
-                    .background(Color(Asset.Colors.background.color))
-                    .cornerRadius(21)
-                    .padding([.top, .bottom], 12)
-                    .padding(.leading, 15)
+                if candidate.numberOfVotes == 0 {
+                    Image(Asset.question.name)
+                        .frame(width: 42, height: 42)
+                        .background(Color(Asset.Colors.background.color))
+                        .cornerRadius(21)
+                        .padding([.top, .bottom], 12)
+                        .padding(.leading, 15)
+                } else {
+                    Text(String(candidate.numberOfVotes))
+                        .frame(width: 42, height: 42)
+                        .foregroundColor(Color.white)
+                        .background(Color(Color.theme.pink.color))
+                        .cornerRadius(21)
+                        .padding([.top, .bottom], 12)
+                        .padding(.leading, 15)
+                }
                 VStack(alignment: .leading, spacing: 6) {
                     Text(candidate.name)
                         .theme.font(.titleSmall)
@@ -42,7 +52,7 @@ struct CandidateRow: View {
 
 struct CandidateRow_Previews: PreviewProvider {
     static var previews: some View {
-        CandidateRow(candidate: Candidate(address: "tz9089809SDS9090S", numberOfVotes: 0, name: "Madonna"))
+        CandidateRow(candidate: Candidate(address: "tz9089809SDS9090S", numberOfVotes: 1, name: "Madonna"))
     }
 }
 

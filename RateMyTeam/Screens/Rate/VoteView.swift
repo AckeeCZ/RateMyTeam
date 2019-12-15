@@ -10,8 +10,10 @@ import SwiftUI
 
 struct VoteView: View {
     let candidate: Candidate
+    @ObservedObject var viewModel: AnyViewModel<VoteState, VoteInput>
     @Binding var isPresented: Bool
     @State private var votesSelected: Int = 0
+    let votesCountChanged: (Int) -> ()
     
     var body: some View {
         VStack(spacing: 30) {
@@ -39,7 +41,7 @@ struct VoteView: View {
             .cornerRadius(6)
                         
             VStack(spacing: 12) {
-                Text(String(3))
+                Text(String(viewModel.state.votesCount))
                     .theme.font(.titleLarge)
                     .foregroundColor(Color.white)
                     .frame(width: 62, height: 62)
@@ -47,11 +49,11 @@ struct VoteView: View {
                     .cornerRadius(31)
              
                 Stepper(onIncrement: {
-                    guard self.votesSelected != 10 else { return }
-                    self.votesSelected += 1
+                    guard self.viewModel.state.votesCount < self.viewModel.state.maxNumberOfVotes else { return }
+                    self.viewModel.trigger(.incrementVote)
                 }, onDecrement: {
-                    guard self.votesSelected != 0 else { return }
-                    self.votesSelected -= 1
+                    guard self.viewModel.state.votesCount != 0 else { return }
+                    self.viewModel.trigger(.decrementVote)
                 }) {
                     EmptyView()
                 }
@@ -60,6 +62,7 @@ struct VoteView: View {
             }
             
             Button(action: {
+                self.votesCountChanged(self.viewModel.state.votesCount)
                 withAnimation(.easeInOut) {
                     self.isPresented = false
                 }
@@ -71,6 +74,7 @@ struct VoteView: View {
                     .padding([.leading, .trailing], 40)
                     .background(Color(Color.theme.blue.color))
                     .cornerRadius(24)
+                    .disabled(!viewModel.state.canSendVotes)
             }
             .padding(.bottom, 16)
         }
@@ -82,7 +86,7 @@ struct VoteView: View {
 #if DEBUG
 struct VoteView_Previews: PreviewProvider {
     static var previews: some View {
-        VoteView(candidate: Candidate.preview(), isPresented: .constant(false))
+        VoteView(candidate: Candidate.preview(), viewModel: VoteViewModel(rateContract: RateContractStorage.preview(), dependencies: dependencies).eraseToAnyViewModel(), isPresented: .constant(false), votesCountChanged: { _ in })
     }
 }
 #endif

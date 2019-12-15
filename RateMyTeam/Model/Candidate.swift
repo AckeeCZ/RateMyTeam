@@ -14,6 +14,6 @@ struct Candidate: Identifiable {
     var id: String {
         address
     }
-    let numberOfVotes: Int
+    var numberOfVotes: Int
     let name: String
 }
