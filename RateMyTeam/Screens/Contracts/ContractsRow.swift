@@ -17,7 +17,7 @@ struct ContractRow: View {
             HStack {
                 HStack {
                     Text(contract.contract.id)
-                        .theme.font(.bodyLarge)
+                        .theme.font(.titleSmall)
                         .scaledToFill()
                         .padding([.leading, .top, .bottom], 20)
                 }

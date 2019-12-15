@@ -49,8 +49,10 @@ struct RateView: View {
                     .edgesIgnoringSafeArea([.top, .bottom])
             )
             
-            voteView(for: selectedCandidate)
-                .transition(.move(edge: .bottom))
+            if showVoteView {
+                voteView(for: selectedCandidate)
+                    .transition(.move(edge: .bottom))
+            }
         }
         .background(Color(Color.theme.background.color))
         .navigationBarTitle(Text(verbatim: viewModel.state.title), displayMode: .inline)
@@ -58,7 +60,7 @@ struct RateView: View {
     
     private func voteView(for candidate: Candidate?) -> AnyView {
         guard let candidate = candidate else { return AnyView(EmptyView()) }
-        return AnyView(VoteView(candidate: candidate))
+        return AnyView(VoteView(candidate: candidate, isPresented: $showVoteView))
     }
 }
 

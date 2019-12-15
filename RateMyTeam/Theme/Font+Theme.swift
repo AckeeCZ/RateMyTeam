@@ -43,30 +43,35 @@ extension Theme {
     struct FontProperties {
         let name: String
         let size: CGFloat
-        let opacity: CGFloat
     }
     
     enum Font {
-        case regular(size: CGFloat, opacity: CGFloat)
-        case bold(size: CGFloat, opacity: CGFloat)
+        case regular(size: CGFloat)
+        case bold(size: CGFloat)
         case bodySmall
-        case bodyLarge
+        case body
+        case titleSmall
+        case titleLarge
         case sectionTitle
     }
     
     static func font(_ font: Font) -> FontProperties {
         _ = fonts
         switch font {
-        case let .regular(size: size, opacity: opacity):
-            return FontProperties(name: "Roboto-Regular", size: size, opacity: opacity)
-        case let .bold(size: size, opacity: opacity):
-            return FontProperties(name: "Roboto-Bold", size: size, opacity: opacity)
+        case let .regular(size: size):
+            return FontProperties(name: "Roboto-Regular", size: size)
+        case let .bold(size: size):
+            return FontProperties(name: "Roboto-Bold", size: size)
         case .bodySmall:
-            return Theme.font(.regular(size: 12, opacity: 0.4))
-        case .bodyLarge:
-            return Theme.font(.bold(size: 14, opacity: 1.0))
+            return Theme.font(.regular(size: 12))
+        case .body:
+            return Theme.font(.regular(size: 14))
+        case .titleSmall:
+            return Theme.font(.bold(size: 14))
+        case .titleLarge:
+            return Theme.font(.bold(size: 34))
         case .sectionTitle:
-            return Theme.font(.bold(size: 10, opacity: 0.4))
+            return Theme.font(.bold(size: 10))
         }
     }
 }
