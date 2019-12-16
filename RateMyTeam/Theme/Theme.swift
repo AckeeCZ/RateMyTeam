@@ -10,7 +10,7 @@ import Foundation
 import SwiftUI
 
 struct Theme<Base: View> {
-    private let base: Base
+    let base: Base
     
     init(_ base: Base) {
         self.base = base

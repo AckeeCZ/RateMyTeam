@@ -15,6 +15,8 @@ enum RateInput {
 
 struct RateState {
     var candidates: [Candidate]
+    var votesForCandidates: [Candidate.ID: Int]
+    var hasPlacedVotes: Bool
     var totalNumberOfVotes: Int
     var votesLeft: Int
     var votesPerVoter: Int
@@ -41,6 +43,8 @@ final class RateViewModel: ViewModel {
         rateRepository = dependencies.rateRepository
         
         state = RateState(candidates: rateContract.candidates,
+                          votesForCandidates: [:],
+                          hasPlacedVotes: false,
                           totalNumberOfVotes: 0,
                           votesLeft: 0,
                           votesPerVoter: 0,
@@ -82,8 +86,8 @@ final class RateViewModel: ViewModel {
     func trigger(_ input: RateInput) {
         switch input {
         case let .votesCountChanged(candidate: candidate, count: count):
-            guard let index = state.candidates.firstIndex(where: { $0.id == candidate.id }) else { return }
-            state.candidates[index].numberOfVotes = count
+            state.votesForCandidates[candidate.id] = count
+            state.hasPlacedVotes = state.votesForCandidates.values.firstIndex(where: { $0 != 0 }) != nil
         }
     }
 }

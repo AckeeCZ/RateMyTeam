@@ -35,7 +35,8 @@ struct RateView: View {
                                     self.showVoteView.toggle()
                                 }
                             }) {
-                                CandidateRow(candidate: candidate)
+                                CandidateRow(candidate: candidate,
+                                             numberOfVotes: self.viewModel.state.votesForCandidates[candidate.id] ?? 0)
                             }
                         }
                         .listRowBackground(Color(Color.theme.background.color))
@@ -52,6 +53,21 @@ struct RateView: View {
             if showVoteView {
                 voteView(for: selectedCandidate)
                     .transition(.move(edge: .bottom))
+            }
+            
+            VStack {
+                Spacer()
+                HStack {
+                    Button(action: {
+                        
+                    }) {
+                        Text("Vote")
+                    }
+                    .theme.buttonStyle(.default)
+                    .disabled(!viewModel.state.hasPlacedVotes)
+                    .padding(.leading, 30)
+                    Spacer()
+                }
             }
         }
         .background(Color(Color.theme.background.color))

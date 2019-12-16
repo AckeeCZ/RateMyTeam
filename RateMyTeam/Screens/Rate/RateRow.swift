@@ -11,11 +11,12 @@ import SwiftUI
 
 struct CandidateRow: View {
     let candidate: Candidate
+    let numberOfVotes: Int
     
     var body: some View {
         ZStack {
             HStack(spacing: 16) {
-                if candidate.numberOfVotes == 0 {
+                if numberOfVotes == 0 {
                     Image(Asset.question.name)
                         .frame(width: 42, height: 42)
                         .background(Color(Asset.Colors.background.color))
@@ -23,7 +24,7 @@ struct CandidateRow: View {
                         .padding([.top, .bottom], 12)
                         .padding(.leading, 15)
                 } else {
-                    Text(String(candidate.numberOfVotes))
+                    Text(String(numberOfVotes))
                         .frame(width: 42, height: 42)
                         .foregroundColor(Color.white)
                         .background(Color(Color.theme.pink.color))
@@ -52,7 +53,7 @@ struct CandidateRow: View {
 
 struct CandidateRow_Previews: PreviewProvider {
     static var previews: some View {
-        CandidateRow(candidate: Candidate(address: "tz9089809SDS9090S", numberOfVotes: 1, name: "Madonna"))
+        CandidateRow(candidate: Candidate(address: "tz9089809SDS9090S", numberOfVotes: 1, name: "Madonna"), numberOfVotes: 0)
     }
 }
 
