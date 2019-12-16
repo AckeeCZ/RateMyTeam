@@ -40,6 +40,7 @@
 		F88C6769238ED1F700912435 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F88C6767238ED1F700912435 /* LaunchScreen.storyboard */; };
 		F88C6774238ED1F800912435 /* RateMyTeamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C6773238ED1F800912435 /* RateMyTeamTests.swift */; };
 		F88C677F238ED1F800912435 /* RateMyTeamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C677E238ED1F800912435 /* RateMyTeamUITests.swift */; };
+		F8EBC5D523A7862C00C9EFB6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EBC5D423A7862C00C9EFB6 /* LoginView.swift */; };
 		F8FBD2AF239E4E65004C6ED9 /* RateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2AE239E4E65004C6ED9 /* RateRepository.swift */; };
 		F8FBD2B5239E8325004C6ED9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2B4239E8325004C6ED9 /* Theme.swift */; };
 		F8FBD2BD239E942B004C6ED9 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2BC239E942B004C6ED9 /* Assets.swift */; };
@@ -109,6 +110,7 @@
 		F88C677A238ED1F800912435 /* RateMyTeamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RateMyTeamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88C677E238ED1F800912435 /* RateMyTeamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateMyTeamUITests.swift; sourceTree = "<group>"; };
 		F88C6780238ED1F800912435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8EBC5D423A7862C00C9EFB6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F8FBD2AE239E4E65004C6ED9 /* RateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateRepository.swift; sourceTree = "<group>"; };
 		F8FBD2B4239E8325004C6ED9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F8FBD2B8239E83D5004C6ED9 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		F82EBEAD23A23B55000636CA /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F8EBC5D323A7862000C9EFB6 /* Login */,
 				F82EBEB123A23BD1000636CA /* Rate */,
 				F82EBEAE23A23B5D000636CA /* Contracts */,
 			);
@@ -335,6 +338,14 @@
 				652687C0143EDA923386C303 /* SharedContract.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		F8EBC5D323A7862000C9EFB6 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				F8EBC5D423A7862C00C9EFB6 /* LoginView.swift */,
+			);
+			path = Login;
 			sourceTree = "<group>";
 		};
 		F8FBD2B6239E83BC004C6ED9 /* Resources */ = {
@@ -664,6 +675,7 @@
 				F8317DB123A25561000A9CFC /* RateContract+Extra.swift in Sources */,
 				F819B5AB239A8BA4009CC6F9 /* ContractsView.swift in Sources */,
 				F88C675F238ED1F300912435 /* SceneDelegate.swift in Sources */,
+				F8EBC5D523A7862C00C9EFB6 /* LoginView.swift in Sources */,
 				F8FBD2BD239E942B004C6ED9 /* Assets.swift in Sources */,
 				F8FBD2BF239E9D38004C6ED9 /* Color+Theme.swift in Sources */,
 				F82EBEC123A23E5C000636CA /* InfoView.swift in Sources */,
