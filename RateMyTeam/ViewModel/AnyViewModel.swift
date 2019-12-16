@@ -46,6 +46,8 @@ final class AnyViewModel<State, Input>: ObservableObject {
         self.wrappedTrigger = viewModel.trigger
         
         stateChanges = viewModel.objectWillChange
+            // TODO: Find a different solution
+            .debounce(for: 0.1, scheduler: RunLoop.main)
             .map { _ in viewModel.state }
             .eraseToAnyPublisher()
     

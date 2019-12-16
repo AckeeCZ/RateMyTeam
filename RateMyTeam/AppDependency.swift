@@ -15,6 +15,7 @@ let dependencies = AppDependency()
 final class AppDependency {
     lazy var tezosClient: TezosClient = TezosClient(remoteNodeURL: URL(string: "https://rpczero.tzbeta.net/")!)
     lazy var rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput> = RateRepository(dependencies: self).eraseToAnyRepository()
+    lazy var userRepository: AnyRepository<UserRepositoryState, UserRepositoryInput> = UserRepository(dependencies: self).eraseToAnyRepository()
 }
 
 protocol HasNoDependency { }
@@ -22,6 +23,7 @@ protocol HasNoDependency { }
 extension AppDependency: HasNoDependency { }
 extension AppDependency: HasTezosClient { }
 extension AppDependency: HasRateRepository { }
+extension AppDependency: HasUserRepository { }
 extension AppDependency: HasRateVMFactory {
     var rateVMFactory: RateVMFactory {
         { RateViewModel(rateContract: $0, dependencies: self).eraseToAnyViewModel() }

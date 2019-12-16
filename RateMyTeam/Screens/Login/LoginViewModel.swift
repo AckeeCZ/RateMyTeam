@@ -11,6 +11,7 @@ import Combine
 
 enum LoginInput {
     case keyChanged(String)
+    case enter
 }
 
 struct LoginState {
@@ -25,21 +26,25 @@ protocol HasLoginVMFactory {
 }
 
 final class LoginViewModel: ViewModel {
-    typealias Dependencies = HasInputVMFactory
+    typealias Dependencies = HasInputVMFactory & HasUserRepository
     
     @Published var state: LoginState
     
+    private let userRepository: AnyRepository<UserRepositoryState, UserRepositoryInput>
     private var cancellables: [AnyCancellable] = []
     
     init(dependencies: Dependencies) {
-        self.state = LoginState(inputViewModel: dependencies.inputVMFactory(),
-                                key: "")
+        state = LoginState(inputViewModel: dependencies.inputVMFactory(),
+                            key: "")
+        userRepository = dependencies.userRepository
     }
     
     func trigger(_ input: LoginInput) {
         switch input {
         case let .keyChanged(key):
             state.key = key
+        case .enter:
+            userRepository.trigger(.addWallet(secretKey: state.key))
         }
     }
 }

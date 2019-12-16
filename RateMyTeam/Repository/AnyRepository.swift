@@ -39,6 +39,8 @@ final class AnyRepository<State, Input>: ObservableObject {
         self.wrappedTrigger = repository.trigger
     
         repository.objectWillChange
+            // TODO: Find a different solution
+            .debounce(for: 0.1, scheduler: RunLoop.main)
             .eraseToAnyPublisher()
             .sink(receiveValue: { [weak self] in
                 self?.objectWillChange.send()

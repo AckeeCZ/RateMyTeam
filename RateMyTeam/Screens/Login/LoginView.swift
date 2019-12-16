@@ -21,7 +21,7 @@ struct LoginView: View {
             }
             InputView(viewModel: viewModel.state.inputViewModel, delegate: self)
             Button(action: {
-                
+                self.viewModel.trigger(.enter)
             }) {
                 Text("Enter")
             }

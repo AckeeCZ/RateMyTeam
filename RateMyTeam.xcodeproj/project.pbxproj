@@ -44,6 +44,7 @@
 		F8EBC5D723A79FDC00C9EFB6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EBC5D623A79FDC00C9EFB6 /* LoginViewModel.swift */; };
 		F8EBC5DB23A7A09500C9EFB6 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EBC5DA23A7A09500C9EFB6 /* InputView.swift */; };
 		F8EBC5DD23A7A0B900C9EFB6 /* InputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EBC5DC23A7A0B900C9EFB6 /* InputViewModel.swift */; };
+		F8EBC5DF23A7C1AC00C9EFB6 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EBC5DE23A7C1AC00C9EFB6 /* UserRepository.swift */; };
 		F8FBD2AF239E4E65004C6ED9 /* RateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2AE239E4E65004C6ED9 /* RateRepository.swift */; };
 		F8FBD2B5239E8325004C6ED9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2B4239E8325004C6ED9 /* Theme.swift */; };
 		F8FBD2BD239E942B004C6ED9 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2BC239E942B004C6ED9 /* Assets.swift */; };
@@ -117,6 +118,7 @@
 		F8EBC5D623A79FDC00C9EFB6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F8EBC5DA23A7A09500C9EFB6 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
 		F8EBC5DC23A7A0B900C9EFB6 /* InputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModel.swift; sourceTree = "<group>"; };
+		F8EBC5DE23A7C1AC00C9EFB6 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
 		F8FBD2AE239E4E65004C6ED9 /* RateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateRepository.swift; sourceTree = "<group>"; };
 		F8FBD2B4239E8325004C6ED9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F8FBD2B8239E83D5004C6ED9 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				F8FBD2AE239E4E65004C6ED9 /* RateRepository.swift */,
+				F8EBC5DE23A7C1AC00C9EFB6 /* UserRepository.swift */,
 				F842654F239AAC710034BAC2 /* AnyRepository.swift */,
 			);
 			path = Repository;
@@ -688,6 +691,7 @@
 				F82EBEB523A23C6C000636CA /* RateContractStorage.swift in Sources */,
 				F8FBD2AF239E4E65004C6ED9 /* RateRepository.swift in Sources */,
 				F8317DB323A38B8C000A9CFC /* RateRow.swift in Sources */,
+				F8EBC5DF23A7C1AC00C9EFB6 /* UserRepository.swift in Sources */,
 				F82EBEBA23A23CBC000636CA /* Candidate.swift in Sources */,
 				F8317DB523A39147000A9CFC /* Font+Theme.swift in Sources */,
 				F8317DB923A3CE2A000A9CFC /* Candidate+Preview.swift in Sources */,
