@@ -27,7 +27,7 @@ protocol HasVoteVMFactory {
 }
 
 final class VoteViewModel: ViewModel {
-    typealias Dependencies = HasRateRepository
+    typealias Dependencies = HasRateRepository & HasUserRepository
     
     @Published var state: VoteState
     private let rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput>
@@ -43,7 +43,7 @@ final class VoteViewModel: ViewModel {
         
         contractPublisher
             .map(\.voters)
-            .map { $0.first(where: { $0.address == myAddress })?.numberOfVotesLeft ?? 0 }
+            .map { $0.first(where: { $0.address == dependencies.userRepository.state.value.wallet?.address })?.numberOfVotesLeft ?? 0 }
             .assign(to: \.state.maxNumberOfVotes, on: self)
             .store(in: &cancellables)
         

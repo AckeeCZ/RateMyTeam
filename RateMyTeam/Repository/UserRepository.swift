@@ -49,7 +49,6 @@ final class UserRepository: Repository {
     // MARK: - Helpers
     
     private static func findWallet() -> Wallet? {
-        return nil
         let query: [String: Any] = [kSecClass as String: kSecClassKey,
                                     kSecAttrApplicationTag as String: "tezos",
                                     kSecMatchLimit as String: kSecMatchLimitOne,

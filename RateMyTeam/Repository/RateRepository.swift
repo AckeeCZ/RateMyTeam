@@ -10,9 +10,6 @@ import Foundation
 import Combine
 import TezosSwift
 
-// TODO: Delete
-let myAddress: String = "tz1S8g2w1YCzFwueTNweWPnA852mgCeXpsEu"
-
 protocol HasRateRepository {
     var rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput> { get }
 }
