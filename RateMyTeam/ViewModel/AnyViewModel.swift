@@ -34,6 +34,8 @@ final class AnyViewModel<State, Input>: ObservableObject {
     var state: State {
         wrappedState()
     }
+    
+    let stateChanges: AnyPublisher<State, Never>
 
     func trigger(_ input: Input) {
         wrappedTrigger(input)
@@ -42,6 +44,10 @@ final class AnyViewModel<State, Input>: ObservableObject {
     init<V: ViewModel>(_ viewModel: V) where V.State == State, V.Input == Input {
         self.wrappedState = { viewModel.state }
         self.wrappedTrigger = viewModel.trigger
+        
+        stateChanges = viewModel.objectWillChange
+            .map { _ in viewModel.state }
+            .eraseToAnyPublisher()
     
         viewModel.objectWillChange
             .eraseToAnyPublisher()

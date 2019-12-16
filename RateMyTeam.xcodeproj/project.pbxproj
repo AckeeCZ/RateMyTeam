@@ -41,6 +41,9 @@
 		F88C6774238ED1F800912435 /* RateMyTeamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C6773238ED1F800912435 /* RateMyTeamTests.swift */; };
 		F88C677F238ED1F800912435 /* RateMyTeamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C677E238ED1F800912435 /* RateMyTeamUITests.swift */; };
 		F8EBC5D523A7862C00C9EFB6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EBC5D423A7862C00C9EFB6 /* LoginView.swift */; };
+		F8EBC5D723A79FDC00C9EFB6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EBC5D623A79FDC00C9EFB6 /* LoginViewModel.swift */; };
+		F8EBC5DB23A7A09500C9EFB6 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EBC5DA23A7A09500C9EFB6 /* InputView.swift */; };
+		F8EBC5DD23A7A0B900C9EFB6 /* InputViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EBC5DC23A7A0B900C9EFB6 /* InputViewModel.swift */; };
 		F8FBD2AF239E4E65004C6ED9 /* RateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2AE239E4E65004C6ED9 /* RateRepository.swift */; };
 		F8FBD2B5239E8325004C6ED9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2B4239E8325004C6ED9 /* Theme.swift */; };
 		F8FBD2BD239E942B004C6ED9 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2BC239E942B004C6ED9 /* Assets.swift */; };
@@ -111,6 +114,9 @@
 		F88C677E238ED1F800912435 /* RateMyTeamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateMyTeamUITests.swift; sourceTree = "<group>"; };
 		F88C6780238ED1F800912435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8EBC5D423A7862C00C9EFB6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		F8EBC5D623A79FDC00C9EFB6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		F8EBC5DA23A7A09500C9EFB6 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
+		F8EBC5DC23A7A0B900C9EFB6 /* InputViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputViewModel.swift; sourceTree = "<group>"; };
 		F8FBD2AE239E4E65004C6ED9 /* RateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateRepository.swift; sourceTree = "<group>"; };
 		F8FBD2B4239E8325004C6ED9 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		F8FBD2B8239E83D5004C6ED9 /* Roboto-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Bold.ttf"; sourceTree = "<group>"; };
@@ -289,6 +295,7 @@
 				F822CF67239507470059AF55 /* AppDependency.swift */,
 				F88C675E238ED1F300912435 /* SceneDelegate.swift */,
 				F82EBEA923A23475000636CA /* NavigationConfigurator.swift */,
+				F8EBC5D823A7A06D00C9EFB6 /* Views */,
 				F82EBEB623A23C81000636CA /* Extensions */,
 				F82EBEB323A23C64000636CA /* Model */,
 				F82EBEAD23A23B55000636CA /* Screens */,
@@ -344,8 +351,26 @@
 			isa = PBXGroup;
 			children = (
 				F8EBC5D423A7862C00C9EFB6 /* LoginView.swift */,
+				F8EBC5D623A79FDC00C9EFB6 /* LoginViewModel.swift */,
 			);
 			path = Login;
+			sourceTree = "<group>";
+		};
+		F8EBC5D823A7A06D00C9EFB6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F8EBC5D923A7A08900C9EFB6 /* InputView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F8EBC5D923A7A08900C9EFB6 /* InputView */ = {
+			isa = PBXGroup;
+			children = (
+				F8EBC5DA23A7A09500C9EFB6 /* InputView.swift */,
+				F8EBC5DC23A7A0B900C9EFB6 /* InputViewModel.swift */,
+			);
+			path = InputView;
 			sourceTree = "<group>";
 		};
 		F8FBD2B6239E83BC004C6ED9 /* Resources */ = {
@@ -674,9 +699,12 @@
 				F8317DB723A3CDD1000A9CFC /* VoteView.swift in Sources */,
 				F8317DB123A25561000A9CFC /* RateContract+Extra.swift in Sources */,
 				F819B5AB239A8BA4009CC6F9 /* ContractsView.swift in Sources */,
+				F8EBC5D723A79FDC00C9EFB6 /* LoginViewModel.swift in Sources */,
 				F88C675F238ED1F300912435 /* SceneDelegate.swift in Sources */,
 				F8EBC5D523A7862C00C9EFB6 /* LoginView.swift in Sources */,
 				F8FBD2BD239E942B004C6ED9 /* Assets.swift in Sources */,
+				F8EBC5DD23A7A0B900C9EFB6 /* InputViewModel.swift in Sources */,
+				F8EBC5DB23A7A09500C9EFB6 /* InputView.swift in Sources */,
 				F8FBD2BF239E9D38004C6ED9 /* Color+Theme.swift in Sources */,
 				F82EBEC123A23E5C000636CA /* InfoView.swift in Sources */,
 				F82EBEAC23A2348E000636CA /* ContractsRow.swift in Sources */,

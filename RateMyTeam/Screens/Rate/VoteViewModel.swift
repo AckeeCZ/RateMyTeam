@@ -29,7 +29,7 @@ protocol HasVoteVMFactory {
 final class VoteViewModel: ViewModel {
     typealias Dependencies = HasRateRepository
     
-    @Published private(set) var state: VoteState
+    @Published var state: VoteState
     private let rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput>
     private var cancellables: [AnyCancellable] = []
 

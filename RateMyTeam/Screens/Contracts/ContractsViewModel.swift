@@ -27,7 +27,7 @@ struct ContractsState {
 final class ContractsViewModel: ViewModel {
     typealias Dependencies = HasRateRepository & HasRateVMFactory
     
-    @Published private(set) var state: ContractsState = ContractsState(contracts: [])
+    @Published var state: ContractsState = ContractsState(contracts: [])
     private let rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput>
     
     private var cancellables: [AnyCancellable] = []

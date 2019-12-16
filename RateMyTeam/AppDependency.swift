@@ -17,6 +17,9 @@ final class AppDependency {
     lazy var rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput> = RateRepository(dependencies: self).eraseToAnyRepository()
 }
 
+protocol HasNoDependency { }
+
+extension AppDependency: HasNoDependency { }
 extension AppDependency: HasTezosClient { }
 extension AppDependency: HasRateRepository { }
 extension AppDependency: HasRateVMFactory {
@@ -28,6 +31,18 @@ extension AppDependency: HasRateVMFactory {
 extension AppDependency: HasVoteVMFactory {
     var voteVMFactory: VoteVMFactory {
         { VoteViewModel(rateContract: $0, dependencies: self).eraseToAnyViewModel() }
+    }
+}
+
+extension AppDependency: HasLoginVMFactory {
+    var loginVMFactory: LoginVMFactory {
+        { LoginViewModel(dependencies: self).eraseToAnyViewModel() }
+    }
+}
+
+extension AppDependency: HasInputVMFactory {
+    var inputVMFactory: InputVMFactory {
+        { InputViewModel(dependencies: self).eraseToAnyViewModel() }
     }
 }
 

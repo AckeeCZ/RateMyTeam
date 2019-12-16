@@ -8,36 +8,9 @@
 
 import SwiftUI
 
-struct InputView: View {
-    @Binding var text: String
-    var body: some View {
-        VStack {
-            HStack {
-                ZStack(alignment: .leading) {
-                    if text.isEmpty { Text("Enter your key").foregroundColor(.white) }
-                    TextField("", text: $text)
-                        .foregroundColor(.white)
-                }
-                
-                Button(action: {
-                    
-                }) {
-                    Text("PASTE")
-                        .theme.font(.sectionTitle)
-                        .foregroundColor(Color.white)
-                        .opacity(0.4)
-                }
-                Image(Asset.paste.name)
-            }
-            HStack {
-                Color.white.frame(height: 2)
-            }
-        }
-    }
-}
-
 struct LoginView: View {
-    @State var text: String = ""
+    @ObservedObject var viewModel: AnyViewModel<LoginState, LoginInput>
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 38) {
             Spacer()
@@ -46,7 +19,7 @@ struct LoginView: View {
                 Image(Asset.loginTitleIcon.name)
                 Spacer()
             }
-            InputView(text: $text)
+            InputView(viewModel: viewModel.state.inputViewModel, delegate: self)
             Button(action: {
                 
             }) {
@@ -64,8 +37,14 @@ struct LoginView: View {
     }
 }
 
+extension LoginView: InputFlowDelegate {
+    func textChanged(_ newText: String) {
+        viewModel.trigger(.keyChanged(newText))
+    }
+}
+
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
-        LoginView()
+        LoginView(viewModel: LoginViewModel(dependencies: dependencies).eraseToAnyViewModel())
     }
 }
