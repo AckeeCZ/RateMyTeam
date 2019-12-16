@@ -32,9 +32,9 @@ struct RateContractBox {
      **Important:**
      Params are in the order of how they are specified in the Tezos structure tree
     */
-    func vote(_ param1: String) -> ContractMethodInvocation {
+    func vote(_ param1: [String: Int]) -> ContractMethodInvocation {
         let send: (_ from: Wallet, _ amount: TezToken, _ operationFees: OperationFees?, _ completion: @escaping RPCCompletion<String>) -> Cancelable?
-        let input: String = param1
+        let input: TezosMap<String, Int> = TezosMap(pairs: param1.map { TezosPair(first: $0.0, second: $0.1) })
         send = { from, amount, operationFees, completion in
             self.tezosClient.send(amount: amount, to: self.at, from: from, input: input, operationFees: operationFees, completion: completion)
         }

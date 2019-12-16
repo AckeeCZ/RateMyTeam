@@ -11,6 +11,7 @@ import Combine
 
 enum RateInput {
     case votesCountChanged(candidate: Candidate, count: Int)
+    case vote
 }
 
 struct RateState {
@@ -88,6 +89,8 @@ final class RateViewModel: ViewModel {
         case let .votesCountChanged(candidate: candidate, count: count):
             state.votesForCandidates[candidate.id] = count
             state.hasPlacedVotes = state.votesForCandidates.values.firstIndex(where: { $0 != 0 }) != nil
+        case .vote:
+            break
         }
     }
 }

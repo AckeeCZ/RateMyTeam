@@ -1,5 +1,8 @@
 {"parameter": {"prim":"or","args":[
-    {"prim":"unit","annots":["%end"]},{"prim":"address","annots":["%vote"]}]
+    {"prim":"unit","annots":["%end"]},
+    {"prim":"map","args":[
+     {"prim":"address"},{"prim":"int"}]
+    ,"annots":["%vote"]}]
    }, "storage": {"prim":"pair","args":[
     {"prim":"pair","args":[
      {"prim":"pair","args":[
