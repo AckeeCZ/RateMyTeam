@@ -20,20 +20,35 @@ struct ContractsView: View {
     
     var body: some View {
         NavigationView {
-            List {
-                Section(header: Text("CURRENT")) {
-                    ForEach(viewModel.state.contracts) { contract in
-                        ContractRow(contract: contract)
+            ZStack {
+                List {
+                    Section(header: Text("CURRENT")) {
+                        ForEach(viewModel.state.contracts) { contract in
+                            ContractRow(contract: contract)
+                        }
+                    }
+                    Section(header: Text("PAST")) {
+                        ForEach(viewModel.state.contracts) { contract in
+                            ContractRow(contract: contract)
+                        }
                     }
                 }
-                Section(header: Text("PAST")) {
-                    ForEach(viewModel.state.contracts) { contract in
-                        ContractRow(contract: contract)
+                
+                VStack {
+                    Spacer()
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            
+                        }) {
+                            Image(Asset.plusButton.name)
+                                .padding(.trailing, 16)
+                        }
                     }
                 }
             }
-            .background(Color(Color.theme.background.color))
             .listStyle(GroupedListStyle())
+            .background(Color(Color.theme.background.color))
             .navigationBarTitle("Voting", displayMode: .inline)
             .background(NavigationConfigurator { nc in
                 nc.navigationBar.barTintColor = .blue
