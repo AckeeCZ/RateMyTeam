@@ -16,6 +16,7 @@ protocol HasRateRepository {
 
 enum RateRepositoryInput {
     case updateStore(String)
+    case vote(votes: [Candidate.ID: Int], contractAddress: String)
 }
 
 struct RateRepositoryState {
@@ -23,17 +24,20 @@ struct RateRepositoryState {
 }
 
 final class RateRepository: Repository {
-    typealias Dependencies = HasTezosClient
+    typealias Dependencies = HasTezosClient & HasUserRepository
         
     @Published var state: RateRepositoryState = RateRepositoryState(contracts: [])
+    private let userRepository: AnyRepository<UserRepositoryState, UserRepositoryInput>
     private var cancellables: Set<AnyCancellable> = []
     private let tezosClient: TezosClient
     
     init(dependencies: Dependencies) {
         tezosClient = dependencies.tezosClient
         
+        userRepository = dependencies.userRepository
+        
         // TODO: Should be saved in UserDefaults
-        let initialAddresses: [String] = ["KT19PaLf6dZ3RpfNwoTvHsnuasaBwb9ztCFT", "KT1RziSJJs4HZYd5E8YMx1EZC9FeyQkCweQD"]
+        let initialAddresses: [String] = ["KT1CXpu3S3hypnp3tubiGJLBvyCotxVpMyXE", "KT1RziSJJs4HZYd5E8YMx1EZC9FeyQkCweQD"]
         initialAddresses.forEach {
             updateStore(of: $0)
         }
@@ -76,6 +80,18 @@ final class RateRepository: Repository {
         switch input {
         case let .updateStore(address):
             updateStore(of: address)
+        case let .vote(votes: votes, contractAddress: contractAddress):
+            guard let wallet = userRepository.state.value.wallet else { return }
+            tezosClient
+                .rateContract(at: contractAddress)
+                .vote(votes)
+                .sendPublisher(from: wallet, amount: Mutez(0))
+                .handleEvents(receiveOutput: { output in
+                    
+                }, receiveCompletion: { completion in
+                    
+                })
+                .startAndStore(in: &cancellables)
         }
     }
 }

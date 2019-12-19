@@ -36,12 +36,17 @@ final class RateViewModel: ViewModel {
     typealias Dependencies = HasRateRepository & HasVoteVMFactory & HasUserRepository
     
     @Published var state: RateState
+    private let contractAddress: String
     private let rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput>
+    private let userRepository: AnyRepository<UserRepositoryState, UserRepositoryInput>
     
     private var cancellables: [AnyCancellable] = []
     
     init(rateContract: RateContractStorage, dependencies: Dependencies) {
         rateRepository = dependencies.rateRepository
+        userRepository = dependencies.userRepository
+        
+        contractAddress = rateContract.contract
         
         state = RateState(candidates: rateContract.candidates,
                           votesForCandidates: [:],
@@ -90,7 +95,8 @@ final class RateViewModel: ViewModel {
             state.votesForCandidates[candidate.id] = count
             state.hasPlacedVotes = state.votesForCandidates.values.firstIndex(where: { $0 != 0 }) != nil
         case .vote:
-            break
+            rateRepository.trigger(.vote(votes: state.votesForCandidates,
+                                         contractAddress: contractAddress))
         }
     }
 }

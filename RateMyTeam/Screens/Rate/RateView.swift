@@ -59,7 +59,7 @@ struct RateView: View {
                 Spacer()
                 HStack {
                     Button(action: {
-                        
+                        self.viewModel.trigger(.vote)
                     }) {
                         Text("Vote")
                     }
