@@ -21,9 +21,9 @@ struct RateContractStorage: Identifiable {
         contract
     }
     let contract: String
-    let candidates: [Candidate]
-    let voters: [Voter]
-    let totalNumberOfVotes: Int
+    var candidates: [Candidate]
+    var voters: [Voter]
+    var totalNumberOfVotes: Int
     let votesPerVoter: Int
 }
 
@@ -32,5 +32,5 @@ struct Voter: Identifiable {
         address
     }
     let address: String
-    let numberOfVotesLeft: Int
+    var numberOfVotesLeft: Int
 }

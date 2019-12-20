@@ -43,6 +43,28 @@ final class RateRepository: Repository {
         }
     }
     
+    func trigger(_ input: RateRepositoryInput) {
+        switch input {
+        case let .updateStore(address):
+            updateStore(of: address)
+        case let .vote(votes: votes, contractAddress: contractAddress):
+            guard let wallet = userRepository.state.value.wallet else { return }
+            tezosClient
+                .rateContract(at: contractAddress)
+                .vote(votes)
+                .sendPublisher(from: wallet, amount: Tez(1))
+                .handleEvents(receiveOutput: { [weak self] output in
+                    print(output)
+                    self?.addVotes(votes, for: contractAddress)
+                }, receiveCompletion: { completion in
+                    print(completion)
+                })
+                .startAndStore(in: &cancellables)
+        }
+    }
+    
+    // MARK: - Helpers
+    
     private func updateStore(of contract: String) {
         tezosClient.rateContract(at: contract)
             .statusPublisher()
@@ -66,6 +88,22 @@ final class RateRepository: Repository {
             .startAndStore(in: &cancellables)
     }
     
+    private func addVotes(_ votes: [Candidate.ID: Int], for contract: String) {
+        guard let index = state.contracts.firstIndex(where: { $0.id == contract }) else { return }
+        votes.forEach { id, votes in
+            guard let candidateIndex = state.contracts[index].candidates.firstIndex(where: { $0.id == id }) else { return }
+            state.contracts[index].candidates[candidateIndex].numberOfVotes += votes
+        }
+        
+        guard
+            let wallet = userRepository.state.value.wallet,
+            let voterIndex = state.contracts[index].voters.firstIndex(where: { $0.id == wallet.address })
+        else { return }
+        let totalNumberOfNewVotes = votes.reduce(0, { count, vote in count + vote.value })
+        state.contracts[index].totalNumberOfVotes += totalNumberOfNewVotes
+        state.contracts[index].voters[voterIndex].numberOfVotesLeft -= totalNumberOfNewVotes
+    }
+    
     private func updateStore(with contract: RateContractStorage) {
         if let index = state.contracts.firstIndex(where: { $0.id == contract.id }) {
             state.contracts[index] = contract
@@ -73,25 +111,6 @@ final class RateRepository: Repository {
             state.contracts.append(contract)
             // Append alone does not trigger `objectWillChange`
             state.contracts = state.contracts
-        }
-    }
-    
-    func trigger(_ input: RateRepositoryInput) {
-        switch input {
-        case let .updateStore(address):
-            updateStore(of: address)
-        case let .vote(votes: votes, contractAddress: contractAddress):
-            guard let wallet = userRepository.state.value.wallet else { return }
-            tezosClient
-                .rateContract(at: contractAddress)
-                .vote(votes)
-                .sendPublisher(from: wallet, amount: Tez(1))
-                .handleEvents(receiveOutput: { output in
-                    print(output)
-                }, receiveCompletion: { completion in
-                    print(completion)
-                })
-                .startAndStore(in: &cancellables)
         }
     }
 }
