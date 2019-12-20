@@ -9,6 +9,7 @@
 import UIKit
 import SwiftUI
 import Combine
+import TezosSwift
 
 class HostingController<ContentView: View>: UIHostingController<ContentView> {
     override var preferredStatusBarStyle: UIStatusBarStyle {

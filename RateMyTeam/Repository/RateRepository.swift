@@ -37,7 +37,7 @@ final class RateRepository: Repository {
         userRepository = dependencies.userRepository
         
         // TODO: Should be saved in UserDefaults
-        let initialAddresses: [String] = ["KT1CXpu3S3hypnp3tubiGJLBvyCotxVpMyXE", "KT1RziSJJs4HZYd5E8YMx1EZC9FeyQkCweQD"]
+        let initialAddresses: [String] = ["KT19AVzqH1NEfiU43MXCFGxwz6Ur68yjJgNd", "KT1CXpu3S3hypnp3tubiGJLBvyCotxVpMyXE", "KT1RziSJJs4HZYd5E8YMx1EZC9FeyQkCweQD"]
         initialAddresses.forEach {
             updateStore(of: $0)
         }
@@ -85,11 +85,11 @@ final class RateRepository: Repository {
             tezosClient
                 .rateContract(at: contractAddress)
                 .vote(votes)
-                .sendPublisher(from: wallet, amount: Mutez(0))
+                .sendPublisher(from: wallet, amount: Tez(1))
                 .handleEvents(receiveOutput: { output in
-                    
+                    print(output)
                 }, receiveCompletion: { completion in
-                    
+                    print(completion)
                 })
                 .startAndStore(in: &cancellables)
         }

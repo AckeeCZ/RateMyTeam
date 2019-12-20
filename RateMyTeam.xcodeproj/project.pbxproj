@@ -49,6 +49,8 @@
 		F8FBD2B5239E8325004C6ED9 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2B4239E8325004C6ED9 /* Theme.swift */; };
 		F8FBD2BD239E942B004C6ED9 /* Assets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2BC239E942B004C6ED9 /* Assets.swift */; };
 		F8FBD2BF239E9D38004C6ED9 /* Color+Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FBD2BE239E9D38004C6ED9 /* Color+Theme.swift */; };
+		F8FCF92D23AB82F40078C94E /* AddContractView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FCF92C23AB82F40078C94E /* AddContractView.swift */; };
+		F8FCF92F23AB835D0078C94E /* AddContractViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8FCF92E23AB835D0078C94E /* AddContractViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +128,8 @@
 		F8FBD2BA239E83D5004C6ED9 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		F8FBD2BC239E942B004C6ED9 /* Assets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assets.swift; sourceTree = "<group>"; };
 		F8FBD2BE239E9D38004C6ED9 /* Color+Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Theme.swift"; sourceTree = "<group>"; };
+		F8FCF92C23AB82F40078C94E /* AddContractView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContractView.swift; sourceTree = "<group>"; };
+		F8FCF92E23AB835D0078C94E /* AddContractViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddContractViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +186,7 @@
 		F82EBEAD23A23B55000636CA /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F8FCF92B23AB82BA0078C94E /* AddContract */,
 				F8EBC5D323A7862000C9EFB6 /* Login */,
 				F82EBEB123A23BD1000636CA /* Rate */,
 				F82EBEAE23A23B5D000636CA /* Contracts */,
@@ -395,6 +400,15 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		F8FCF92B23AB82BA0078C94E /* AddContract */ = {
+			isa = PBXGroup;
+			children = (
+				F8FCF92C23AB82F40078C94E /* AddContractView.swift */,
+				F8FCF92E23AB835D0078C94E /* AddContractViewModel.swift */,
+			);
+			path = AddContract;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -537,13 +551,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam/Pods-RateMyTeam-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -580,13 +590,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam-RateMyTeamTests/Pods-RateMyTeam-RateMyTeamTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam-RateMyTeamTests/Pods-RateMyTeam-RateMyTeamTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -665,13 +671,9 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam-RateMyTeamUITests/Pods-RateMyTeam-RateMyTeamUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RateMyTeam-RateMyTeamUITests/Pods-RateMyTeam-RateMyTeamUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -701,6 +703,7 @@
 				F819B5AD239A93CD009CC6F9 /* AnyViewModel.swift in Sources */,
 				F88C2D02239ABB81001AB6E5 /* ContractsViewModel.swift in Sources */,
 				F8317DB723A3CDD1000A9CFC /* VoteView.swift in Sources */,
+				F8FCF92F23AB835D0078C94E /* AddContractViewModel.swift in Sources */,
 				F8317DB123A25561000A9CFC /* RateContract+Extra.swift in Sources */,
 				F819B5AB239A8BA4009CC6F9 /* ContractsView.swift in Sources */,
 				F8EBC5D723A79FDC00C9EFB6 /* LoginViewModel.swift in Sources */,
@@ -711,6 +714,7 @@
 				F8EBC5DB23A7A09500C9EFB6 /* InputView.swift in Sources */,
 				F8FBD2BF239E9D38004C6ED9 /* Color+Theme.swift in Sources */,
 				F82EBEC123A23E5C000636CA /* InfoView.swift in Sources */,
+				F8FCF92D23AB82F40078C94E /* AddContractView.swift in Sources */,
 				F82EBEAC23A2348E000636CA /* ContractsRow.swift in Sources */,
 				F8426552239AAF880034BAC2 /* RateViewModel.swift in Sources */,
 				F83B0DB123A76B6F00AB1016 /* Button+Theme.swift in Sources */,
