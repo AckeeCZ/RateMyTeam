@@ -18,6 +18,7 @@ struct RateContractStorage: Identifiable {
     var totalNumberOfVotes: Int
     let votesPerVoter: Int
     let name: String
+    let master: String
     
     init(address: String, storage: RateContractStatusStorage) {
         self.contract = address
@@ -26,6 +27,7 @@ struct RateContractStorage: Identifiable {
         self.totalNumberOfVotes = Int(storage.totalNumberOfVotes)
         self.votesPerVoter = storage.votesPerVoter
         self.name = storage.name
+        self.master = storage.master
     }
 }
 

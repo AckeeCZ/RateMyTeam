@@ -73,6 +73,16 @@ struct RateView: View {
         }
         .background(Color(Color.theme.background.color))
         .navigationBarTitle(Text(verbatim: viewModel.state.title), displayMode: .inline)
+        .navigationBarItems(trailing:
+            Button(action: {
+            
+            }) {
+                if viewModel.state.isMaster {
+                    Text("End vote")
+                } else {
+                    EmptyView()
+                }
+            })
     }
     
     private func voteView(for candidate: Candidate?) -> AnyView {

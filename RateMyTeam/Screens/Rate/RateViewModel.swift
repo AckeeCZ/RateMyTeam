@@ -23,6 +23,7 @@ struct RateState {
     var votesLeft: Int
     var votesPerVoter: Int
     var maximumNumberOfVotes: Int
+    let isMaster: Bool
     let title: String
     let voteViewModel: AnyViewModel<VoteState, VoteInput>
 }
@@ -57,7 +58,8 @@ final class RateViewModel: ViewModel {
                           votesLeft: 0,
                           votesPerVoter: 0,
                           maximumNumberOfVotes: 0,
-                          title: rateContract.id,
+                          isMaster: rateContract.master == dependencies.userRepository.state.value.wallet?.address,
+                          title: rateContract.name,
                           voteViewModel: dependencies.voteVMFactory(rateContract))
         
         let contractPublisher = dependencies.rateRepository.state
