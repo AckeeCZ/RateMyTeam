@@ -75,15 +75,17 @@ struct RateContractStatusStorage: Decodable {
     let ballot: [String: Ballot]
 	let hasEnded: Bool
 	let master: String
+	let name: String
 	let totalNumberOfVotes: Int
 	let voters: [String: Int]
 	let votesPerVoter: Int
 
     public init(from decoder: Decoder) throws {
-        let tezosElement = try decoder.singleValueContainer().decode(TezosPair<TezosPair<TezosPair<TezosPair<TezosPair<TezosMap<String, TezosPair<String, Int>>, Bool>, String>, Int>, TezosMap<String, Int>>, Int>.self)
-        self.ballot = tezosElement.first.first.first.first.first.pairs.reduce([:], { var mutable = $0; mutable[$1.first] = Ballot($1.second); return mutable })
-		self.hasEnded = tezosElement.first.first.first.first.second
-		self.master = tezosElement.first.first.first.second
+        let tezosElement = try decoder.singleValueContainer().decode(TezosPair<TezosPair<TezosPair<TezosPair<TezosPair<TezosPair<TezosMap<String, TezosPair<String, Int>>, Bool>, String>, String>, Int>, TezosMap<String, Int>>, Int>.self)
+        self.ballot = tezosElement.first.first.first.first.first.first.pairs.reduce([:], { var mutable = $0; mutable[$1.first] = Ballot($1.second); return mutable })
+		self.hasEnded = tezosElement.first.first.first.first.first.second
+		self.master = tezosElement.first.first.first.first.second
+		self.name = tezosElement.first.first.first.second
 		self.totalNumberOfVotes = tezosElement.first.first.second
 		self.voters = tezosElement.first.second.pairs.reduce([:], { var mutable = $0; mutable[$1.first] = $1.second; return mutable })
 		self.votesPerVoter = tezosElement.second
