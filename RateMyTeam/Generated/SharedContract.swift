@@ -15,7 +15,7 @@ struct ContractMethodInvocation {
         self.send(from, amount, operationFees, completion)
     }
     
-    func sendPublisher(from: Wallet, amount: TezToken, operationFees: OperationFees? = nil) -> ContractPublisher<String> {
+    func callPublisher(from: Wallet, amount: TezToken, operationFees: OperationFees? = nil) -> ContractPublisher<String> {
         ContractPublisher(send: { self.send(from, amount, operationFees, $0) })
     }
 }

@@ -22,6 +22,7 @@ struct ContractsState {
         let viewModel: AnyViewModel<RateState, RateInput>
     }
     var contracts: [ContractData]
+    var pastContracts: [ContractData]
     let addContractViewModel: AnyViewModel<AddContractState, AddContractInput>
 }
 
@@ -36,13 +37,21 @@ final class ContractsViewModel: ViewModel {
     init(dependencies: Dependencies) {
         rateRepository = dependencies.rateRepository
         
-        state = ContractsState(contracts: [], addContractViewModel: dependencies.addContractVMFactory())
+        state = ContractsState(contracts: [], pastContracts: [], addContractViewModel: dependencies.addContractVMFactory())
         
-        dependencies.rateRepository.state
+        let allContractsPublisher = dependencies.rateRepository.state
             .map { $0.contracts.map { ($0, dependencies.rateVMFactory($0)) } }
             .map { $0.map(ContractsState.ContractData.init) }
             .receive(on: RunLoop.main)
+        
+        allContractsPublisher
+            .map { $0.filter { !$0.contract.hasEnded } }
             .assign(to: \.state.contracts, on: self)
+            .store(in: &cancellables)
+        
+        allContractsPublisher
+            .map { $0.filter { $0.contract.hasEnded } }
+            .assign(to: \.state.pastContracts, on: self)
             .store(in: &cancellables)
     }
     

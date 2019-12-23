@@ -19,6 +19,7 @@ struct RateContractStorage: Identifiable {
     let votesPerVoter: Int
     let name: String
     let master: String
+    var hasEnded: Bool
     
     init(address: String, storage: RateContractStatusStorage) {
         self.contract = address
@@ -28,6 +29,7 @@ struct RateContractStorage: Identifiable {
         self.votesPerVoter = storage.votesPerVoter
         self.name = storage.name
         self.master = storage.master
+        self.hasEnded = storage.hasEnded
     }
 }
 

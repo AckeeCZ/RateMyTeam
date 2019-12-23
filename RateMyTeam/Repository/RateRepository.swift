@@ -19,6 +19,7 @@ enum RateRepositoryInput {
     case placeVotes(candidate: Candidate.ID, numberOfVotes: Int, contractAddress: String)
     case vote(votes: [Candidate.ID: Int], contractAddress: String)
     case addContract(String)
+    case endVote(String)
 }
 
 struct RateRepositoryState {
@@ -61,7 +62,7 @@ final class RateRepository: Repository {
             tezosClient
                 .rateContract(at: contractAddress)
                 .vote(nonZeroVotes)
-                .sendPublisher(from: wallet, amount: Tez(1))
+                .callPublisher(from: wallet, amount: Tez(1))
                 .handleEvents(receiveOutput: { [weak self] output in
                     print(output)
                     self?.addVotes(votes, for: contractAddress)
@@ -72,6 +73,19 @@ final class RateRepository: Repository {
         case let .addContract(contract):
             contracts.append(contract)
             updateStore(of: contract)
+        case let .endVote(contractAddress):
+            guard let wallet = userRepository.state.value.wallet else { return }
+            tezosClient
+                .rateContract(at: contractAddress)
+                .end()
+                .callPublisher(from: wallet, amount: Tez(1))
+                .handleEvents(receiveOutput: { [weak self] output in
+                    print(output)
+                    self?.endVote(of: contractAddress)
+                }, receiveCompletion: { completion in
+                    print(completion)
+                })
+                .startAndStore(in: &cancellables)
         }
     }
     
@@ -115,6 +129,11 @@ final class RateRepository: Repository {
         let totalNumberOfNewVotes = votes.reduce(0, { count, vote in count + vote.value })
         state.contracts[index].totalNumberOfVotes += totalNumberOfNewVotes
         state.contracts[index].voters[voterIndex].numberOfVotesLeft -= totalNumberOfNewVotes
+    }
+    
+    private func endVote(of contract: String) {
+        guard let index = state.contracts.firstIndex(where: { $0.id == contract }) else { return }
+        state.contracts[index].hasEnded = true
     }
     
     private func updateStore(with contract: RateContractStorage) {

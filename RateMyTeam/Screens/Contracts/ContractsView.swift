@@ -21,17 +21,25 @@ struct ContractsView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                List {
-                    Section(header: Text("CURRENT")) {
-                        ForEach(viewModel.state.contracts) { contract in
-                            ContractRow(contract: contract)
+                VStack {
+                    List {
+                        Section(header: Text("CURRENT")) {
+                            ForEach(viewModel.state.contracts) { contract in
+                                ContractRow(contract: contract)
+                            }
+                        }
+                        Section(header: Text("PAST")) {
+                            ForEach(viewModel.state.pastContracts) { contract in
+                                ContractRow(contract: contract)
+                            }
                         }
                     }
-                    Section(header: Text("PAST")) {
-                        ForEach(viewModel.state.contracts) { contract in
-                            ContractRow(contract: contract)
-                        }
+                    Button(action: {
+                        
+                    }) {
+                        Text("Delete account")
                     }
+                    Spacer()
                 }
                 
                 VStack {
@@ -46,7 +54,9 @@ struct ContractsView: View {
                 }
             }
             .listStyle(GroupedListStyle())
+            .padding(.bottom, 40)
             .background(Color(Color.theme.background.color))
+            .edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle("Voting", displayMode: .inline)
             .background(NavigationConfigurator { nc in
                 nc.navigationBar.barTintColor = .blue

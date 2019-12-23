@@ -12,6 +12,7 @@ import Combine
 enum RateInput {
     case votesCountChanged(candidate: Candidate, count: Int)
     case vote
+    case endVote
 }
 
 struct RateState {
@@ -24,6 +25,7 @@ struct RateState {
     var votesPerVoter: Int
     var maximumNumberOfVotes: Int
     let isMaster: Bool
+    var hasEnded: Bool
     let title: String
     let voteViewModel: AnyViewModel<VoteState, VoteInput>
 }
@@ -59,12 +61,18 @@ final class RateViewModel: ViewModel {
                           votesPerVoter: 0,
                           maximumNumberOfVotes: 0,
                           isMaster: rateContract.master == dependencies.userRepository.state.value.wallet?.address,
+                          hasEnded: false,
                           title: rateContract.name,
                           voteViewModel: dependencies.voteVMFactory(rateContract))
         
         let contractPublisher = dependencies.rateRepository.state
             .compactMap { $0.contracts.first(where: { $0.id == rateContract.id }) }
             .receive(on: RunLoop.main)
+        
+        contractPublisher
+            .map(\.hasEnded)
+            .assign(to: \.state.hasEnded, on: self)
+            .store(in: &cancellables)
         
         contractPublisher
             .map(\.totalNumberOfVotes)
@@ -132,6 +140,8 @@ final class RateViewModel: ViewModel {
             })
             rateRepository.trigger(.vote(votes: currentlyPlacedVotes,
                                          contractAddress: contractAddress))
+        case .endVote:
+            rateRepository.trigger(.endVote(contractAddress))
         }
     }
 }

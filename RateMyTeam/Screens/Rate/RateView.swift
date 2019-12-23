@@ -75,9 +75,9 @@ struct RateView: View {
         .navigationBarTitle(Text(verbatim: viewModel.state.title), displayMode: .inline)
         .navigationBarItems(trailing:
             Button(action: {
-            
+                self.viewModel.trigger(.endVote)
             }) {
-                if viewModel.state.isMaster {
+                if viewModel.state.isMaster && !viewModel.state.hasEnded {
                     Text("End vote")
                 } else {
                     EmptyView()
