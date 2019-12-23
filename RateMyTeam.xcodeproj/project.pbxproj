@@ -15,7 +15,7 @@
 		F822CF66239501FE0059AF55 /* RateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F822CF65239501FE0059AF55 /* RateView.swift */; };
 		F822CF68239507480059AF55 /* AppDependency.swift in Sources */ = {isa = PBXBuildFile; fileRef = F822CF67239507470059AF55 /* AppDependency.swift */; };
 		F82EBEAA23A23475000636CA /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EBEA923A23475000636CA /* NavigationConfigurator.swift */; };
-		F82EBEAC23A2348E000636CA /* ContractsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EBEAB23A2348E000636CA /* ContractsRow.swift */; };
+		F82EBEAC23A2348E000636CA /* ContractRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EBEAB23A2348E000636CA /* ContractRow.swift */; };
 		F82EBEB523A23C6C000636CA /* RateContractStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EBEB423A23C6C000636CA /* RateContractStorage.swift */; };
 		F82EBEB823A23C8A000636CA /* Publisher+Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EBEB723A23C8A000636CA /* Publisher+Extra.swift */; };
 		F82EBEBA23A23CBC000636CA /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82EBEB923A23CBC000636CA /* Candidate.swift */; };
@@ -88,7 +88,7 @@
 		F822CF65239501FE0059AF55 /* RateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateView.swift; sourceTree = "<group>"; };
 		F822CF67239507470059AF55 /* AppDependency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDependency.swift; sourceTree = "<group>"; };
 		F82EBEA923A23475000636CA /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
-		F82EBEAB23A2348E000636CA /* ContractsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractsRow.swift; sourceTree = "<group>"; };
+		F82EBEAB23A2348E000636CA /* ContractRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContractRow.swift; sourceTree = "<group>"; };
 		F82EBEB423A23C6C000636CA /* RateContractStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateContractStorage.swift; sourceTree = "<group>"; };
 		F82EBEB723A23C8A000636CA /* Publisher+Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Publisher+Extra.swift"; sourceTree = "<group>"; };
 		F82EBEB923A23CBC000636CA /* Candidate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
@@ -201,7 +201,7 @@
 			children = (
 				F819B5AA239A8BA4009CC6F9 /* ContractsView.swift */,
 				F88C2D01239ABB81001AB6E5 /* ContractsViewModel.swift */,
-				F82EBEAB23A2348E000636CA /* ContractsRow.swift */,
+				F82EBEAB23A2348E000636CA /* ContractRow.swift */,
 			);
 			path = Contracts;
 			sourceTree = "<group>";
@@ -731,7 +731,7 @@
 				F8FBD2BF239E9D38004C6ED9 /* Color+Theme.swift in Sources */,
 				F82EBEC123A23E5C000636CA /* InfoView.swift in Sources */,
 				F8FCF92D23AB82F40078C94E /* AddContractView.swift in Sources */,
-				F82EBEAC23A2348E000636CA /* ContractsRow.swift in Sources */,
+				F82EBEAC23A2348E000636CA /* ContractRow.swift in Sources */,
 				F8426552239AAF880034BAC2 /* RateViewModel.swift in Sources */,
 				F83B0DB123A76B6F00AB1016 /* Button+Theme.swift in Sources */,
 				F822CF68239507480059AF55 /* AppDependency.swift in Sources */,

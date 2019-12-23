@@ -9,12 +9,13 @@
 import Foundation
 
 extension RateContractStatusStorage {
-    init(ballot: [String: Ballot], hasEnded: Bool, master: String, totalNumberOfVotes: Int, voters: [String: Int], votesPerVoter: Int) {
+    init(ballot: [String: Ballot], hasEnded: Bool, master: String, name: String, totalNumberOfVotes: Int, voters: [String: Int], votesPerVoter: Int) {
         self.ballot = ballot
         self.hasEnded = hasEnded
         self.master = master
         self.totalNumberOfVotes = totalNumberOfVotes
         self.voters = voters
         self.votesPerVoter = votesPerVoter
+        self.name = name
     }
 }

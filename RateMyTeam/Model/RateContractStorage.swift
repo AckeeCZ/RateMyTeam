@@ -9,14 +9,6 @@
 import Foundation
 
 struct RateContractStorage: Identifiable {
-    init(address: String, storage: RateContractStatusStorage) {
-        self.contract = address
-        self.candidates = storage.ballot.map { Candidate(address: $0.key, numberOfVotes: $0.value.numberOfVotes, currentlyPlacedVotes: 0, name: $0.value.candidateName) }
-        self.voters = storage.voters.map(Voter.init)
-        self.totalNumberOfVotes = Int(storage.totalNumberOfVotes)
-        self.votesPerVoter = storage.votesPerVoter
-        
-    }
     var id: String {
         contract
     }
@@ -25,6 +17,16 @@ struct RateContractStorage: Identifiable {
     var voters: [Voter]
     var totalNumberOfVotes: Int
     let votesPerVoter: Int
+    let name: String
+    
+    init(address: String, storage: RateContractStatusStorage) {
+        self.contract = address
+        self.candidates = storage.ballot.map { Candidate(address: $0.key, numberOfVotes: $0.value.numberOfVotes, currentlyPlacedVotes: 0, name: $0.value.candidateName) }
+        self.voters = storage.voters.map(Voter.init)
+        self.totalNumberOfVotes = Int(storage.totalNumberOfVotes)
+        self.votesPerVoter = storage.votesPerVoter
+        self.name = storage.name
+    }
 }
 
 struct Voter: Identifiable {

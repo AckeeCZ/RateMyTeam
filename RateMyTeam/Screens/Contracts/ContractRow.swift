@@ -1,5 +1,5 @@
 //
-//  ContractsRow.swift
+//  ContractRow.swift
 //  RateMyTeam
 //
 //  Created by Marek Fořt on 12/12/19.
@@ -16,11 +16,18 @@ struct ContractRow: View {
         ZStack {
             HStack {
                 HStack {
-                    Text(contract.contract.id)
-                        .theme.font(.titleSmall)
-                        .scaledToFill()
-                        .padding([.leading, .top, .bottom], 20)
+                    VStack(alignment: .leading, spacing: 6) {
+                        Text(contract.contract.name)
+                            .theme.font(.titleSmall)
+                        Text(contract.contract.id)
+                            .theme.font(.bodySmall)
+                            .foregroundColor(Color(Color.theme.textBlack.color))
+                            .opacity(0.4)
+                            .lineLimit(1)
+                    }
+                    .scaledToFill()
                 }
+                .padding([.leading, .top, .bottom], 20)
                 NavigationLink(destination: RateView(viewModel: contract.viewModel)) {
                     EmptyView()
                 }

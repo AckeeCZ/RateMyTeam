@@ -15,6 +15,7 @@ extension RateContractStorage {
         RateContractStorage(address: "KT098098dsf98908", storage: RateContractStatusStorage(ballot: ["KT909090": Ballot(TezosPair<String, Int>(first: "Name", second: 2)!)],
                                                                                             hasEnded: false,
                                                                                             master: "",
+                                                                                            name: "Design",
                                                                                             totalNumberOfVotes: 4,
                                                                                             voters: ["tz098098098fsd999": 3],
                                                                                             votesPerVoter: 10))
