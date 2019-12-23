@@ -34,13 +34,14 @@ struct ContractsView: View {
                             }
                         }
                     }
-                    Button(action: {
-                        
-                    }) {
-                        Text("Delete account")
-                    }
+                    Text("My wallet address:\n\(viewModel.state.walletAddress)")
+                        .theme.font(.bodySmall)
+                        .foregroundColor(.black)
+                        .opacity(0.4)
+                        .multilineTextAlignment(.center)
                     Spacer()
                 }
+                .padding(.bottom, 20)
                 
                 VStack {
                     Spacer()
@@ -52,9 +53,9 @@ struct ContractsView: View {
                         }
                     }
                 }
+                .padding(.bottom, 40)
             }
             .listStyle(GroupedListStyle())
-            .padding(.bottom, 40)
             .background(Color(Color.theme.background.color))
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle("Voting", displayMode: .inline)

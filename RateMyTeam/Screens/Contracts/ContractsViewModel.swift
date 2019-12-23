@@ -10,7 +10,7 @@ import Foundation
 import Combine
 
 enum ContractsInput {
-    
+    case deleteWallet
 }
 
 struct ContractsState {
@@ -23,21 +23,26 @@ struct ContractsState {
     }
     var contracts: [ContractData]
     var pastContracts: [ContractData]
+    let walletAddress: String
     let addContractViewModel: AnyViewModel<AddContractState, AddContractInput>
 }
 
 final class ContractsViewModel: ViewModel {
-    typealias Dependencies = HasRateRepository & HasRateVMFactory & HasAddContractVMFactory
+    typealias Dependencies = HasRateRepository & HasRateVMFactory & HasAddContractVMFactory & HasUserRepository
     
     @Published var state: ContractsState
     private let rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput>
-    
+    private let userRepository: AnyRepository<UserRepositoryState, UserRepositoryInput>
     private var cancellables: [AnyCancellable] = []
     
     init(dependencies: Dependencies) {
         rateRepository = dependencies.rateRepository
+        userRepository = dependencies.userRepository
         
-        state = ContractsState(contracts: [], pastContracts: [], addContractViewModel: dependencies.addContractVMFactory())
+        state = ContractsState(contracts: [],
+                               pastContracts: [],
+                               walletAddress: dependencies.userRepository.state.value.wallet?.address ?? "",
+                               addContractViewModel: dependencies.addContractVMFactory())
         
         let allContractsPublisher = dependencies.rateRepository.state
             .map { $0.contracts.map { ($0, dependencies.rateVMFactory($0)) } }
@@ -56,6 +61,9 @@ final class ContractsViewModel: ViewModel {
     }
     
     func trigger(_ input: ContractsInput) {
-        
+        switch input {
+        case .deleteWallet:
+            userRepository.trigger(.deleteWallet)
+        }
     }
 }

@@ -16,6 +16,7 @@ struct UserRepositoryState {
 
 enum UserRepositoryInput {
     case addWallet(secretKey: String)
+    case deleteWallet
 }
 
 protocol HasUserRepository {
@@ -43,6 +44,8 @@ final class UserRepository: Repository {
                                         kSecValueData as String: password]
             let status = SecItemAdd(query as CFDictionary, nil)
             guard status == errSecSuccess else { return }
+        case .deleteWallet:
+            removeWallet()
         }
     }
     
@@ -67,5 +70,14 @@ final class UserRepository: Repository {
             return nil
         }
         return Wallet(secretKey: secretKey)
+    }
+    
+    private func removeWallet() {
+        let query: [String: Any] = [kSecClass as String: kSecClassKey,
+                                    kSecAttrApplicationTag as String: "tezos",
+                                    kSecMatchLimit as String: kSecMatchLimitOne]
+        let status = SecItemDelete(query as CFDictionary)
+        guard status == errSecSuccess || status == errSecItemNotFound else { return }
+        state.wallet = nil
     }
 }
