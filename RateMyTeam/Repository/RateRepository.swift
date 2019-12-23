@@ -18,6 +18,7 @@ enum RateRepositoryInput {
     case updateStore(String)
     case placeVotes(candidate: Candidate.ID, numberOfVotes: Int, contractAddress: String)
     case vote(votes: [Candidate.ID: Int], contractAddress: String)
+    case addContract(String)
 }
 
 struct RateRepositoryState {
@@ -27,6 +28,8 @@ struct RateRepositoryState {
 final class RateRepository: Repository {
     typealias Dependencies = HasTezosClient & HasUserRepository
         
+    @Storage(key: "contracts", defaultValue: [])
+    private var contracts: [String]
     @Published var state: RateRepositoryState = RateRepositoryState(contracts: [])
     private let userRepository: AnyRepository<UserRepositoryState, UserRepositoryInput>
     private var cancellables: Set<AnyCancellable> = []
@@ -37,9 +40,7 @@ final class RateRepository: Repository {
         
         userRepository = dependencies.userRepository
         
-        // TODO: Should be saved in UserDefaults
-        let initialAddresses: [String] = ["KT1SwMaeEygYz8MuK3jjUFAUen7xRXGkxTyP", "KT1CXpu3S3hypnp3tubiGJLBvyCotxVpMyXE", "KT1RziSJJs4HZYd5E8YMx1EZC9FeyQkCweQD"]
-        initialAddresses.forEach {
+        contracts.forEach {
             updateStore(of: $0)
         }
     }
@@ -68,6 +69,9 @@ final class RateRepository: Repository {
                     print(completion)
                 })
                 .startAndStore(in: &cancellables)
+        case let .addContract(contract):
+            contracts.append(contract)
+            updateStore(of: contract)
         }
     }
     

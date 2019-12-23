@@ -22,6 +22,7 @@ struct AddContractView: View {
             Spacer()
             HStack {
                 Button(action: {
+                    self.viewModel.trigger(.addContract)
                     self.presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Add")

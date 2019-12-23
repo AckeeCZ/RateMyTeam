@@ -11,6 +11,7 @@ import Combine
 
 enum AddContractInput {
     case keyChanged(String)
+    case addContract
 }
 
 struct AddContractState {
@@ -25,21 +26,25 @@ protocol HasAddContractVMFactory {
 }
 
 final class AddContractViewModel: ViewModel {
-    typealias Dependencies = HasInputVMFactory
+    typealias Dependencies = HasInputVMFactory & HasRateRepository
     
     @Published var state: AddContractState
     
     private var cancellables: [AnyCancellable] = []
+    private let rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput>
     
     init(dependencies: Dependencies) {
         state = AddContractState(inputViewModel: dependencies.inputVMFactory(),
                                  key: "")
+        rateRepository = dependencies.rateRepository
     }
     
     func trigger(_ input: AddContractInput) {
         switch input {
         case let .keyChanged(key):
             state.key = key
+        case .addContract:
+            rateRepository.trigger(.addContract(state.key))
         }
     }
 }
