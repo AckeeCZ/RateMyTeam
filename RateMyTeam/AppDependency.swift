@@ -48,6 +48,12 @@ extension AppDependency: HasInputVMFactory {
     }
 }
 
+extension AppDependency: HasAddContractVMFactory {
+    var addContractVMFactory: AddContractVMFactory {
+        { AddContractViewModel(dependencies: self).eraseToAnyViewModel() }
+    }
+}
+
 protocol HasTezosClient {
     var tezosClient: TezosClient { get }
 }

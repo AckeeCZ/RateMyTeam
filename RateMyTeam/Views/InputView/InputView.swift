@@ -16,25 +16,40 @@ protocol InputFlowDelegate {
 struct InputView: View {
     @ObservedObject var viewModel: AnyViewModel<InputState, InputViewInput>
     
+    private let textColor: Color
+    private let themeColor: Color
+    private let pasteColor: Color
+    
     private var cancellables: Set<AnyCancellable> = []
     
-    init(viewModel: AnyViewModel<InputState, InputViewInput>, delegate: InputFlowDelegate) {
+    init(viewModel: AnyViewModel<InputState, InputViewInput>,
+         delegate: InputFlowDelegate,
+         textColor: Color,
+         themeColor: Color,
+         pasteColor: Color) {
         self.viewModel = viewModel
         // TODO: This could probably be a subscription :thinking:
         viewModel.stateChanges
             .handleEvents(receiveOutput: {
                 delegate.textChanged($0.text)
             }).startAndStore(in: &cancellables)
+        
+        self.textColor = textColor
+        self.themeColor = themeColor
+        self.pasteColor = pasteColor
     }
     
     var body: some View {
         VStack {
             HStack {
                 ZStack(alignment: .leading) {
-                    if viewModel.state.text.isEmpty { Text("Enter your key").foregroundColor(.white) }
+                    if viewModel.state.text.isEmpty {
+                        Text("Enter your key")
+                            .foregroundColor(textColor)
+                    }
                     TextField("", text: Binding(get: { self.viewModel.state.text },
                                                 set: { self.viewModel.trigger(.textChanged($0)) }))
-                        .foregroundColor(.white)
+                        .foregroundColor(textColor)
                 }
                 
                 Button(action: {
@@ -42,13 +57,14 @@ struct InputView: View {
                 }) {
                     Text("PASTE")
                         .theme.font(.sectionTitle)
-                        .foregroundColor(Color.white)
+                        .foregroundColor(pasteColor)
                         .opacity(0.4)
                 }
                 Image(Asset.paste.name)
+                    .colorMultiply(pasteColor)
             }
             HStack {
-                Color.white.frame(height: 2)
+                themeColor.frame(height: 2)
             }
         }
     }
@@ -65,7 +81,10 @@ struct InputDelegatePreview: InputFlowDelegate {
 struct InputView_Previews: PreviewProvider {
     static var previews: some View {
         InputView(viewModel: InputViewModel(dependencies: dependencies).eraseToAnyViewModel(),
-                  delegate: InputDelegatePreview())
+                  delegate: InputDelegatePreview(),
+                  textColor: .black,
+                  themeColor: Color(Color.theme.blue.color),
+                  pasteColor: Color(Color.theme.blue.color))
     }
 }
 #endif

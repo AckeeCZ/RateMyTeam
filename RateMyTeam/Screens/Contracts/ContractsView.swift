@@ -38,9 +38,7 @@ struct ContractsView: View {
                     Spacer()
                     HStack {
                         Spacer()
-                        Button(action: {
-                            
-                        }) {
+                        NavigationLink(destination: AddContractView(viewModel: viewModel.state.addContractViewModel)) {
                             Image(Asset.plusButton.name)
                                 .padding(.trailing, 16)
                         }

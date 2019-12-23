@@ -19,7 +19,11 @@ struct LoginView: View {
                 Image(Asset.loginTitleIcon.name)
                 Spacer()
             }
-            InputView(viewModel: viewModel.state.inputViewModel, delegate: self)
+            InputView(viewModel: viewModel.state.inputViewModel,
+                      delegate: self,
+                      textColor: .white,
+                      themeColor: .white,
+                      pasteColor: .black)
             Button(action: {
                 self.viewModel.trigger(.enter)
             }) {

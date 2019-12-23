@@ -9,13 +9,44 @@
 import SwiftUI
 
 struct AddContractView: View {
+    @ObservedObject var viewModel: AnyViewModel<AddContractState, AddContractInput>
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            InputView(viewModel: viewModel.state.inputViewModel,
+                      delegate: self,
+                      textColor: .black,
+                      themeColor: Color(Color.theme.blue.color),
+                      pasteColor: Color(Color.theme.blue.color))
+            Spacer()
+            HStack {
+                Button(action: {
+                    self.presentationMode.wrappedValue.dismiss()
+                }) {
+                    Text("Add")
+                }
+                .theme.buttonStyle(.default)
+                Spacer()
+            }
+        }
+        .padding([.leading, .trailing], 16)
+        .padding(.top, 38)
+        .padding(.bottom, 24)
+        .navigationBarTitle("Add voting", displayMode: .inline)
+    }
+}
+
+extension AddContractView: InputFlowDelegate {
+    func textChanged(_ newText: String) {
+        viewModel.trigger(.keyChanged(newText))
     }
 }
 
 struct AddContractView_Previews: PreviewProvider {
     static var previews: some View {
-        AddContractView()
+        NavigationView {
+                AddContractView(viewModel: AddContractViewModel(dependencies: dependencies).eraseToAnyViewModel())
+        }
     }
 }
