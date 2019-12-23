@@ -56,9 +56,10 @@ final class RateRepository: Repository {
             state.contracts[contractIndex].candidates[candidateIndex].currentlyPlacedVotes = numberOfVotes
         case let .vote(votes: votes, contractAddress: contractAddress):
             guard let wallet = userRepository.state.value.wallet else { return }
+            let nonZeroVotes = votes.filter { $0.value != 0 }
             tezosClient
                 .rateContract(at: contractAddress)
-                .vote(votes)
+                .vote(nonZeroVotes)
                 .sendPublisher(from: wallet, amount: Tez(1))
                 .handleEvents(receiveOutput: { [weak self] output in
                     print(output)

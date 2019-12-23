@@ -123,7 +123,12 @@ final class RateViewModel: ViewModel {
                                                numberOfVotes: count,
                                                contractAddress: contractAddress))
         case .vote:
-            rateRepository.trigger(.vote(votes: state.votesForCandidates,
+            let currentlyPlacedVotes: [Candidate.ID: Int] = state.candidates.reduce([:], { current, candidate in
+                var mutable = current
+                mutable[candidate.id] = candidate.currentlyPlacedVotes
+                return mutable
+            })
+            rateRepository.trigger(.vote(votes: currentlyPlacedVotes,
                                          contractAddress: contractAddress))
         }
     }

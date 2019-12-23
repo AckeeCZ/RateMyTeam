@@ -17,7 +17,7 @@ PODS:
 
 DEPENDENCIES:
   - SwiftGen (~> 6.0)
-  - TezosSwift/Combine (from `https://github.com/AckeeCZ/TezosSwift`, branch `fixes`)
+  - TezosSwift/Combine (from `/Users/marekfort/Development/ackee/TezosSwift`)
 
 SPEC REPOS:
   https://cdn.cocoapods.org/:
@@ -29,13 +29,7 @@ SPEC REPOS:
 
 EXTERNAL SOURCES:
   TezosSwift:
-    :branch: fixes
-    :git: https://github.com/AckeeCZ/TezosSwift
-
-CHECKOUT OPTIONS:
-  TezosSwift:
-    :commit: 64ac6dd3ae50cff0da8fae215687218c6408fb45
-    :git: https://github.com/AckeeCZ/TezosSwift
+    :path: "/Users/marekfort/Development/ackee/TezosSwift"
 
 SPEC CHECKSUMS:
   BigInt: 74b4d88367b0e819d9f77393549226d36faeb0d8
@@ -45,6 +39,6 @@ SPEC CHECKSUMS:
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
   TezosSwift: 655b224f2e0ffbb9b7c4a5deea9ed9169ee07637
 
-PODFILE CHECKSUM: 2118710b60e018a52fb7581f5c32101225822d60
+PODFILE CHECKSUM: b38181300a5a9a282535f1c00a8bf921eec29253
 
 COCOAPODS: 1.8.4
