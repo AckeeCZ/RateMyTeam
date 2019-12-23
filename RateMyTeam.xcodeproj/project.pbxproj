@@ -890,6 +890,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"RateMyTeam/Preview Content\"";
+				DEVELOPMENT_TEAM = QH95ER52SG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = RateMyTeam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -897,7 +898,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ackee.RateMyTeam;
+				PRODUCT_BUNDLE_IDENTIFIER = marekfort.RateMyTeam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -911,6 +912,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"RateMyTeam/Preview Content\"";
+				DEVELOPMENT_TEAM = QH95ER52SG;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = RateMyTeam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -918,7 +920,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ackee.RateMyTeam;
+				PRODUCT_BUNDLE_IDENTIFIER = marekfort.RateMyTeam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

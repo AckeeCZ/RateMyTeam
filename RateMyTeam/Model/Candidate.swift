@@ -15,5 +15,6 @@ struct Candidate: Identifiable {
         address
     }
     var numberOfVotes: Int
+    var currentlyPlacedVotes: Int
     let name: String
 }

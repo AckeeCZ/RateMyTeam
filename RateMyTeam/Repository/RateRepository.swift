@@ -16,6 +16,7 @@ protocol HasRateRepository {
 
 enum RateRepositoryInput {
     case updateStore(String)
+    case placeVotes(candidate: Candidate.ID, numberOfVotes: Int, contractAddress: String)
     case vote(votes: [Candidate.ID: Int], contractAddress: String)
 }
 
@@ -37,7 +38,7 @@ final class RateRepository: Repository {
         userRepository = dependencies.userRepository
         
         // TODO: Should be saved in UserDefaults
-        let initialAddresses: [String] = ["KT19AVzqH1NEfiU43MXCFGxwz6Ur68yjJgNd", "KT1CXpu3S3hypnp3tubiGJLBvyCotxVpMyXE", "KT1RziSJJs4HZYd5E8YMx1EZC9FeyQkCweQD"]
+        let initialAddresses: [String] = ["KT1SwMaeEygYz8MuK3jjUFAUen7xRXGkxTyP", "KT1CXpu3S3hypnp3tubiGJLBvyCotxVpMyXE", "KT1RziSJJs4HZYd5E8YMx1EZC9FeyQkCweQD"]
         initialAddresses.forEach {
             updateStore(of: $0)
         }
@@ -47,6 +48,12 @@ final class RateRepository: Repository {
         switch input {
         case let .updateStore(address):
             updateStore(of: address)
+        case let .placeVotes(candidate: candidate, numberOfVotes: numberOfVotes, contractAddress: contractAddress):
+            guard
+                let contractIndex = state.contracts.firstIndex(where: { $0.id == contractAddress }),
+                let candidateIndex = state.contracts[contractIndex].candidates.firstIndex(where: { $0.id == candidate })
+            else { return }
+            state.contracts[contractIndex].candidates[candidateIndex].currentlyPlacedVotes = numberOfVotes
         case let .vote(votes: votes, contractAddress: contractAddress):
             guard let wallet = userRepository.state.value.wallet else { return }
             tezosClient
@@ -93,6 +100,7 @@ final class RateRepository: Repository {
         votes.forEach { id, votes in
             guard let candidateIndex = state.contracts[index].candidates.firstIndex(where: { $0.id == id }) else { return }
             state.contracts[index].candidates[candidateIndex].numberOfVotes += votes
+            state.contracts[index].candidates[candidateIndex].currentlyPlacedVotes = 0
         }
         
         guard

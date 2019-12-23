@@ -17,6 +17,7 @@ enum RateInput {
 struct RateState {
     var candidates: [Candidate]
     var votesForCandidates: [Candidate.ID: Int]
+    var hasNewVotesForCandidates: [Candidate.ID: Bool]
     var hasPlacedVotes: Bool
     var totalNumberOfVotes: Int
     var votesLeft: Int
@@ -50,6 +51,7 @@ final class RateViewModel: ViewModel {
         
         state = RateState(candidates: rateContract.candidates,
                           votesForCandidates: [:],
+                          hasNewVotesForCandidates: [:],
                           hasPlacedVotes: false,
                           totalNumberOfVotes: 0,
                           votesLeft: 0,
@@ -87,13 +89,39 @@ final class RateViewModel: ViewModel {
             .map { $0.voters.count * $0.votesPerVoter }
             .assign(to: \.state.maximumNumberOfVotes, on: self)
             .store(in: &cancellables)
+        
+        contractPublisher
+            .map { $0.candidates.reduce([:], { current, candidate in
+                var mutable = current
+                mutable[candidate.id] = candidate.numberOfVotes + candidate.currentlyPlacedVotes
+                return mutable
+            })}
+            .assign(to: \.state.votesForCandidates, on: self)
+            .store(in: &cancellables)
+        
+        contractPublisher
+            .map { $0.candidates.reduce([:], { current, candidate in
+                var mutable = current
+                mutable[candidate.id] = candidate.currentlyPlacedVotes != 0
+                return mutable
+            })
+        }
+            .assign(to: \.state.hasNewVotesForCandidates, on: self)
+            .store(in: &cancellables)
+        
+        contractPublisher
+            .map(\.candidates)
+            .map { $0.first(where: { $0.currentlyPlacedVotes != 0 }) != nil }
+            .assign(to: \.state.hasPlacedVotes, on: self)
+            .store(in: &cancellables)
     }
     
     func trigger(_ input: RateInput) {
         switch input {
         case let .votesCountChanged(candidate: candidate, count: count):
-            state.votesForCandidates[candidate.id] = count
-            state.hasPlacedVotes = state.votesForCandidates.values.firstIndex(where: { $0 != 0 }) != nil
+            rateRepository.trigger(.placeVotes(candidate: candidate.id,
+                                               numberOfVotes: count,
+                                               contractAddress: contractAddress))
         case .vote:
             rateRepository.trigger(.vote(votes: state.votesForCandidates,
                                          contractAddress: contractAddress))

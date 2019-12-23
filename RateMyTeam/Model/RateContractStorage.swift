@@ -11,7 +11,7 @@ import Foundation
 struct RateContractStorage: Identifiable {
     init(address: String, storage: RateContractStatusStorage) {
         self.contract = address
-        self.candidates = storage.ballot.map { Candidate(address: $0.key, numberOfVotes: $0.value.numberOfVotes, name: $0.value.candidateName) }
+        self.candidates = storage.ballot.map { Candidate(address: $0.key, numberOfVotes: $0.value.numberOfVotes, currentlyPlacedVotes: 0, name: $0.value.candidateName) }
         self.voters = storage.voters.map(Voter.init)
         self.totalNumberOfVotes = Int(storage.totalNumberOfVotes)
         self.votesPerVoter = storage.votesPerVoter

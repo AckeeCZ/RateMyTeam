@@ -36,7 +36,8 @@ struct RateView: View {
                                 }
                             }) {
                                 CandidateRow(candidate: candidate,
-                                             numberOfVotes: self.viewModel.state.votesForCandidates[candidate.id] ?? 0)
+                                             numberOfVotes: self.viewModel.state.votesForCandidates[candidate.id] ?? 0,
+                                             hasNewVotes: self.viewModel.state.hasNewVotesForCandidates[candidate.id] ?? false)
                             }
                         }
                         .listRowBackground(Color(Color.theme.background.color))

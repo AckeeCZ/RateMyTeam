@@ -12,6 +12,7 @@ import SwiftUI
 struct CandidateRow: View {
     let candidate: Candidate
     let numberOfVotes: Int
+    let hasNewVotes: Bool
     
     var body: some View {
         ZStack {
@@ -27,7 +28,7 @@ struct CandidateRow: View {
                     Text(String(numberOfVotes))
                         .frame(width: 42, height: 42)
                         .foregroundColor(Color.white)
-                        .background(Color(Color.theme.pink.color))
+                        .background(hasNewVotes ? Color(Color.theme.pink.color) : Color.black)
                         .cornerRadius(21)
                         .padding([.top, .bottom], 12)
                         .padding(.leading, 15)
@@ -53,7 +54,7 @@ struct CandidateRow: View {
 
 struct CandidateRow_Previews: PreviewProvider {
     static var previews: some View {
-        CandidateRow(candidate: Candidate(address: "tz9089809SDS9090S", numberOfVotes: 1, name: "Madonna"), numberOfVotes: 0)
+        CandidateRow(candidate: Candidate.preview(), numberOfVotes: 1, hasNewVotes: true)
     }
 }
 
