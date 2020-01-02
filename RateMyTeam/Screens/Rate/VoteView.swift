@@ -7,13 +7,40 @@
 //
 
 import SwiftUI
+import Combine
+
+private final class VoteStore: ObservableObject {
+    @Published var votesSelected: Int = 0
+}
 
 struct VoteView: View {
     let candidate: Candidate
     @ObservedObject var viewModel: AnyViewModel<VoteState, VoteInput>
     @Binding var isPresented: Bool
-    @State private var votesSelected: Int = 0
     let votesCountChanged: (Int) -> ()
+    @ObservedObject private var voteStore = VoteStore()
+    private var cancellables: Set<AnyCancellable> = []
+    
+    init(candidate: Candidate,
+         viewModel: AnyViewModel<VoteState, VoteInput>,
+         isPresented: Binding<Bool>,
+         votesCountChanged: @escaping (Int) -> ()) {
+        self.candidate = candidate
+        self.viewModel = viewModel
+        self.votesCountChanged = votesCountChanged
+        self._isPresented = isPresented
+        
+        let voteStore = VoteStore()
+        voteStore.$votesSelected.handleEvents(receiveOutput: {
+            if viewModel.state.votesCount < $0 {
+                viewModel.trigger(.incrementVote)
+            } else if viewModel.state.votesCount > $0 {
+                viewModel.trigger(.decrementVote)
+            }
+        })
+        .startAndStore(in: &self.cancellables)
+        self.voteStore = voteStore
+    }
     
     var body: some View {
         VStack(spacing: 30) {
@@ -39,7 +66,6 @@ struct VoteView: View {
             .padding(.trailing, 8)
             .background(Color(Color.theme.background.color))
             .cornerRadius(6)
-                        
             VStack(spacing: 12) {
                 Text(String(viewModel.state.votesCount))
                     .theme.font(.titleLarge)
@@ -47,13 +73,7 @@ struct VoteView: View {
                     .frame(width: 62, height: 62)
                     .background(Color(Color.theme.pink.color))
                     .cornerRadius(31)
-                Stepper(onIncrement: {
-                    guard self.viewModel.state.votesCount < self.viewModel.state.maxNumberOfVotes else { return }
-                    self.viewModel.trigger(.incrementVote)
-                }, onDecrement: {
-                    guard self.viewModel.state.votesCount != 0 else { return }
-                    self.viewModel.trigger(.decrementVote)
-                }) {
+                Stepper(value: $voteStore.votesSelected, in: 1...viewModel.state.maxNumberOfVotes + 1) {
                     EmptyView()
                 }
                 .fixedSize()
