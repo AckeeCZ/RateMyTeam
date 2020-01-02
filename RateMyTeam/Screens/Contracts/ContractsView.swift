@@ -65,6 +65,7 @@ struct ContractsView: View {
             })
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .accentColor(.white)
     }
 }
 

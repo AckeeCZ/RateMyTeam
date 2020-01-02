@@ -79,6 +79,7 @@ struct RateView: View {
             }) {
                 if viewModel.state.isMaster && !viewModel.state.hasEnded {
                     Text("End vote")
+                    .foregroundColor(.white)
                 } else {
                     EmptyView()
                 }
