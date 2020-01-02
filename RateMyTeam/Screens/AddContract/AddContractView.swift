@@ -13,13 +13,12 @@ struct AddContractView: View {
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
-        VStack {
+        VStack(spacing: 20) {
             InputView(viewModel: viewModel.state.inputViewModel,
                       delegate: self,
                       textColor: .black,
                       themeColor: Color(Color.theme.blue.color),
                       pasteColor: Color(Color.theme.blue.color))
-            Spacer()
             HStack {
                 Button(action: {
                     self.viewModel.trigger(.addContract)
@@ -30,6 +29,7 @@ struct AddContractView: View {
                 .theme.buttonStyle(.default)
                 Spacer()
             }
+            Spacer()
         }
         .padding([.leading, .trailing], 16)
         .padding(.top, 38)

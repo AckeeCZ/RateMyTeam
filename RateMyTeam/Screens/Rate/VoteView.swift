@@ -47,7 +47,6 @@ struct VoteView: View {
                     .frame(width: 62, height: 62)
                     .background(Color(Color.theme.pink.color))
                     .cornerRadius(31)
-             
                 Stepper(onIncrement: {
                     guard self.viewModel.state.votesCount < self.viewModel.state.maxNumberOfVotes else { return }
                     self.viewModel.trigger(.incrementVote)

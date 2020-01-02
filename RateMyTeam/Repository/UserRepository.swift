@@ -74,8 +74,7 @@ final class UserRepository: Repository {
     
     private func removeWallet() {
         let query: [String: Any] = [kSecClass as String: kSecClassKey,
-                                    kSecAttrApplicationTag as String: "tezos",
-                                    kSecMatchLimit as String: kSecMatchLimitOne]
+                                    kSecAttrApplicationTag as String: "tezos"]
         let status = SecItemDelete(query as CFDictionary)
         guard status == errSecSuccess || status == errSecItemNotFound else { return }
         state.wallet = nil

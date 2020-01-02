@@ -23,7 +23,7 @@ struct LoginView: View {
                       delegate: self,
                       textColor: .white,
                       themeColor: .white,
-                      pasteColor: .black)
+                      pasteColor: .white)
             Button(action: {
                 self.viewModel.trigger(.enter)
             }) {
@@ -38,6 +38,9 @@ struct LoginView: View {
         .scaledToFill()
         .background(Color(Color.theme.blue.color)))
         .edgesIgnoringSafeArea(.all)
+        .onTapGesture {
+            UIApplication.shared.windows.forEach { $0.endEditing(true) }
+        }
     }
 }
 
