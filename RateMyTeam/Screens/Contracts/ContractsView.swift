@@ -25,12 +25,12 @@ struct ContractsView: View {
                     List {
                         Section(header: Text("CURRENT")) {
                             ForEach(viewModel.state.contracts) { contract in
-                                ContractRow(contract: contract)
+                                ContractRow(contract: contract, isActive: true)
                             }
                         }
                         Section(header: Text("PAST")) {
                             ForEach(viewModel.state.pastContracts) { contract in
-                                ContractRow(contract: contract)
+                                ContractRow(contract: contract, isActive: false)
                             }
                         }
                     }

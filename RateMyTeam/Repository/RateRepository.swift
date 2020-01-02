@@ -62,7 +62,7 @@ final class RateRepository: Repository {
             tezosClient
                 .rateContract(at: contractAddress)
                 .vote(nonZeroVotes)
-                .callPublisher(from: wallet, amount: Tez(1))
+                .callPublisher(from: wallet, amount: Tez(0))
                 .handleEvents(receiveOutput: { [weak self] output in
                     print(output)
                     self?.addVotes(votes, for: contractAddress)
@@ -78,7 +78,7 @@ final class RateRepository: Repository {
             tezosClient
                 .rateContract(at: contractAddress)
                 .end()
-                .callPublisher(from: wallet, amount: Tez(1))
+                .callPublisher(from: wallet, amount: Tez(0))
                 .handleEvents(receiveOutput: { [weak self] output in
                     print(output)
                     self?.endVote(of: contractAddress)

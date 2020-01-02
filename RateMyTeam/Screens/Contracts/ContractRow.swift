@@ -11,6 +11,7 @@ import SwiftUI
 
 struct ContractRow: View {
     let contract: ContractsState.ContractData
+    let isActive: Bool
     
     var body: some View {
         ZStack {
@@ -19,6 +20,7 @@ struct ContractRow: View {
                     VStack(alignment: .leading, spacing: 6) {
                         Text(contract.contract.name)
                             .theme.font(.titleSmall)
+                            .opacity(isActive ? 1.0 : 0.4)
                         Text(contract.contract.id)
                             .theme.font(.bodySmall)
                             .foregroundColor(Color(Color.theme.textBlack.color))
@@ -47,7 +49,8 @@ struct ContractRow_Previews: PreviewProvider {
         ContractRow(contract:
             ContractsState.ContractData(contract: RateContractStorage.preview(),
                                         viewModel: RateViewModel(rateContract: RateContractStorage.preview(),
-                                                                 dependencies: dependencies).eraseToAnyViewModel()))
+                                         dependencies: dependencies).eraseToAnyViewModel()),
+                    isActive: false)
     }
 }
 
