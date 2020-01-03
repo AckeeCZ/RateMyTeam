@@ -18,7 +18,7 @@ struct VoteView: View {
     @ObservedObject var viewModel: AnyViewModel<VoteState, VoteInput>
     @Binding var isPresented: Bool
     let votesCountChanged: (Int) -> ()
-    @ObservedObject private var voteStore = VoteStore()
+    @ObservedObject private var voteStore: VoteStore
     private var cancellables: Set<AnyCancellable> = []
     
     init(candidate: Candidate,
@@ -31,6 +31,7 @@ struct VoteView: View {
         self._isPresented = isPresented
         
         let voteStore = VoteStore()
+        voteStore.votesSelected = viewModel.state.votesCount
         voteStore.$votesSelected.handleEvents(receiveOutput: {
             if viewModel.state.votesCount < $0 {
                 viewModel.trigger(.incrementVote)
@@ -73,7 +74,7 @@ struct VoteView: View {
                     .frame(width: 62, height: 62)
                     .background(Color(Color.theme.pink.color))
                     .cornerRadius(31)
-                Stepper(value: $voteStore.votesSelected, in: 1...viewModel.state.maxNumberOfVotes + 1) {
+                Stepper(value: $voteStore.votesSelected, in: 0...viewModel.state.maxNumberOfVotes) {
                     EmptyView()
                 }
                 .fixedSize()

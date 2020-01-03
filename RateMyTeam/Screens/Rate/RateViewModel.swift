@@ -19,6 +19,7 @@ struct RateState {
     var candidates: [Candidate]
     var votesForCandidates: [Candidate.ID: Int]
     var hasNewVotesForCandidates: [Candidate.ID: Bool]
+    var newVotesForCandidates: [Candidate.ID: Int]
     var hasPlacedVotes: Bool
     var totalNumberOfVotes: Int
     var votesLeft: Int
@@ -55,6 +56,7 @@ final class RateViewModel: ViewModel {
         state = RateState(candidates: rateContract.candidates,
                           votesForCandidates: [:],
                           hasNewVotesForCandidates: [:],
+                          newVotesForCandidates: [:],
                           hasPlacedVotes: false,
                           totalNumberOfVotes: 0,
                           votesLeft: 0,
@@ -107,6 +109,15 @@ final class RateViewModel: ViewModel {
                 return mutable
             })}
             .assign(to: \.state.votesForCandidates, on: self)
+            .store(in: &cancellables)
+        
+        contractPublisher
+            .map { $0.candidates.reduce([:], { current, candidate in
+                var mutable = current
+                mutable[candidate.id] = candidate.currentlyPlacedVotes
+                return mutable
+            })}
+            .assign(to: \.state.newVotesForCandidates, on: self)
             .store(in: &cancellables)
         
         contractPublisher

@@ -14,7 +14,7 @@ protocol ViewModel: ObservableObject where ObjectWillChangePublisher.Output == V
     associatedtype State
     associatedtype Input
 
-    var state: State { get }
+    var state: State { get set }
     func trigger(_ input: Input)
 }
 
@@ -29,10 +29,12 @@ final class AnyViewModel<State, Input>: ObservableObject {
     let objectWillChange = ObservableObjectPublisher()
     private var cancellables: [AnyCancellable] = []
     private let wrappedState: () -> State
+    private let setWrappedState: (State) -> ()
     private let wrappedTrigger: (Input) -> Void
 
     var state: State {
-        wrappedState()
+        get { wrappedState() }
+        set { setWrappedState(newValue) }
     }
     
     let stateChanges: AnyPublisher<State, Never>
@@ -43,6 +45,7 @@ final class AnyViewModel<State, Input>: ObservableObject {
 
     init<V: ViewModel>(_ viewModel: V) where V.State == State, V.Input == Input {
         self.wrappedState = { viewModel.state }
+        self.setWrappedState = { viewModel.state = $0 }
         self.wrappedTrigger = viewModel.trigger
         
         stateChanges = viewModel.objectWillChange

@@ -88,6 +88,7 @@ struct RateView: View {
     
     private func voteView(for candidate: Candidate?) -> AnyView {
         guard let candidate = candidate else { return AnyView(EmptyView()) }
+        viewModel.state.voteViewModel.state.votesCount = viewModel.state.newVotesForCandidates[candidate.id] ?? 0
         return AnyView(VoteView(candidate: candidate,
                                 viewModel: viewModel.state.voteViewModel,
                                 isPresented: $showVoteView,
