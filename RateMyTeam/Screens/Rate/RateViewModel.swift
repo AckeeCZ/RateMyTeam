@@ -23,6 +23,7 @@ struct RateState {
     var hasPlacedVotes: Bool
     var totalNumberOfVotes: Int
     var votesLeft: Int
+    var currentlyPlacedVotes: Int
     var votesPerVoter: Int
     var maximumNumberOfVotes: Int
     let isMaster: Bool
@@ -60,6 +61,7 @@ final class RateViewModel: ViewModel {
                           hasPlacedVotes: false,
                           totalNumberOfVotes: 0,
                           votesLeft: 0,
+                          currentlyPlacedVotes: 0,
                           votesPerVoter: 0,
                           maximumNumberOfVotes: 0,
                           isMaster: rateContract.master == dependencies.userRepository.state.value.wallet?.address,
@@ -118,6 +120,11 @@ final class RateViewModel: ViewModel {
                 return mutable
             })}
             .assign(to: \.state.newVotesForCandidates, on: self)
+            .store(in: &cancellables)
+        
+        contractPublisher
+            .map { $0.candidates.reduce(0) { $0 + $1.currentlyPlacedVotes } }
+            .assign(to: \.state.currentlyPlacedVotes, on: self)
             .store(in: &cancellables)
         
         contractPublisher

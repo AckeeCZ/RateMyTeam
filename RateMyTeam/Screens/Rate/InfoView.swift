@@ -15,6 +15,13 @@ struct InfoView: View {
         }
         let title: String
         let text: String
+        let textColor: Color
+        
+        init(title: String, text: String, textColor: Color = .black) {
+            self.title = title
+            self.text = text
+            self.textColor = textColor
+        }
     }
     
     let info: [Info]
@@ -25,6 +32,7 @@ struct InfoView: View {
                     Text(info.title)
                     Spacer()
                     Text(info.text)
+                        .foregroundColor(info.textColor)
                 }
             }
         }

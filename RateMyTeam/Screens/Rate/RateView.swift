@@ -21,9 +21,13 @@ struct RateView: View {
             HStack {
                 VStack {
                     InfoView(info: [
-                        InfoView.Info(title: "Open since", text: "21.9.2019"),
-                        InfoView.Info(title: "Voted count", text: String(viewModel.state.totalNumberOfVotes) + "/" + String(viewModel.state.maximumNumberOfVotes)),
-                        InfoView.Info(title: "My votes left", text: String(viewModel.state.votesLeft) + "/" + String(viewModel.state.votesPerVoter))
+                        InfoView.Info(title: "Open since",
+                                      text: "21.9.2019"),
+                        InfoView.Info(title: "Voted count",
+                                      text: String(viewModel.state.totalNumberOfVotes) + "/" + String(viewModel.state.maximumNumberOfVotes)),
+                        InfoView.Info(title: "My votes left",
+                                      text: String(viewModel.state.votesLeft - viewModel.state.currentlyPlacedVotes) + "/" + String(viewModel.state.votesPerVoter),
+                                      textColor: viewModel.state.hasPlacedVotes ? Color(Color.theme.pink.color) : .black)
                     ])
                     .background(Color.clear)
                     .padding([.leading, .trailing], 15)
