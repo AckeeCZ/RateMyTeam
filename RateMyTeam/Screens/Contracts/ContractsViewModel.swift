@@ -25,10 +25,11 @@ struct ContractsState {
     var pastContracts: [ContractData]
     let walletAddress: String
     let addContractViewModel: AnyViewModel<AddContractState, AddContractInput>
+    let settingsViewModel: AnyViewModel<SettingsState, SettingsInput>
 }
 
 final class ContractsViewModel: ViewModel {
-    typealias Dependencies = HasRateRepository & HasRateVMFactory & HasAddContractVMFactory & HasUserRepository
+    typealias Dependencies = HasRateRepository & HasRateVMFactory & HasAddContractVMFactory & HasUserRepository & HasSettingsVMFactory
     
     @Published var state: ContractsState
     private let rateRepository: AnyRepository<RateRepositoryState, RateRepositoryInput>
@@ -42,7 +43,8 @@ final class ContractsViewModel: ViewModel {
         state = ContractsState(contracts: [],
                                pastContracts: [],
                                walletAddress: dependencies.userRepository.state.value.wallet?.address ?? "",
-                               addContractViewModel: dependencies.addContractVMFactory())
+                               addContractViewModel: dependencies.addContractVMFactory(),
+                               settingsViewModel: dependencies.settingsVMFactory())
         
         let allContractsPublisher = dependencies.rateRepository.state
             .map { $0.contracts.map { ($0, dependencies.rateVMFactory($0)) } }

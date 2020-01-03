@@ -34,11 +34,6 @@ struct ContractsView: View {
                             }
                         }
                     }
-                    Text("My wallet address:\n\(viewModel.state.walletAddress)")
-                        .theme.font(.bodySmall)
-                        .foregroundColor(.black)
-                        .opacity(0.4)
-                        .multilineTextAlignment(.center)
                     Spacer()
                 }
                 .padding(.bottom, 20)
@@ -59,6 +54,11 @@ struct ContractsView: View {
             .background(Color(Color.theme.background.color))
             .edgesIgnoringSafeArea(.bottom)
             .navigationBarTitle("Voting", displayMode: .inline)
+            .navigationBarItems(leading:
+                NavigationLink(destination: SettingsView(viewModel: viewModel.state.settingsViewModel)) {
+                    Image(systemName: "gear")
+                    .foregroundColor(.white)
+                })
             .background(NavigationConfigurator { nc in
                 nc.navigationBar.barTintColor = .blue
                 nc.navigationBar.titleTextAttributes = [.foregroundColor : UIColor.white]

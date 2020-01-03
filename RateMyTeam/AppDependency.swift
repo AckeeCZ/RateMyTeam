@@ -54,6 +54,12 @@ extension AppDependency: HasAddContractVMFactory {
     }
 }
 
+extension AppDependency: HasSettingsVMFactory {
+    var settingsVMFactory: SettingsVMFactory {
+        { SettingsViewModel(dependencies: self).eraseToAnyViewModel() }
+    }
+}
+
 protocol HasTezosClient {
     var tezosClient: TezosClient { get }
 }

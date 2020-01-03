@@ -40,6 +40,8 @@
 		F88C6769238ED1F700912435 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F88C6767238ED1F700912435 /* LaunchScreen.storyboard */; };
 		F88C6774238ED1F800912435 /* RateMyTeamTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C6773238ED1F800912435 /* RateMyTeamTests.swift */; };
 		F88C677F238ED1F800912435 /* RateMyTeamUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88C677E238ED1F800912435 /* RateMyTeamUITests.swift */; };
+		F8ADE71223BF4117001FBF78 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8ADE71123BF4117001FBF78 /* SettingsView.swift */; };
+		F8ADE71423BF422D001FBF78 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8ADE71323BF422D001FBF78 /* SettingsViewModel.swift */; };
 		F8EBC5D523A7862C00C9EFB6 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EBC5D423A7862C00C9EFB6 /* LoginView.swift */; };
 		F8EBC5D723A79FDC00C9EFB6 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EBC5D623A79FDC00C9EFB6 /* LoginViewModel.swift */; };
 		F8EBC5DB23A7A09500C9EFB6 /* InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8EBC5DA23A7A09500C9EFB6 /* InputView.swift */; };
@@ -117,6 +119,8 @@
 		F88C677A238ED1F800912435 /* RateMyTeamUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RateMyTeamUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88C677E238ED1F800912435 /* RateMyTeamUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateMyTeamUITests.swift; sourceTree = "<group>"; };
 		F88C6780238ED1F800912435 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8ADE71123BF4117001FBF78 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F8ADE71323BF422D001FBF78 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		F8EBC5D423A7862C00C9EFB6 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		F8EBC5D623A79FDC00C9EFB6 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		F8EBC5DA23A7A09500C9EFB6 /* InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputView.swift; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 		F82EBEAD23A23B55000636CA /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				F8ADE71023BF4067001FBF78 /* Settings */,
 				F8FCF92B23AB82BA0078C94E /* AddContract */,
 				F8EBC5D323A7862000C9EFB6 /* Login */,
 				F82EBEB123A23BD1000636CA /* Rate */,
@@ -356,6 +361,15 @@
 				652687C0143EDA923386C303 /* SharedContract.swift */,
 			);
 			path = Generated;
+			sourceTree = "<group>";
+		};
+		F8ADE71023BF4067001FBF78 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F8ADE71123BF4117001FBF78 /* SettingsView.swift */,
+				F8ADE71323BF422D001FBF78 /* SettingsViewModel.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		F8EBC5D323A7862000C9EFB6 /* Login */ = {
@@ -710,6 +724,7 @@
 				F8317DB323A38B8C000A9CFC /* RateRow.swift in Sources */,
 				F8EBC5DF23A7C1AC00C9EFB6 /* UserRepository.swift in Sources */,
 				F8F4FE7D23B0C61700E72C74 /* Storage.swift in Sources */,
+				F8ADE71423BF422D001FBF78 /* SettingsViewModel.swift in Sources */,
 				F82EBEBA23A23CBC000636CA /* Candidate.swift in Sources */,
 				F8317DB523A39147000A9CFC /* Font+Theme.swift in Sources */,
 				F8317DB923A3CE2A000A9CFC /* Candidate+Preview.swift in Sources */,
@@ -739,6 +754,7 @@
 				F8FBD2B5239E8325004C6ED9 /* Theme.swift in Sources */,
 				F82EBEBC23A23D29000636CA /* RateContract.swift in Sources */,
 				F82EBEB823A23C8A000636CA /* Publisher+Extra.swift in Sources */,
+				F8ADE71223BF4117001FBF78 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
