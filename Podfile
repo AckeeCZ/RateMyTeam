@@ -4,7 +4,7 @@ inhibit_all_warnings!
 use_frameworks!
 
 target 'RateMyTeam' do
-    pod 'TezosSwift/Combine', :path => '/Users/marekfort/Development/ackee/TezosSwift'
+    pod 'TezosSwift/Combine', '~> 1.1.1' 
     pod 'SwiftGen', '~> 6.0'
 
 	target 'RateMyTeamTests' do

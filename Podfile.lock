@@ -5,19 +5,19 @@ PODS:
     - CryptoSwift (~> 0.14.0)
   - Sodium (0.8.0)
   - SwiftGen (6.1.0)
-  - TezosSwift/Combine (1.1):
+  - TezosSwift/Combine (1.1.1):
     - BigInt (~> 5.0.0)
     - MnemonicKit
     - Sodium (~> 0.8.0)
     - TezosSwift/Core
-  - TezosSwift/Core (1.1):
+  - TezosSwift/Core (1.1.1):
     - BigInt (~> 5.0.0)
     - MnemonicKit
     - Sodium (~> 0.8.0)
 
 DEPENDENCIES:
   - SwiftGen (~> 6.0)
-  - TezosSwift/Combine (from `/Users/marekfort/Development/ackee/TezosSwift`)
+  - TezosSwift/Combine (~> 1.1.1)
 
 SPEC REPOS:
   https://cdn.cocoapods.org/:
@@ -26,10 +26,7 @@ SPEC REPOS:
     - MnemonicKit
     - Sodium
     - SwiftGen
-
-EXTERNAL SOURCES:
-  TezosSwift:
-    :path: "/Users/marekfort/Development/ackee/TezosSwift"
+    - TezosSwift
 
 SPEC CHECKSUMS:
   BigInt: 74b4d88367b0e819d9f77393549226d36faeb0d8
@@ -37,8 +34,8 @@ SPEC CHECKSUMS:
   MnemonicKit: 5189df03e224eb6c9b63bc3c6b0623fb1134c62d
   Sodium: 63c0ca312a932e6da481689537d4b35568841bdc
   SwiftGen: f872ca75cbd17bf7103c17f13dcfa0d9a15667b0
-  TezosSwift: 655b224f2e0ffbb9b7c4a5deea9ed9169ee07637
+  TezosSwift: 83d4fa0346d4b195bc026e0f45191140950bea2e
 
-PODFILE CHECKSUM: b38181300a5a9a282535f1c00a8bf921eec29253
+PODFILE CHECKSUM: 662a90b139070697a87700995506e265c6816dc1
 
 COCOAPODS: 1.8.4
