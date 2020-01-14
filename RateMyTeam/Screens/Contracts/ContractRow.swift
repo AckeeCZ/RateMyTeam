@@ -44,6 +44,7 @@ struct ContractRow: View {
     }
 }
 
+#if DEBUG
 struct ContractRow_Previews: PreviewProvider {
     static var previews: some View {
         ContractRow(contract:
@@ -53,4 +54,4 @@ struct ContractRow_Previews: PreviewProvider {
                     isActive: false)
     }
 }
-
+#endif

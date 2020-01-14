@@ -52,10 +52,11 @@ struct CandidateRow: View {
     }
 }
 
+#if DEBUG
 struct CandidateRow_Previews: PreviewProvider {
     static var previews: some View {
         CandidateRow(candidate: Candidate.preview(), numberOfVotes: 1, hasNewVotes: true)
     }
 }
-
+#endif
 
