@@ -37,12 +37,12 @@ def test():
     scenario = sp.testScenario()
     scenario.h1("Candidates")
     
-    addr1 = sp.address("tz1VsSC7ZUxpTt9t18Cuae9NeL2xWTgX7Mix")
-    addr2 = sp.address("tz1MNXmdB6mPGx1yifwaxhbpiL9sjE2W2BLG")
-    addr3 = sp.address("tz1c2mnLJSwUYHNytq1XZ9YQT81ojca7YDYY")
-    addr4 = sp.address("tz1c2mnLJSwUYHNytq1XZ9YQT81ojca7YDYY")
-    addr5 = sp.address("tz1c2mnLJSwUYHNytq1XZ9YQT81ojca7YDYY")
-    addr6 = sp.address("tz1c2mnLJSwUYHNytq1XZ9YQT81ojca7YDYY")
+    addr1 = sp.address("tz1LhS2WFCinpwUTdUb991ocL2D9Uk6FJGJK")
+    addr2 = sp.address("tz1a6SkBrxCywRHHsUKN3uQse7huiBNSGb5p")
+    addr3 = sp.address("tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5")
+    addr4 = sp.address("tz1SwKQDtW8H7xLAS9ag4nxXbsQP5Pejwr7z")
+    addr5 = sp.address("tz1SwKQDtW8H7xLAS9ag4nxXbsQP5Pejwr7z")
+    addr6 = sp.address("tz1YH2LE6p7Sj16vF6irfHX92QV45XAZYHnX")
     
     contract = Ballot("Design", addr5, [(addr1, "George"), (addr2, "Tim"), (addr3, "Gina")], [addr4, addr6], 100)
 
