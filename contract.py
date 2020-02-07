@@ -11,7 +11,7 @@ class Ballot(sp.Contract):
         self.init(name = name, master = creator, ballot = initialBallot, voters = initialVoters, hasEnded = False, totalNumberOfVotes = 0, votesPerVoter = numberOfVotes)
         
 
-    @sp.entryPoint
+    @sp.entry_point
     def vote(self, params):
         sp.verify(self.data.hasEnded == False)
         sp.verify(self.data.voters.contains(sp.sender))
@@ -22,28 +22,72 @@ class Ballot(sp.Contract):
             self.data.totalNumberOfVotes += vote.value
         
         
-    @sp.entryPoint
+    @sp.entry_point
     def end(self, params):
         sp.verify(sp.sender == self.data.master)
         sp.verify(self.data.hasEnded == False)
+        currentBalance = sp.balance
         sp.for candidate in self.data.ballot.keys():
             sp.if self.data.ballot[candidate].numberOfVotes != 0:
-                sp.send(candidate, sp.splitTokens(sp.balance, sp.asNat(self.data.ballot[candidate].numberOfVotes), sp.asNat(self.data.totalNumberOfVotes)))
+                sp.send(candidate, sp.split_tokens(currentBalance, sp.as_nat(self.data.ballot[candidate].numberOfVotes), sp.as_nat(self.data.totalNumberOfVotes)))
         self.data.hasEnded = True
 
         
-@addTest(name = "CandidatesTest")
-def test():
-    scenario = sp.testScenario()
+@sp.add_test(name = "CandidatesTest")
+def test1():
+    scenario = sp.test_scenario()
     scenario.h1("Candidates")
     
+    # Candidates
     addr1 = sp.address("tz1LhS2WFCinpwUTdUb991ocL2D9Uk6FJGJK")
     addr2 = sp.address("tz1a6SkBrxCywRHHsUKN3uQse7huiBNSGb5p")
     addr3 = sp.address("tz3WXYtyDUNL91qfiCJtVUX746QpNv5i5ve5")
+    # Manager - can end the voting
     addr4 = sp.address("tz1SwKQDtW8H7xLAS9ag4nxXbsQP5Pejwr7z")
+    # Voters
     addr5 = sp.address("tz1SwKQDtW8H7xLAS9ag4nxXbsQP5Pejwr7z")
     addr6 = sp.address("tz1YH2LE6p7Sj16vF6irfHX92QV45XAZYHnX")
     
-    contract = Ballot("Design", addr5, [(addr1, "George"), (addr2, "Tim"), (addr3, "Gina")], [addr4, addr6], 100)
-
+    contract = Ballot("Design", addr4, [(addr1, "George"), (addr2, "Tim"), (addr3, "Gina")], [addr5, addr6], 2)
+    contract.balance = sp.tez(9)
+    
     scenario += contract
+    
+    # Votes succeed
+    scenario += contract.vote(votes = {addr1: 2}).run(valid = True,sender = addr5)
+    scenario += contract.vote(votes = {addr2: 1}).run(valid = True, sender = addr6)
+    # Not enough votes - vote fails
+    scenario += contract.vote(votes = {addr1: 1}).run(valid=False,sender = addr5)
+    
+    # Assert addr1 has 2 votes, addr2 has 1 vote
+    scenario.verify(contract.data.ballot[addr1] == sp.record(candidateName = "George", numberOfVotes = 2))
+    scenario.verify(contract.data.ballot[addr2] == sp.record(candidateName = "Tim", numberOfVotes = 1))    
+    
+    # Ending contract
+    scenario += contract.end().run(valid = True, sender = addr4)
+
+    # Testing logic for ending contract
+    scenario.h1("End")
+    
+    voterAccount = sp.test_account("Voter")
+    candidateAccount = sp.test_account("Canddidate")
+    managerAccount = sp.test_account("Manager")
+    
+    contract = Ballot("End", managerAccount.address, [(candidateAccount.address, "Candidate")], [voterAccount.address], 10)
+    
+    scenario += contract
+    
+    # Vote for open voting succeeds
+    scenario += contract.vote(votes = {candidateAccount.address: 1}).run(valid = True, sender = voterAccount)
+    
+    # Ending vote with voterAccount fails
+    scenario += contract.end().run(valid = False, sender = voterAccount)
+    
+    # Ending vote with managerAccount succeeds
+    scenario += contract.end().run(valid = True, sender = managerAccount)
+    
+    # Voting after ending fails
+    scenario += contract.vote(votes = {candidateAccount.address: 1}).run(valid = False, sender = voterAccount)
+    
+    # Ending contract again fails
+    scenario += contract.end().run(valid = False, sender = managerAccount)
