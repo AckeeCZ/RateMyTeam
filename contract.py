@@ -1,14 +1,16 @@
 import smartpy as sp
 
 class Ballot(sp.Contract):
-    def __init__(self, name, creator, candidates, voters, numberOfVotes):
+    def __init__(self, name, manager, candidates, voters, numberOfVotes):
         initialBallot = {}
         for candidate in candidates:
+            # Initializing initialBallot where we save `candidateName` and set `numberOfVotes` to zero
             initialBallot[candidate[0]] = sp.record(candidateName = candidate[1], numberOfVotes = 0)
         initialVoters = { }
         for voter in voters:
+            # For every voter set their remaining votes to maximum
             initialVoters[voter] = numberOfVotes
-        self.init(name = name, master = creator, ballot = initialBallot, voters = initialVoters, hasEnded = False, totalNumberOfVotes = 0, votesPerVoter = numberOfVotes)
+        self.init(name = name, manager = manager, ballot = initialBallot, voters = initialVoters, hasEnded = False, totalNumberOfVotes = 0, votesPerVoter = numberOfVotes)
         
 
     @sp.entry_point
@@ -24,12 +26,11 @@ class Ballot(sp.Contract):
         
     @sp.entry_point
     def end(self, params):
-        sp.verify(sp.sender == self.data.master)
+        sp.verify(sp.sender == self.data.manager)
         sp.verify(self.data.hasEnded == False)
-        currentBalance = sp.balance
         sp.for candidate in self.data.ballot.keys():
             sp.if self.data.ballot[candidate].numberOfVotes != 0:
-                sp.send(candidate, sp.split_tokens(currentBalance, sp.as_nat(self.data.ballot[candidate].numberOfVotes), sp.as_nat(self.data.totalNumberOfVotes)))
+                sp.send(candidate, sp.split_tokens(sp.balance, sp.as_nat(self.data.ballot[candidate].numberOfVotes), sp.as_nat(self.data.totalNumberOfVotes)))
         self.data.hasEnded = True
 
         
