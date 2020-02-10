@@ -2,7 +2,7 @@
 
 This app, as it is a PoC, runs on Carthagenet - that means that do expect that these contracts will be deleted eventually.
 
-The easiest way to get you up and running is the following few steps:
+The easiest way to get you up and running with your contracts are the following steps:
 
 1. Go to https://smartpy.io/demo/faucetImporter.html
 2. After you download data from the Faucet, copy your private key (this key will be then used to sign you in the app!)
@@ -17,3 +17,5 @@ The easiest way to get you up and running is the following few steps:
 11. Deploy contract
 12. Open RateMyTeam app, paste in your private key, hit plus button and paste in the address of the originated contract
 13. Vote and have fun!
+
+To build this app, first clone this repository and then run `pod install`. After you open Xcode, you should be able to build the app.
