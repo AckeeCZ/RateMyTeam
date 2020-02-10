@@ -10,7 +10,7 @@ The easiest way to get you up and running is the following few steps:
 4. Leave protocol to Babylon, activate account and when it is included in the network, reveal it
 5. Go to https://smartpy.io/test2/
 6. Paste the contract code from the root folder of this repo in `contract.py` file
-7. Edit addresses to your desired ones (`addr5` is a master that can end the vote, `addr4` and `addr6` are votes - you probably want your new account to be in these addresses, other addresses will appear on the ballot)
+7. Edit addresses to your desired ones (`addr4` is a master that can end the vote, `addr5` and `addr6` are votes - you probably want your new account to be in these addresses, other addresses will appear on the ballot)
 8. Run the code, change to `Michelson` tab and hit deploy contract
 9. Paste your private key, change the node again to https://rpcalpha.tzbeta.net/
 10. Type in the amount you want for your contract (generally it is good to go over the below gas limit in order for the contract to work properly)
