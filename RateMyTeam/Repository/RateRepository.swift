@@ -57,39 +57,47 @@ final class RateRepository: Repository {
             else { return }
             state.contracts[contractIndex].candidates[candidateIndex].currentlyPlacedVotes = numberOfVotes
         case let .vote(votes: votes, contractAddress: contractAddress):
-            guard let wallet = userRepository.state.value.wallet else { return }
-            let nonZeroVotes = votes.filter { $0.value != 0 }
-            tezosClient
-                .rateContract(at: contractAddress)
-                .vote(nonZeroVotes)
-                .callPublisher(from: wallet, amount: Tez(0))
-                .handleEvents(receiveOutput: { [weak self] output in
-                    print(output)
-                    self?.addVotes(votes, for: contractAddress)
-                }, receiveCompletion: { completion in
-                    print(completion)
-                })
-                .startAndStore(in: &cancellables)
+            vote(votes: votes, contractAddress: contractAddress)
         case let .addContract(contract):
             contracts.append(contract)
             updateStore(of: contract)
         case let .endVote(contractAddress):
-            guard let wallet = userRepository.state.value.wallet else { return }
-            tezosClient
-                .rateContract(at: contractAddress)
-                .end()
-                .callPublisher(from: wallet, amount: Tez(0))
-                .handleEvents(receiveOutput: { [weak self] output in
-                    print(output)
-                    self?.endVote(of: contractAddress)
-                }, receiveCompletion: { completion in
-                    print(completion)
-                })
-                .startAndStore(in: &cancellables)
+            endVote(contractAddress)
         }
     }
     
     // MARK: - Helpers
+    
+    private func vote(votes: [Candidate.ID: Int], contractAddress: String) {
+        guard let wallet = userRepository.state.value.wallet else { return }
+        let nonZeroVotes = votes.filter { $0.value != 0 }
+        tezosClient
+            .rateContract(at: contractAddress)
+            .vote(nonZeroVotes)
+            .callPublisher(from: wallet, amount: Tez(0))
+            .handleEvents(receiveOutput: { [weak self] output in
+                print(output)
+                self?.addVotes(votes, for: contractAddress)
+            }, receiveCompletion: { completion in
+                print(completion)
+            })
+            .startAndStore(in: &cancellables)
+    }
+    
+    private func endVote(_ contractAddress: String) {
+        guard let wallet = userRepository.state.value.wallet else { return }
+        tezosClient
+            .rateContract(at: contractAddress)
+            .end()
+            .callPublisher(from: wallet, amount: Tez(0))
+            .handleEvents(receiveOutput: { [weak self] output in
+                print(output)
+                self?.endVote(of: contractAddress)
+            }, receiveCompletion: { completion in
+                print(completion)
+            })
+            .startAndStore(in: &cancellables)
+    }
     
     private func updateStore(of contract: String) {
         tezosClient.rateContract(at: contract)
