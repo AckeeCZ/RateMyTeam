@@ -1,8 +1,10 @@
 # RateMyTeam
 
-This app, as it is a PoC, runs on Carthagenet - that means that do expect that these contracts will be deleted eventually.
+RateMyTeam is a PoC demonstrating the abilites of Tezos smart contracts and our tools [tezosgen](https://github.com/AckeeCZ/tezosgen/) and [TezosSwift](https://github.com/AckeeCZ/TezosSwift). RateMyTeam solves the following problem: every year we distribute bonuses to the various teams of our company. To make this process transparent, every team member would get a limited number of votes that can be casted to whichever team they felt like performed the best that year. When the vote ends, all tokens from the contract are distributed to the candidates depending on how many votes they have received during the voting process. But this voting process can be expanded to many other use cases, so feel free to experiment with it 🙂
 
-The easiest way to get you up and running with your contracts are the following steps:
+This app, as it is a PoC, runs on Carthagenet - that means that do expect that contracts that you use will be deleted eventually.
+
+The easiest way to get yourself up and running with your contracts are the following steps:
 
 1. Go to https://smartpy.io/demo/faucetImporter.html
 2. After you download data from the Faucet, copy your private key (this key will be then used to sign you in the app!)
